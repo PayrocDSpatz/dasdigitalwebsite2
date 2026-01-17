@@ -1,3 +1,4 @@
+use client
 import React, { useMemo, useState } from "react";
 import { ArrowRight, Check, ChevronDown, Sparkles, Zap, ShieldCheck, BarChart3, Workflow, Mail, Phone } from "lucide-react";
 
