@@ -316,11 +316,13 @@ export default function Page() {
               </div>
 
               <form
-                className="rounded-3xl border border-white/10 bg-black/20 p-6"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  alert("Hook this form to Typeform/HubSpot/Webflow/Next API route. (This is a template.)");
-                }}
+                
+  action="https://formspree.io/f/mjgggdbg"
+  method="POST"
+  className="rounded-3xl border border-white/10 bg-black/20 p-6"
+>
+<input type="hidden" name="_subject" value="New Automation Plan Request" />
+
               >
                 <div className="grid gap-4">
                   <label className="grid gap-1 text-sm">
