@@ -213,7 +213,7 @@ export default function Page() {
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-white/80">
-                <ShieldCheck className="h-4 w-4" /> Original build • Dopamine-style layout • Your brand
+                <ShieldCheck className="h-4 w-4" /> 
               </div>
               <h1 className="mt-5 text-balance text-3xl font-semibold tracking-tight text-white sm:text-5xl">
                 Build an <span className="text-white">Automation + AI Engine</span> that runs your workflows and turns follow-ups into revenue.
