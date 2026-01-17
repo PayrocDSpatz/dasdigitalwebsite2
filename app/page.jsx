@@ -116,6 +116,8 @@ const FAQItem = ({ q, a }) => {
 };
 
 export default function Page() {
+  const [submitted, setSubmitted] = useState(false);
+
   const pain = useMemo(
     () => [
       "Too many manual steps",
@@ -211,7 +213,7 @@ export default function Page() {
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-white/80">
-                <ShieldCheck className="h-4 w-4" /> 
+                <ShieldCheck className="h-4 w-4" /> Original build • Dopamine-style layout • Your brand
               </div>
               <h1 className="mt-5 text-balance text-3xl font-semibold tracking-tight text-white sm:text-5xl">
                 Build an <span className="text-white">Automation + AI Engine</span> that runs your workflows and turns follow-ups into revenue.
@@ -493,10 +495,24 @@ export default function Page() {
                 </ul>
               </div>
 
+              {!submitted ? (
               <form
-                action="https://formspree.io/f/mjgggdbg"
-                method="POST"
                 className="rounded-3xl border border-white/10 bg-black/20 p-6"
+                onSubmit={async (e) => {
+                  e.preventDefault();
+
+                  const form = e.target;
+                  const data = new FormData(form);
+
+                  await fetch("https://formspree.io/f/mjgggdbg", {
+                    method: "POST",
+                    body: data,
+                    headers: { Accept: "application/json" },
+                  });
+
+                  setSubmitted(true);
+                  form.reset();
+                }}
               >
                 <input
                   type="hidden"
@@ -543,12 +559,14 @@ export default function Page() {
                   >
                     Send request <ArrowRight className="h-4 w-4" />
                   </button>
-
-                  <p className="text-xs text-white/60">
-                    You’ll receive a confirmation email from Formspree after you submit.
-                  </p>
                 </div>
               </form>
+            ) : (
+              <div className="rounded-3xl border border-white/10 bg-black/20 p-6 text-center">
+                <h4 className="text-xl font-semibold text-purple-400">Form submitted!</h4>
+                <p className="mt-3 text-white/70">Thank you — we received your request and will be in touch shortly.</p>
+              </div>
+            )}
             </div>
           </div>
         </section>
@@ -590,7 +608,7 @@ export default function Page() {
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2">
                     <Mail className="h-4 w-4" />
                     <a
-                      href="mailto:david@dasdigitalai.com?subject=Automation%20Inquiry"
+                      href="mailto:info@dasdigitalai.com?subject=Automation%20Inquiry"
                       className="text-purple-400 hover:text-purple-300 underline-offset-2 hover:underline break-all"
                     >
                       info@dasdigitalai.com
