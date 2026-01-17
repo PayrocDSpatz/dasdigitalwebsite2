@@ -1,5 +1,4 @@
 import "./globals.css";
-
 export const metadata = {
   metadataBase: new URL("https://dasdigitalai.com"),
   title: {
