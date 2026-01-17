@@ -366,7 +366,7 @@ export default function Page() {
                 <div className="mt-4 flex flex-wrap gap-3 text-sm text-white/70">
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2">
                     <Mail className="h-4 w-4" />
-                    <a href="mailto:info@dasdigitalai.com?subject=Automation%20Inquiry" className="text-purple-400 hover:text-purple-300 underline-offset-2 hover:underline">
+                    <a href="mailto:david@dasdigitalai.com?subject=Automation%20Inquiry" className="text-purple-400 hover:text-purple-300 underline-offset-2 hover:underline">
                       info@dasdigitalai.com
                     </a>
                   </span>
