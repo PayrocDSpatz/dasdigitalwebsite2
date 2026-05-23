@@ -384,6 +384,31 @@ export default function FarriTechCaseStudy() {
           </div>
         </section>
 
+        {/* YouTube Training Playlist */}
+        <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+          <a
+            href="https://www.youtube.com/playlist?list=PL8TxJEnhh3p2JLOoCTJA4csE61z-9vvPw"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`group flex flex-col sm:flex-row sm:items-center gap-5 rounded-3xl border-2 border-purple-500 bg-white/5 p-6 backdrop-blur transition-colors hover:bg-white/8 ${glowCard}`}
+          >
+            {/* YouTube play icon */}
+            <div className="shrink-0 grid h-14 w-14 place-items-center rounded-2xl bg-[#FF0000]/15 border border-[#FF0000]/30 group-hover:bg-[#FF0000]/25 transition-colors">
+              <svg viewBox="0 0 24 24" className="h-7 w-7 fill-[#FF0000]" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21.8 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.8 5 12 5 12 5s-4.8 0-7 .1c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S2 9.6 2 11.2v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.8 0 7-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C22 9.6 21.8 8 21.8 8zM9.7 14.5V9.5l5.4 2.5-5.4 2.5z"/>
+              </svg>
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-xs font-semibold tracking-widest text-purple-400 uppercase mb-1">FarriTech Training</div>
+              <div className="font-semibold text-white group-hover:text-purple-300 transition-colors">Watch the full tutorial playlist on YouTube</div>
+              <div className="text-sm text-white/60 mt-1">Step-by-step walkthroughs of every FarriTech feature — booking, invoicing, payments, scheduling, and more.</div>
+            </div>
+            <div className="shrink-0 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-semibold text-white group-hover:border-purple-500/50 group-hover:text-purple-300 transition-colors">
+              Watch Now <ExternalLink className="h-4 w-4" />
+            </div>
+          </a>
+        </section>
+
         {/* CTA */}
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-10 text-center ${glowCard} backdrop-blur`}>
