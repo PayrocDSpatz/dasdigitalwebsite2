@@ -197,7 +197,7 @@ export default function Page() {
               FAQ
             </a>
             <a className="hover:text-white font-medium text-purple-400 hover:text-purple-300" href="/work/farritech">
-              Work
+              Work ↗
             </a>
           </div>
 

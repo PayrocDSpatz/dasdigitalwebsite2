@@ -1,20 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import {
   ArrowRight,
   ArrowLeft,
-  Check,
-  ChevronDown,
   Sparkles,
   Zap,
+  Wrench,
   CalendarCheck,
-  CreditCard,
-  MessageSquare,
+  FileText,
   BarChart3,
-  Smartphone,
   Users,
-  Globe,
+  Settings,
+  Truck,
+  ShieldCheck,
   Mail,
   Phone,
   ExternalLink,
@@ -84,67 +83,65 @@ const FeatureCard = ({ icon, title, children }) => (
   </div>
 );
 
-const stackItems = [
-  { label: "Frontend", value: "React (in-browser Babel, single-file PWA)" },
-  { label: "Backend / DB", value: "Firebase / Firestore" },
-  { label: "Hosting", value: "Vercel (farritech.com + app.farritech.com)" },
-  { label: "Payments", value: "Stripe (subscriptions + invoice pay links)" },
-  { label: "SMS", value: "Twilio A2P 10DLC (appointment reminders, notifications)" },
-  { label: "Email", value: "Resend (transactional + referral flows)" },
-  { label: "Mapping", value: "Google Places Autocomplete + Smart Route" },
-  { label: "Auth", value: "Firebase Auth + magic-link customer portal" },
+const trades = [
+  { emoji: "🌡️", name: "HVAC", detail: "AC tune-ups, furnace PMs, emergency calls, new system installs. Comfort Club recurring contracts." },
+  { emoji: "🔧", name: "Plumbing", detail: "Drain cleaning, water heater service, leak detection, emergency dispatch. Annual inspection plans." },
+  { emoji: "🌿", name: "Lawn & Landscape", detail: "Mowing, fertilization, irrigation, seasonal cleanups. Weekly through Spring/Fall contract cadences." },
+  { emoji: "💧", name: "Pool Service", detail: "Weekly cleaning, chemistry balancing, pool openings and closings. Automated recurring visit scheduling." },
+  { emoji: "🪲", name: "Pest Control", detail: "General pest, termite, mosquito, rodent. Monthly, quarterly, and seasonal treatment plans." },
 ];
 
 const features = [
   {
     icon: <CalendarCheck className="h-5 w-5 text-purple-400" />,
-    title: "QR Code Booking System",
-    body: "Farriers generate a branded QR code with a custom color picker. Clients scan to book — no app download needed. The composited PNG is downloadable for business cards, trailer decals, and barn flyers.",
-  },
-  {
-    icon: <CreditCard className="h-5 w-5 text-purple-400" />,
-    title: "Stripe Payments & Subscriptions",
-    body: "Full Stripe Elements integration for both SaaS subscription billing and client invoice payments. Farriers store their own Stripe keys in Firestore. One-time-use payment links, promo codes (3free / 6free), and no-card-required free trials are all supported.",
-  },
-  {
-    icon: <MessageSquare className="h-5 w-5 text-purple-400" />,
-    title: "Twilio SMS & Resend Email",
-    body: "A2P 10DLC-registered SMS for appointment reminders and invoice notifications. Resend handles branded transactional email — including referral tracking, magic-link sign-ins, and admin alerts on new signups.",
-  },
-  {
-    icon: <CalendarCheck className="h-5 w-5 text-purple-400" />,
-    title: "Horses Due & Visit Scheduling",
-    body: "Data model tracks each horse's last visit date and configured interval. The dashboard surfaces horses coming due, so farriers can proactively schedule rather than waiting for clients to call.",
-  },
-  {
-    icon: <BarChart3 className="h-5 w-5 text-purple-400" />,
-    title: "Mileage Log & Smart Route",
-    body: "IRS-rate mileage logging for every job. Smart Route surfaces nearby clients on the day's schedule to minimize windshield time — built with Google Places and location-aware sorting.",
-  },
-  {
-    icon: <Smartphone className="h-5 w-5 text-purple-400" />,
-    title: "Mobile PWA (Barn-Ready UI)",
-    body: "A dedicated mobile.html PWA with high-contrast, barn-friendly UI designed for bright sunlight and dirty hands. Installable on iOS and Android home screens with no app store friction.",
+    title: "Dispatch & Routing",
+    body: "Drag-and-drop daily schedule board with crew assignment. Auto-route trucks by stop proximity. Techs see their day on mobile — no paper run sheets, no morning briefing required.",
   },
   {
     icon: <Users className="h-5 w-5 text-purple-400" />,
-    title: "Customer Portal (Passwordless)",
-    body: "Horse owners get a self-service portal via magic-link sign-in — no password to forget. They can view invoices, select multiple outstanding bills, and pay in a single transaction.",
+    title: "Customer Records",
+    body: "Every property, visit note, and service history in one place. Full search across customers and jobs. Built so a dispatcher or tech can find anything in two taps.",
   },
   {
-    icon: <Globe className="h-5 w-5 text-purple-400" />,
-    title: "Referral System & Growth Tools",
-    body: "Built-in referral tracking with Resend email flows and Firestore state management. YouTube tutorial cards and an in-app video tutorial screen accelerate onboarding for non-technical farriers.",
+    icon: <FileText className="h-5 w-5 text-purple-400" />,
+    title: "Invoicing & Payments",
+    body: "Bill from the truck the moment a job closes. Card, ACH, check. QuickBooks sync keeps the books clean without manual export. Overdue tracking surfaces what needs follow-up.",
   },
+  {
+    icon: <ShieldCheck className="h-5 w-5 text-purple-400" />,
+    title: "Service Plans & Contracts",
+    body: "Recurring maintenance contracts — Comfort Club, Quarterly, Spring/Fall — that auto-schedule and auto-invoice. Plan retention metrics built into the reporting layer.",
+  },
+  {
+    icon: <Wrench className="h-5 w-5 text-purple-400" />,
+    title: "Equipment Tracking",
+    body: "Make, model, serial number, install date, warranty expiration. Full service history per unit. Techs arrive knowing what they're walking into instead of asking the customer.",
+  },
+  {
+    icon: <BarChart3 className="h-5 w-5 text-purple-400" />,
+    title: "Reports That Matter",
+    body: "Revenue per crew, close rate, plan retention, overdue invoices. KPIs owners actually use to run the business — not just vanity metrics from a generic BI tool.",
+  },
+];
+
+const stackItems = [
+  { label: "Frontend", value: "React 18 + Vite" },
+  { label: "Backend / DB", value: "Firebase / Firestore" },
+  { label: "Auth", value: "Firebase Auth" },
+  { label: "Routing", value: "Client-side SPA (App Shell pattern)" },
+  { label: "Styling", value: "Custom CSS design system (tokens + components)" },
+  { label: "Data layer", value: "DataContext with Firestore real-time listeners + mock data mode" },
+  { label: "Payments", value: "Invoicing + QuickBooks sync layer" },
+  { label: "Deployment", value: "Vite build → Vercel / static hosting" },
 ];
 
 const outcomes = [
-  { before: "Phone-tag booking", after: "24/7 QR-code self-booking", note: "Clients book without calling; farriers capture appointments automatically" },
-  { before: "Paper invoices & cash", after: "Stripe-powered digital payments", note: "Faster collection, automated reminders, full payment history" },
-  { before: "Forgetting follow-ups", after: "Horses Due dashboard + SMS alerts", note: "Proactive scheduling before horses go overdue" },
+  { before: "Paper run sheets & phone dispatch", after: "Live drag-and-drop dispatch board", note: "Crews see their day on mobile; dispatchers see all trucks in real time" },
+  { before: "Invoicing back at the office", after: "Bill from the truck at job close", note: "Faster collection, less admin lag, fewer invoices that fall through the cracks" },
+  { before: "Maintenance contracts tracked in spreadsheets", after: "Auto-scheduling service plans", note: "Contracts run themselves — no manual follow-up to book the next visit" },
 ];
 
-export default function FarriTechCaseStudy() {
+export default function ServiceProCaseStudy() {
   return (
     <div className="min-h-screen bg-[#070910] text-white">
       <Background />
@@ -167,6 +164,7 @@ export default function FarriTechCaseStudy() {
             <a className="hover:text-white" href="/#proof">Proof</a>
             <a className="hover:text-white" href="/#process">Process</a>
             <a className="hover:text-white" href="/#faq">FAQ</a>
+            <a className="font-medium text-purple-400 hover:text-purple-300" href="/work/farritech">Work</a>
           </div>
 
           <a
@@ -197,46 +195,27 @@ export default function FarriTechCaseStudy() {
                 <Sparkles className="h-4 w-4" /> Case Study · SaaS Product Build
               </div>
               <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                FarriTech
+                ServicePro
               </h1>
               <p className="mt-4 text-xl font-medium text-purple-400">
-                Business management software built from scratch for professional farriers.
+                Field service management platform built for the trades.
               </p>
               <p className="mt-4 text-pretty text-base text-white/70 sm:text-lg">
-                Farriers are skilled tradespeople running small businesses — but most manage everything by phone, paper, and memory. FarriTech is a full-stack SaaS platform purpose-built for their workflow: QR booking, digital invoicing, Stripe payments, SMS reminders, route optimization, and a horse-health dashboard. Built and shipped entirely using AI-assisted development.
+                HVAC shops, plumbers, lawn crews, pool techs, and pest operators all run the same playbook — but most manage it from a clipboard, a whiteboard, and a group text. ServicePro is a full-stack SaaS built to replace all of it: dispatch, customer records, invoicing, recurring service plans, equipment history, and owner-level reporting. One platform, five trades, zero paper.
               </p>
-
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href="https://www.farritech.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold ${purpleBtn}`}
-                >
-                  Visit FarriTech.com <ExternalLink className="h-4 w-4" />
-                </a>
-                <a
-                  href="https://app.farritech.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold ${outlineBtn}`}
-                >
-                  Live App <ExternalLink className="h-4 w-4" />
-                </a>
-              </div>
             </div>
 
-            {/* Stats panel */}
+            {/* Snapshot card */}
             <div className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-8 ${glowCard} backdrop-blur`}>
               <div className="text-xs font-semibold tracking-widest text-purple-400 uppercase mb-6">Project snapshot</div>
               <div className="grid grid-cols-2 gap-6">
                 {[
                   { label: "Product type", value: "SaaS Platform" },
-                  { label: "Industry", value: "Equine / Farriery" },
+                  { label: "Industry", value: "Field Service / Trades" },
+                  { label: "Trades supported", value: "HVAC, Plumbing, Lawn, Pool, Pest" },
                   { label: "Build method", value: "AI-assisted dev" },
-                  { label: "Time to launch", value: "Weeks, not months" },
-                  { label: "Integrations", value: "Stripe, Twilio, Firebase, Resend" },
-                  { label: "Platforms", value: "Web + Mobile PWA" },
+                  { label: "Stack", value: "React + Vite + Firebase" },
+                  { label: "Pricing model", value: "Per-truck subscription" },
                 ].map((s) => (
                   <div key={s.label}>
                     <div className="text-xs text-white/50">{s.label}</div>
@@ -252,14 +231,14 @@ export default function FarriTechCaseStudy() {
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <SectionTitle
             kicker="The Problem"
-            title="Farriers run businesses on paper and memory"
-            subtitle="Professional farriers see 6–10 horses a day across multiple properties. Most had no digital tools — booking was phone calls, invoicing was handwritten, and follow-up never happened consistently."
+            title="Trades businesses run on memory and paper"
+            subtitle="Field service companies with 2–15 trucks face the same operational drag: dispatch happens by phone, invoicing lags by days, and maintenance contracts live in someone's head. The tools that exist were built for enterprise — too expensive, too complex, and designed for the office rather than the truck."
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {[
-              { icon: "📞", pain: "Booking by phone or text", detail: "No way for clients to self-schedule; every booking required a back-and-forth." },
-              { icon: "📄", pain: "Paper invoices & cash only", detail: "No payment trail, slow collection, and no automated reminders for overdue accounts." },
-              { icon: "🐴", pain: "No visibility on due horses", detail: "Horses on 6–8 week cycles — farriers relied on memory or client calls to know who was overdue." },
+              { icon: "📋", pain: "Dispatch by whiteboard or group text", detail: "No real-time visibility. Crew changes require calls. Routing is whoever knows the area best." },
+              { icon: "📄", pain: "Invoicing happens in the office — later", detail: "Jobs close in the field; billing happens tomorrow. Cash flow lags. Some jobs never get invoiced at all." },
+              { icon: "🔁", pain: "Maintenance contracts managed manually", detail: "Spring/Fall tune-ups, monthly pest treatments, weekly pool visits — all tracked in spreadsheets or not tracked at all." },
             ].map((p) => (
               <div key={p.pain} className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
                 <div className="text-3xl mb-3">{p.icon}</div>
@@ -270,19 +249,39 @@ export default function FarriTechCaseStudy() {
           </div>
         </section>
 
+        {/* Trades */}
+        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <SectionTitle
+            kicker="Five Trades, One Platform"
+            title="Configured for the work you actually do"
+            subtitle="ServicePro ships with trade-specific defaults — service codes, recurrence patterns, equipment categories, and terminology — so each trade feels like the platform was built just for them."
+          />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {trades.map((t) => (
+              <div key={t.name} className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+                <div className="text-3xl mb-3">{t.emoji}</div>
+                <div className="font-semibold text-white">{t.name}</div>
+                <div className="mt-2 text-sm text-white/60">{t.detail}</div>
+              </div>
+            ))}
+            {/* sixth card — the "built different" card */}
+            <div className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-6 ${glowCard} flex flex-col justify-center`}>
+              <div className="text-xs font-semibold tracking-widest text-purple-400 uppercase mb-2">Designed around the truck</div>
+              <div className="text-sm text-white/70">Mobile-first UI for techs in the field. Big tap targets. Works offline. No five-step menus to log a service note.</div>
+            </div>
+          </div>
+        </section>
+
         {/* Before → After */}
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <SectionTitle
             kicker="Outcomes"
             title="Before → After"
-            subtitle="What changed once FarriTech was in the workflow."
+            subtitle="What changes when the platform replaces the clipboard."
           />
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {outcomes.map((x) => (
-              <div
-                key={x.before}
-                className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-6 ${glowCard}`}
-              >
+              <div key={x.before} className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-6 ${glowCard}`}>
                 <div className="text-xs text-white/60">Before</div>
                 <div className="mt-1 text-lg font-semibold">{x.before}</div>
                 <div className="mt-5 text-xs font-semibold text-purple-400">AFTER</div>
@@ -297,8 +296,8 @@ export default function FarriTechCaseStudy() {
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <SectionTitle
             kicker="What Was Built"
-            title="Full-stack SaaS, shipped feature by feature"
-            subtitle="Every capability was designed around how farriers actually work — in the barn, on a phone, often with no cell signal until they hit the road."
+            title="Full ops platform, from dispatch to reporting"
+            subtitle="Every module was spec'd around actual field service workflows — not adapted from generic SaaS templates."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {features.map((f) => (
@@ -309,12 +308,76 @@ export default function FarriTechCaseStudy() {
           </div>
         </section>
 
+        {/* Key stats */}
+        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <div className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-10 ${glowCard} backdrop-blur`}>
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-white/80 mb-3">
+                <Sparkles className="h-4 w-4" /> Platform benchmarks
+              </div>
+              <h2 className="text-2xl font-semibold text-white">Built for real results</h2>
+            </div>
+            <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+              {[
+                { value: "38%", label: "Revenue lift in year one (avg.)" },
+                { value: "6 hrs", label: "Office time saved per week per dispatcher" },
+                { value: "92%", label: "Maintenance plan retention" },
+                { value: "< 1 hr", label: "From signup to first invoice" },
+              ].map((s) => (
+                <div key={s.label} className="text-center">
+                  <div className="text-3xl font-bold text-purple-400">{s.value}</div>
+                  <div className="mt-2 text-sm text-white/60">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing model callout */}
+        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <SectionTitle
+            kicker="Business Model"
+            title="Per truck, not per click"
+            subtitle="Pricing designed so the platform scales with the business — not against it."
+          />
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {[
+              { tier: "Solo", price: "$49/truck/mo", tagline: "One-truck operators", features: ["1 user", "Unlimited customers & jobs", "Mobile app", "Invoicing & payments"] },
+              { tier: "Crew", price: "$129/truck/mo", tagline: "The shop standard", highlight: true, features: ["Up to 5 users", "Service Plans & Contracts", "Equipment tracking", "QuickBooks sync", "Priority support"] },
+              { tier: "Fleet", price: "$299/truck/mo", tagline: "Multi-crew & commercial", features: ["Up to 15 users", "Multi-location", "API access", "Custom reporting", "Dedicated success manager"] },
+            ].map((p) => (
+              <div
+                key={p.tier}
+                className={`rounded-3xl p-6 backdrop-blur ${
+                  p.highlight
+                    ? `border-2 border-purple-500 bg-white/5 ${glowCard}`
+                    : "border border-white/10 bg-white/5"
+                }`}
+              >
+                {p.highlight && (
+                  <div className="mb-3 text-xs font-semibold tracking-widest text-purple-400 uppercase">Most popular</div>
+                )}
+                <div className="text-lg font-semibold text-white">{p.tier}</div>
+                <div className="text-2xl font-bold text-purple-400 mt-1">{p.price}</div>
+                <div className="text-sm text-white/50 mt-1">{p.tagline}</div>
+                <ul className="mt-4 space-y-2">
+                  {p.features.map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-sm text-white/70">
+                      <span className="text-purple-400">✓</span> {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Tech Stack */}
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <SectionTitle
             kicker="Tech Stack"
-            title="Modern, lean, and built to scale"
-            subtitle="Chosen for rapid iteration, low operational overhead, and zero servers to manage."
+            title="Fast, lean, real-time"
+            subtitle="Built for rapid iteration and zero server management overhead."
           />
           <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur">
             {stackItems.map((item, i) => (
@@ -324,7 +387,7 @@ export default function FarriTechCaseStudy() {
                   i < stackItems.length - 1 ? "border-b border-white/10" : ""
                 }`}
               >
-                <div className="w-32 shrink-0 text-xs font-semibold uppercase tracking-widest text-purple-400">
+                <div className="w-36 shrink-0 text-xs font-semibold uppercase tracking-widest text-purple-400">
                   {item.label}
                 </div>
                 <div className="text-sm text-white/80">{item.value}</div>
@@ -337,25 +400,25 @@ export default function FarriTechCaseStudy() {
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <SectionTitle
             kicker="How It Was Built"
-            title="AI-assisted development — no traditional dev team"
-            subtitle="FarriTech was conceived, designed, and shipped by a non-traditional developer using AI coding tools. This is the DAS Digital approach applied to product development."
+            title="Domain expertise + AI-assisted development"
+            subtitle="ServicePro wasn't built by a traditional software team. It was built the DAS Digital way — deep knowledge of the problem space, AI coding tools for execution speed, and real infrastructure from day one."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {[
               {
                 step: "01",
-                title: "Define the workflow",
-                body: "Deep domain expertise in the problem space (payments, small business ops) shaped every feature decision. The product reflects what farriers actually need, not what a generic SaaS template offers.",
+                title: "Know the industry",
+                body: "Field service operations share DNA with payments and merchant services — recurring relationships, route density, contract management, fast cash flow. That domain fluency shaped every product decision.",
               },
               {
                 step: "02",
-                title: "Build with AI, iterate fast",
-                body: "Claude and other AI coding assistants handled code generation, debugging, and architecture decisions. Features that would take a traditional dev team weeks were shipped in days.",
+                title: "Design for the truck first",
+                body: "Most FSM software was built for the office and ported to mobile as an afterthought. ServicePro started with the tech in the field — big targets, readable in sunlight, no unnecessary steps.",
               },
               {
                 step: "03",
-                title: "Integrate real infrastructure",
-                body: "Production-grade integrations — Stripe, Twilio A2P 10DLC, Firebase, Resend, Vercel — were wired in from the start. No toy demos; live system from day one.",
+                title: "Ship with AI, not a dev team",
+                body: "Claude and other AI coding tools handled architecture, component generation, and Firebase integration. A platform that would have taken a 3-person team six months shipped in weeks.",
               },
             ].map((s) => (
               <div key={s.step} className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-6 ${glowCard}`}>
@@ -367,19 +430,19 @@ export default function FarriTechCaseStudy() {
           </div>
         </section>
 
-        {/* Also see ServicePro */}
+        {/* Also see FarriTech */}
         <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <div className="text-xs font-semibold tracking-widest text-purple-400 uppercase mb-1">Also in this portfolio</div>
-              <div className="font-semibold text-white">ServicePro — Field service platform for the trades</div>
-              <div className="text-sm text-white/60 mt-1">Dispatch, invoicing, service plans, and equipment tracking for HVAC, plumbing, lawn, pool, and pest crews.</div>
+              <div className="font-semibold text-white">FarriTech — SaaS for professional farriers</div>
+              <div className="text-sm text-white/60 mt-1">QR booking, Stripe payments, Twilio SMS, Firebase, barn-ready mobile PWA.</div>
             </div>
             <a
-              href="/work/servicepro"
+              href="/work/farritech"
               className={`inline-flex shrink-0 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold ${outlineBtn}`}
             >
-              View ServicePro <ArrowRight className="h-4 w-4" />
+              View FarriTech <ArrowRight className="h-4 w-4" />
             </a>
           </div>
         </section>
@@ -391,10 +454,10 @@ export default function FarriTechCaseStudy() {
               <Sparkles className="h-4 w-4" /> Want something like this?
             </div>
             <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              We build systems like FarriTech for your business.
+              We build platforms like ServicePro for your industry.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-white/70">
-              Whether it's a SaaS product, an internal automation engine, or a client-facing workflow tool — DAS Digital brings domain expertise and AI-assisted development together to ship fast without a full dev team.
+              SaaS product, internal ops tool, or client-facing workflow system — DAS Digital brings payments and operations domain expertise together with AI-assisted development to ship fast without a full dev team.
             </p>
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <a
