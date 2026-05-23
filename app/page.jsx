@@ -196,9 +196,36 @@ export default function Page() {
             <a className="hover:text-white" href="#faq">
               FAQ
             </a>
-            <a className="hover:text-white font-medium text-purple-400 hover:text-purple-300" href="/work/farritech">
-              Work ↗
-            </a>
+            <div className="relative group">
+              <button className="flex items-center gap-1 font-medium text-purple-400 hover:text-purple-300 focus:outline-none">
+                Work <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" />
+              </button>
+              <div className="absolute left-1/2 top-full -translate-x-1/2 pt-3 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 translate-y-1 group-hover:translate-y-0 z-50">
+                <div className="w-56 rounded-2xl border border-white/10 bg-[#0e1422] shadow-xl shadow-black/40 overflow-hidden backdrop-blur">
+                  <a
+                    href="/work/farritech"
+                    className="flex items-start gap-3 px-4 py-3 hover:bg-white/5 transition-colors group/item"
+                  >
+                    <span className="text-lg mt-0.5">🐴</span>
+                    <span>
+                      <span className="block text-sm font-semibold text-white group-hover/item:text-purple-300 transition-colors">FarriTech</span>
+                      <span className="block text-xs text-white/50 mt-0.5">SaaS for farriers</span>
+                    </span>
+                  </a>
+                  <div className="h-px bg-white/10 mx-4" />
+                  <a
+                    href="/work/servicepro"
+                    className="flex items-start gap-3 px-4 py-3 hover:bg-white/5 transition-colors group/item"
+                  >
+                    <span className="text-lg mt-0.5">🔧</span>
+                    <span>
+                      <span className="block text-sm font-semibold text-white group-hover/item:text-purple-300 transition-colors">ServicePro</span>
+                      <span className="block text-xs text-white/50 mt-0.5">Field service for the trades</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
 
           <a
