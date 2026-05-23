@@ -170,6 +170,19 @@ export default function Page() {
         `}</style>
       </div>
 
+      {/* Announcement Bar */}
+      <a
+        href="/work/farritech"
+        className="group relative flex items-center justify-center gap-3 overflow-hidden bg-gradient-to-r from-purple-600/90 via-fuchsia-600/90 to-purple-600/90 px-4 py-2.5 text-sm font-medium text-white transition-all hover:from-purple-500/90 hover:via-fuchsia-500/90 hover:to-purple-500/90"
+      >
+        <span className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.08)_50%,transparent_100%)] translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/20 text-xs">✦</span>
+        <span>See our latest build — <span className="underline underline-offset-2 decoration-white/50">FarriTech: SaaS for professional farriers</span></span>
+        <span className="hidden sm:inline-flex items-center gap-1 rounded-full border border-white/30 bg-white/10 px-2.5 py-0.5 text-xs font-semibold tracking-wide">
+          View Case Study →
+        </span>
+      </a>
+
       {/* Nav */}
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[#070910]/70 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
