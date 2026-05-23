@@ -196,6 +196,9 @@ export default function Page() {
             <a className="hover:text-white" href="#faq">
               FAQ
             </a>
+            <a className="hover:text-white font-medium text-purple-400 hover:text-purple-300" href="/work/farritech">
+              Work
+            </a>
           </div>
 
           <a
