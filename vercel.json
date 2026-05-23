@@ -1,5 +1,2 @@
 {
-  "redirects": [
-    { "source": "/(.*)", "destination": "https://www.dasdigitalai.com/$1", "permanent": true }
-  ]
 }
