@@ -379,6 +379,21 @@ export default function Page() {
           </div>
         </section>
 
+        {/* Brand Transition Notice */}
+        <section className="mx-auto max-w-6xl px-4 pb-4 sm:px-6 sm:pb-8">
+          <div className="rounded-3xl border border-purple-500/40 bg-gradient-to-r from-purple-500/10 via-white/[0.04] to-fuchsia-500/10 px-6 py-6 text-center shadow-[0_0_0_1px_rgba(168,85,247,0.10),0_18px_45px_-28px_rgba(168,85,247,0.55)] sm:px-10">
+            <div className="text-sm font-semibold uppercase tracking-[0.18em] text-purple-300">
+              A New Name. The Same Experience.
+            </div>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+              DAS Consulting Services is now DAS Digital
+            </h2>
+            <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-white/70 sm:text-base">
+              DAS Digital represents the evolution of DAS Consulting Services, with an expanded focus on AI, automation, payments, and modern business technology.
+            </p>
+          </div>
+        </section>
+
         {/* Problem / Contrast */}
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6" id="what">
           <SectionTitle
