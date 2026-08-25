@@ -1,2 +1,25 @@
 {
+  "redirects": [
+    {
+      "source": "/services.html",
+      "destination": "https://dasdigitalai.com/#services",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "https://dasdigitalai.com/",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "https://dasdigitalai.com/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*.html",
+      "destination": "https://dasdigitalai.com/",
+      "permanent": true
+    }
+  ]
+}{
 }
