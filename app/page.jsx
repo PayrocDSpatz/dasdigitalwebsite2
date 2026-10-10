@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { CASE_STUDIES, SERVICE_PAGES } from "./_components/site";
 import {
   ArrowRight,
   Check,
@@ -684,6 +685,25 @@ export default function Page() {
                   </span>
                 </div>
               </div>
+
+              <nav aria-label="Services and work" className="grid grid-cols-2 gap-6 text-sm md:col-span-2 md:order-last">
+                <div>
+                  <div className="font-semibold text-white">Services</div>
+                  <ul className="mt-2 space-y-1 text-white/70">
+                    {SERVICE_PAGES.map((p) => (
+                      <li key={p.href}><a href={p.href} className="hover:text-white">{p.label}</a></li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <div className="font-semibold text-white">Work</div>
+                  <ul className="mt-2 space-y-1 text-white/70">
+                    {CASE_STUDIES.map((p) => (
+                      <li key={p.href}><a href={p.href} className="hover:text-white">{p.label}</a></li>
+                    ))}
+                  </ul>
+                </div>
+              </nav>
 
               <div className="md:text-right">
                 <a
