@@ -27,6 +27,55 @@ const brand = {
   secondaryCta: { label: "See What We Build", href: "#what" },
 };
 
+const builderStats = [
+  { value: "12", label: "Products & tools" },
+  { value: "20+", label: "Years in payments" },
+  { value: "10K+", label: "Merchants migrated" },
+];
+
+const builderProjects = [
+  {
+    num: "02 / Lead intelligence",
+    title: "Restaurant Radar",
+    desc: "A multi-source lead-generation workflow for finding new Florida restaurants, verifying signals, scoring opportunities, and moving qualified prospects into Zoho CRM.",
+    tags: ["Python", "Public data", "Zoho CRM", "Lead scoring"],
+  },
+  {
+    num: "03 / Sales enablement",
+    title: "POS Sales Portal",
+    desc: "A bilingual quoting and profitability tool that turns complex hardware, SaaS, and processing economics into a rep-friendly proposal flow.",
+    tags: ["Next.js", "Supabase", "Pricing logic"],
+  },
+  {
+    num: "04 / Training platform",
+    title: "Merchant Sales Academy",
+    desc: "A cold call training platform for merchant-services reps. Lessons and practice move from call reluctance and opening lines to handling objections and asking for an appointment.",
+    tags: ["Next.js", "Firebase-ready", "Curriculum design"],
+  },
+  {
+    num: "05 / Workflow automation",
+    title: "Zoho Lead Review",
+    desc: "A shared, permission-aware review queue that prevents duplicate leads, preserves ownership rules, enriches existing records, and pushes approved opportunities directly into Zoho.",
+    tags: ["Zoho API", "Shared state", "Role controls"],
+  },
+];
+
+const builderSystems = [
+  { index: "06", name: "Sales Enablement Academy", desc: "Sequential sales curriculum, quizzes, AI coaching, progress tracking, and manager visibility.", status: "Platform" },
+  { index: "07", name: "Zoho Route Sheet", desc: "Turns CRM exports into geo-ordered, printable daily routes with Google Maps directions.", status: "Automation" },
+  { index: "08", name: "Support Ticket Report", desc: "Transforms raw HESK exports into workload, urgency, repeat-merchant, and issue-type insights.", status: "Analytics" },
+  { index: "09", name: "Sunbiz Lead Filter", desc: "Filters Florida business filings by territory and restaurant signals, then exports rep-ready leads.", status: "Lead tool" },
+  { index: "10", name: "Proposal Generator", desc: "Streamlines merchant proposal creation with centralized pricing and reusable configurations.", status: "Sales tool" },
+  { index: "11", name: "POS Configuration Wizard", desc: "A guided POS configuration workflow with derived pricing logic and spreadsheet export.", status: "Sales tool" },
+];
+
+const builderPrinciples = [
+  { title: "Domain first", desc: "Understand the economics, users, exceptions, and operational consequences before choosing technology." },
+  { title: "Build for adoption", desc: "A sophisticated system has no value if the sales rep, operator, or customer cannot use it quickly." },
+  { title: "Connect the workflow", desc: "Good internal tools reduce handoffs and move clean data into the systems teams already rely on." },
+  { title: "Measure the outcome", desc: "The point is faster work, better decisions, lower costs, stronger conversion, or fewer errors." },
+];
+
 const glowCard =
   "shadow-[0_0_0_1px_rgba(168,85,247,0.25),0_20px_40px_-25px_rgba(168,85,247,0.45)]";
 
@@ -202,6 +251,9 @@ export default function Page() {
             </a>
             <a className="hover:text-white" href="#proof">
               Proof
+            </a>
+            <a className="hover:text-white" href="#builder">
+              Builder
             </a>
             <a className="hover:text-white" href="#process">
               Process
@@ -476,6 +528,102 @@ export default function Page() {
                 <div className="mt-3 text-sm text-white/70">{x.note}</div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Builder */}
+        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6" id="builder">
+          <SectionTitle
+            kicker="The builder behind DAS Digital"
+            title="I turn operational problems into working software."
+            subtitle="Two decades in payments taught me where work breaks down. Now I turn those friction points into focused software for field teams, sales organizations, and vertical businesses."
+          />
+
+          <div className="mx-auto mt-8 grid max-w-3xl grid-cols-3 gap-4">
+            {builderStats.map((x) => (
+              <div key={x.label} className="rounded-3xl border border-white/10 bg-white/5 p-4 text-center">
+                <div className="text-2xl font-semibold sm:text-3xl">{x.value}</div>
+                <div className="mt-1 text-xs uppercase tracking-wide text-white/60">{x.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Flagship */}
+          <div className={`mt-10 rounded-[2rem] border-2 border-purple-500 bg-gradient-to-b from-white/10 to-white/5 p-6 sm:p-10 ${glowCard}`}>
+            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-purple-300">01 / Flagship product · Vertical SaaS</div>
+            <h3 className="mt-3 text-2xl font-semibold tracking-tight sm:text-4xl">FarriTech: built for the people who keep horses moving.</h3>
+            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/70 sm:text-base">
+              A vertical SaaS platform created around the real workflow of independent farriers, from scheduling and customer
+              records to invoicing, payments, and business management. FarriTech brings the office into the barn: customer and
+              horse records, appointments, invoicing, payment acceptance, and a self-service customer experience in one
+              mobile-first system.
+            </p>
+            <a
+              href="/work/farritech"
+              className={`mt-6 inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold ${purpleBtn}`}
+            >
+              View the FarriTech case study <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+
+          {/* Projects */}
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            {builderProjects.map((p) => (
+              <div key={p.title} className={`flex flex-col rounded-3xl border-2 border-purple-500 bg-white/5 p-6 ${glowCard}`}>
+                <div className="text-xs font-semibold uppercase tracking-wide text-purple-300">{p.num}</div>
+                <h3 className="mt-3 text-xl font-semibold">{p.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/70">{p.desc}</p>
+                <div className="mt-auto flex flex-wrap gap-2 pt-5">
+                  {p.tags.map((t) => (
+                    <span key={t} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/75">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Systems */}
+          <div className="mt-14">
+            <h3 className="text-xl font-semibold sm:text-2xl">Small tools. Real leverage.</h3>
+            <p className="mt-2 max-w-3xl text-sm text-white/70">
+              Each system began with a recurring operational problem: manual reports, slow quoting, wasted drive time,
+              inconsistent training, or unqualified leads.
+            </p>
+            <div className="mt-6 divide-y divide-white/10 rounded-3xl border border-white/10 bg-white/5">
+              {builderSystems.map((x) => (
+                <div key={x.index} className="grid grid-cols-[2.5rem_1fr] gap-x-3 gap-y-1 px-5 py-4 sm:grid-cols-[2.5rem_14rem_1fr_auto] sm:items-center">
+                  <span className="text-xs text-white/50">{x.index}</span>
+                  <span className="font-semibold">{x.name}</span>
+                  <span className="col-start-2 text-sm text-white/70 sm:col-start-auto">{x.desc}</span>
+                  <span className="hidden rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-wide text-white/60 sm:inline-block">
+                    {x.status}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* How I work */}
+          <div className={`mt-14 grid gap-8 rounded-[2rem] border-2 border-purple-500 bg-white/5 p-6 sm:p-10 lg:grid-cols-2 ${glowCard}`}>
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-purple-300">How I work</div>
+              <h3 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">Operational depth, translated into products.</h3>
+              <p className="mt-4 text-sm leading-relaxed text-white/70 sm:text-base">
+                I spent more than 20 years leading merchant-services operations, complex portfolio migrations, payment
+                implementations, and cross-functional teams. That experience now shapes how I build: start with the real
+                workflow, remove avoidable friction, and make the system usable by the people doing the work.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {builderPrinciples.map((x) => (
+                <div key={x.title} className="border-t border-white/10 pt-4">
+                  <div className="font-semibold">{x.title}</div>
+                  <div className="mt-1 text-sm text-white/70">{x.desc}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
