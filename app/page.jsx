@@ -51,6 +51,13 @@ const builderProjects = [
     title: "Merchant Sales Academy",
     desc: "A cold call training platform for merchant-services reps. Lessons and practice move from call reluctance and opening lines to handling objections and asking for an appointment.",
     tags: ["Next.js", "Firebase-ready", "Curriculum design"],
+    image: {
+      src: "/builder/merchant-sales-academy.png",
+      width: 518,
+      height: 288,
+      alt: "Merchant Sales Academy opening screen with the headline Stop Avoiding the Call and an Enter the Call Lab button",
+      caption: "Actual opening screen",
+    },
   },
   {
     num: "05 / Workflow automation",
@@ -586,6 +593,19 @@ export default function Page() {
                 <div className="text-xs font-semibold uppercase tracking-wide text-purple-300">{p.num}</div>
                 <h3 className="mt-3 text-xl font-semibold">{p.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/70">{p.desc}</p>
+                {p.image ? (
+                  <figure className="mt-5">
+                    <img
+                      src={p.image.src}
+                      alt={p.image.alt}
+                      width={p.image.width}
+                      height={p.image.height}
+                      loading="lazy"
+                      className="w-full rounded-xl border border-white/10"
+                    />
+                    <figcaption className="mt-2 text-xs text-white/50">{p.image.caption}</figcaption>
+                  </figure>
+                ) : null}
                 <div className="mt-auto flex flex-wrap gap-2 pt-5">
                   {p.tags.map((t) => (
                     <span key={t} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/75">
