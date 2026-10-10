@@ -549,7 +549,8 @@ export default function Page() {
           </div>
 
           {/* Flagship */}
-          <div className={`mt-10 rounded-[2rem] border-2 border-purple-500 bg-gradient-to-b from-white/10 to-white/5 p-6 sm:p-10 ${glowCard}`}>
+          <div className={`mt-10 grid items-center gap-8 rounded-[2rem] border-2 border-purple-500 bg-gradient-to-b from-white/10 to-white/5 p-6 sm:p-10 lg:grid-cols-[1.2fr_0.8fr] ${glowCard}`}>
+            <div>
             <div className="text-xs font-semibold uppercase tracking-[0.18em] text-purple-300">01 / Flagship product · Vertical SaaS</div>
             <h3 className="mt-3 text-2xl font-semibold tracking-tight sm:text-4xl">FarriTech: built for the people who keep horses moving.</h3>
             <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/70 sm:text-base">
@@ -564,6 +565,18 @@ export default function Page() {
             >
               View the FarriTech case study <ArrowRight className="h-4 w-4" />
             </a>
+            </div>
+            <figure>
+              <img
+                src="/builder/farritech-dashboard.png"
+                alt="FarriTech dashboard showing today's appointments, this month's revenue, and quick actions to find customers and horses, add a customer, and open invoices"
+                width={476}
+                height={480}
+                loading="lazy"
+                className="mx-auto w-full max-w-sm rounded-2xl shadow-2xl shadow-black/50"
+              />
+              <figcaption className="mt-2 text-center text-xs text-white/50">Actual FarriTech dashboard</figcaption>
+            </figure>
           </div>
 
           {/* Projects */}
