@@ -16,7 +16,7 @@
       "permanent": true
     },
     {
-      "source": "/:path*.html",
+      "source": "/:path((?!google[0-9a-f]+\\.html$).*)\\.html",
       "destination": "https://dasdigitalai.com/",
       "permanent": true
     }
