@@ -197,7 +197,7 @@ export default function Page() {
               <p className="text-sm font-semibold text-purple-700">Point of sale</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">POS systems we work with</h2>
               <p className="mt-4 text-slate-600">
-                We help businesses choose the right point-of-sale system, set it up, and connect it to the rest of how they work.
+                We help you pick the right point-of-sale system, get it set up, and make it work with the rest of your business.
               </p>
               <a href="#lead" className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-purple-700 hover:text-purple-900">
                 Ask about POS for your business <ArrowRight className="h-4 w-4" aria-hidden="true" />
