@@ -26,7 +26,10 @@ export default function SiteFooter() {
       <div className="border-t border-slate-200">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-slate-500 sm:flex-row sm:justify-between sm:px-6">
           <span>© {new Date().getFullYear()} DAS Digital. All rights reserved.</span>
-          <span>Formerly DAS Consulting Services.</span>
+          <span className="flex gap-4">
+            <a href="/privacy" className="hover:text-purple-700">Privacy Policy</a>
+            <span>Formerly DAS Consulting Services.</span>
+          </span>
         </div>
       </div>
     </footer>

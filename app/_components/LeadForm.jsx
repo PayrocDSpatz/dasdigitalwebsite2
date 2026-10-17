@@ -81,6 +81,10 @@ export default function LeadForm() {
       >
         {status === "sending" ? "Sending…" : "Send Message"} <ArrowRight className="h-4 w-4" aria-hidden="true" />
       </button>
+      <p className="mt-3 text-xs text-slate-500">
+        We only use your details to reply to you. See our{" "}
+        <a href="/privacy" className="underline hover:text-purple-700">Privacy Policy</a>.
+      </p>
     </form>
   );
 }
