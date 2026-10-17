@@ -1,29 +1,32 @@
 import Script from "next/script";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { CONTACT, SITE_URL } from "./_components/site";
+
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata = {
   metadataBase: new URL("https://dasdigitalai.com"),
   title: {
-    default: "DAS Digital | Automation + AI Systems",
+    default: "DAS Digital | Digital Consulting Services for Small Business",
     template: "%s | DAS Digital",
   },
   description:
-    "DAS Digital builds automation + AI systems that save time, cut costs, and create predictable growth. Smartsheet, Make.com, Zapier, dashboards, and AI follow-up.",
+    "DAS Digital provides practical digital consulting services for small businesses: professional websites, AI phone answering and automated follow-ups. Based in South Florida.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "DAS Digital | Automation + AI Systems",
+    title: "DAS Digital | Smarter Technology. Simpler Business.",
     description:
-      "Done-for-you automation + AI systems: workflows, dashboards, and follow-up that turns into revenue.",
+      "Websites, AI-powered customer communications, and business automation for small businesses.",
     url: "https://dasdigitalai.com",
     siteName: "DAS Digital",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DAS Digital | Automation + AI Systems",
+    title: "DAS Digital | Smarter Technology. Simpler Business.",
     description:
-      "Done-for-you automation + AI systems: workflows, dashboards, and follow-up.",
+      "Websites, AI-powered customer communications, and business automation for small businesses.",
   },
   robots: { index: true, follow: true },
 };
@@ -41,15 +44,15 @@ const organization = {
   email: CONTACT.email,
   telephone: CONTACT.phone,
   description:
-    "Automation, AI and custom software for small businesses, payments teams and vertical industries.",
+    "Digital consulting services for small businesses: website design, AI receptionists and customer communications, business automation, and technology consulting.",
   founder: { "@type": "Person", name: "David Spatz" },
   areaServed: ["Florida", "United States"],
-  knowsAbout: ["Workflow automation", "AI automation", "Merchant services", "Payments", "Vertical SaaS", "Smartsheet", "Make.com", "Zapier", "Zoho CRM"],
+  knowsAbout: ["Website design", "Local SEO", "AI receptionists", "Business automation", "CRM integration", "Payment processing and POS", "Technology consulting"],
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.className}>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
         {children}

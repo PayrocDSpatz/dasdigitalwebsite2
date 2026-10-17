@@ -1,906 +1,348 @@
-"use client";
-
-import React, { useMemo, useState } from "react";
-import { CASE_STUDIES, SERVICE_PAGES } from "./_components/site";
 import {
   ArrowRight,
+  Building2,
+  CalendarClock,
   Check,
-  ChevronDown,
-  Sparkles,
-  Zap,
-  ShieldCheck,
-  BarChart3,
+  Compass,
+  Globe,
+  Hammer,
+  Home,
+  Inbox,
+  LifeBuoy,
+  Link2,
+  MonitorSmartphone,
+  PhoneCall,
+  PhoneMissed,
+  Search,
+  ShoppingBag,
+  Store,
+  UtensilsCrossed,
   Workflow,
-  Mail,
-  Phone,
+  Wrench,
 } from "lucide-react";
+import SiteHeader from "./_components/SiteHeader";
+import SiteFooter from "./_components/SiteFooter";
+import LeadForm from "./_components/LeadForm";
+import { CONTACT, SERVICES, serviceHref } from "./_components/site";
 
-/**
- * Single-file landing page for DAS Digital.
- * Requires TailwindCSS + lucide-react.
- */
+const description =
+  "DAS Digital provides practical digital consulting services for small businesses: professional websites, AI phone answering and automated follow-ups. Based in South Florida. Request a free consultation.";
 
-const brand = {
-  name: "DAS Digital",
-  tagline:
-    "We build automation + AI systems that save time, cut costs, and create predictable growth.",
-  primaryCta: { label: "Get My Free Automation Plan", href: "#lead" },
-  secondaryCta: { label: "See What We Build", href: "#what" },
+export const metadata = {
+  title: { absolute: "DAS Digital | Digital Consulting Services for Small Business" },
+  description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "DAS Digital | Smarter Technology. Simpler Business.",
+    description,
+    url: "https://dasdigitalai.com",
+    siteName: "DAS Digital",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image", title: "DAS Digital | Smarter Technology. Simpler Business.", description },
 };
 
-const builderStats = [
-  { value: "12", label: "Products & tools" },
-  { value: "20+", label: "Years in payments" },
-  { value: "10K+", label: "Merchants migrated" },
-];
+const byKey = Object.fromEntries(SERVICES.map((s) => [s.key, s]));
 
-const builderProjects = [
+const SERVICE_CARDS = [
   {
-    num: "02 / Lead intelligence",
-    title: "Restaurant Radar",
-    desc: "A multi-source lead-generation workflow for finding new Florida restaurants, verifying signals, scoring opportunities, and moving qualified prospects into Zoho CRM.",
-    tags: ["Python", "Public data", "Zoho CRM", "Lead scoring"],
+    key: "website",
+    icon: Globe,
+    summary: "A fast, professional website that explains what you do and turns visitors into inquiries.",
+    items: ["New websites and redesigns", "Mobile-friendly design", "Local SEO", "Hosting, updates and support"],
+    cta: "Discuss Your Website",
   },
   {
-    num: "03 / Sales enablement",
-    title: "POS Sales Portal",
-    desc: "A bilingual quoting and profitability tool that turns complex hardware, SaaS, and processing economics into a rep-friendly proposal flow.",
-    tags: ["Next.js", "Supabase", "Pricing logic"],
+    key: "ai-receptionist",
+    icon: PhoneCall,
+    summary: "Answer more calls after hours and when you're busy, and capture the details of every caller.",
+    items: ["AI-powered phone answering", "After-hours and overflow calls", "Appointment requests and lead capture", "Call summaries and notifications"],
+    cta: "Ask About AI Receptionists",
   },
   {
-    num: "04 / Training platform",
-    title: "Merchant Sales Academy",
-    desc: "A cold call training platform for merchant-services reps. Lessons and practice move from call reluctance and opening lines to handling objections and asking for an appointment.",
-    tags: ["Next.js", "Firebase-ready", "Curriculum design"],
-    image: {
-      src: "/builder/merchant-sales-academy.png",
-      width: 518,
-      height: 288,
-      alt: "Merchant Sales Academy opening screen with the headline Stop Avoiding the Call and an Enter the Call Lab button",
-      caption: "Actual opening screen",
-    },
+    key: "automation",
+    icon: Workflow,
+    summary: "Follow-ups, reminders and data entry that happen on their own, so nothing waits on someone's memory.",
+    items: ["Customer follow-ups and reminders", "Lead management and CRM integration", "Email and SMS workflows", "Forms and customer onboarding"],
+    cta: "Explore Business Automation",
   },
   {
-    num: "05 / Workflow automation",
-    title: "Zoho Lead Review",
-    desc: "A shared, permission-aware review queue that prevents duplicate leads, preserves ownership rules, enriches existing records, and pushes approved opportunities directly into Zoho.",
-    tags: ["Zoho API", "Shared state", "Role controls"],
+    key: "consulting",
+    icon: Compass,
+    summary: "Straight advice on choosing, connecting and getting more out of the systems you already pay for.",
+    items: ["Technology assessments", "Software selection and setup", "Payment processing and POS", "Systems integration"],
+    cta: "Talk to Us About Your Systems",
   },
 ];
 
-const builderSystems = [
-  { index: "06", name: "Sales Enablement Academy", desc: "Sequential sales curriculum, quizzes, AI coaching, progress tracking, and manager visibility.", status: "Platform" },
-  { index: "07", name: "Zoho Route Sheet", desc: "Turns CRM exports into geo-ordered, printable daily routes with Google Maps directions.", status: "Automation" },
-  { index: "08", name: "Support Ticket Report", desc: "Transforms raw HESK exports into workload, urgency, repeat-merchant, and issue-type insights.", status: "Analytics" },
-  { index: "09", name: "Sunbiz Lead Filter", desc: "Filters Florida business filings by territory and restaurant signals, then exports rep-ready leads.", status: "Lead tool" },
-  { index: "10", name: "Proposal Generator", desc: "Streamlines merchant proposal creation with centralized pricing and reusable configurations.", status: "Sales tool" },
-  { index: "11", name: "POS Configuration Wizard", desc: "A guided POS configuration workflow with derived pricing logic and spreadsheet export.", status: "Sales tool" },
+const PROBLEMS = [
+  { icon: PhoneMissed, title: "Missed calls", desc: "Calls that go to voicemail after hours or during a busy rush often go to a competitor instead.", fix: "ai-receptionist" },
+  { icon: MonitorSmartphone, title: "An outdated website", desc: "A slow site that looks dated on a phone makes a good business look smaller than it is.", fix: "website" },
+  { icon: Inbox, title: "Repetitive admin work", desc: "Hours each week spent copying information, sending reminders and chasing paperwork.", fix: "automation" },
+  { icon: Search, title: "Leads that slip through", desc: "Inquiries that sit in an inbox for days, or never get a second follow-up.", fix: "automation" },
+  { icon: Link2, title: "Systems that don't talk", desc: "A CRM, a calendar, a POS and spreadsheets that all hold part of the picture.", fix: "consulting" },
 ];
 
-const builderPrinciples = [
-  { title: "Domain first", desc: "Understand the economics, users, exceptions, and operational consequences before choosing technology." },
-  { title: "Build for adoption", desc: "A sophisticated system has no value if the sales rep, operator, or customer cannot use it quickly." },
-  { title: "Connect the workflow", desc: "Good internal tools reduce handoffs and move clean data into the systems teams already rely on." },
-  { title: "Measure the outcome", desc: "The point is faster work, better decisions, lower costs, stronger conversion, or fewer errors." },
+const STEPS = [
+  { title: "Discover", desc: "We learn how your business runs today: where calls, leads and paperwork go, and what slows you down." },
+  { title: "Recommend", desc: "You get a clear plan in plain language, with what to do first and what it will cost." },
+  { title: "Implement", desc: "We build and set everything up, connect it to the tools you already use, and test it with you." },
+  { title: "Support", desc: "We stay available for updates, questions and improvements after launch." },
 ];
 
-const glowCard =
-  "shadow-[0_0_0_1px_rgba(168,85,247,0.25),0_20px_40px_-25px_rgba(168,85,247,0.45)]";
+const INDUSTRIES = [
+  { icon: UtensilsCrossed, label: "Restaurants" },
+  { icon: Hammer, label: "Contractors" },
+  { icon: Wrench, label: "Home services" },
+  { icon: Building2, label: "Professional services" },
+  { icon: ShoppingBag, label: "Retail" },
+  { icon: Store, label: "Other local businesses" },
+];
 
-const purpleBtn =
-  "bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-lg shadow-purple-500/30 hover:from-purple-500 hover:to-fuchsia-500";
+const REASONS = [
+  { title: "Practical experience", desc: "Built by someone who has spent years running operations, payments and sales teams, not just writing code." },
+  { title: "Sized to your business", desc: "Recommendations that fit your budget and your team, not complicated enterprise systems." },
+  { title: "You own what we build", desc: "Your website, workflows and data stay yours, with documentation so you're never locked in." },
+  { title: "Support after launch", desc: "A real person to call when something needs changing, long after the project is done." },
+];
 
-const MarqueeRow = ({ items }) => (
-  <div className="relative overflow-hidden hidden sm:block">
-    <div className="flex w-max animate-[marquee_18s_linear_infinite] gap-6 py-2">
-      {items.concat(items).map((t, idx) => (
-        <span
-          key={`${t}-${idx}`}
-          className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80"
-        >
-          {t}
-        </span>
-      ))}
-    </div>
-    <style jsx>{`
-      @keyframes marquee {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(-50%);
-        }
-      }
-    `}</style>
-  </div>
-);
-
-const SectionTitle = ({ kicker, title, subtitle }) => (
-  <div className="mx-auto max-w-3xl text-center">
-    {kicker ? (
-      <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium tracking-wide text-white/80">
-        <Sparkles className="h-4 w-4" /> {kicker}
-      </div>
-    ) : null}
-    <h2 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-      {title}
-    </h2>
-    {subtitle ? (
-      <p className="mt-4 text-pretty text-base text-white/70 sm:text-lg">
-        {subtitle}
-      </p>
-    ) : null}
-  </div>
-);
-
-const Card = ({ icon, title, children }) => (
-  <div
-    className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-6 ${glowCard} backdrop-blur`}
-  >
-    <div className="flex items-start gap-3">
-      <div className="mt-1 rounded-2xl border border-white/10 bg-black/30 p-3">
-        {icon}
-      </div>
-      <div>
-        <h3 className="text-lg font-semibold text-white">{title}</h3>
-        <div className="mt-2 text-sm leading-relaxed text-white/70">
-          {children}
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-const FAQItem = ({ q, a }) => {
-  const [open, setOpen] = useState(false);
-  return (
-    <button
-      type="button"
-      onClick={() => setOpen(!open)}
-      className="w-full rounded-3xl border border-white/10 bg-white/5 p-5 text-left backdrop-blur transition hover:bg-white/[0.07]"
-    >
-      <div className="flex items-center justify-between gap-4">
-        <div className="text-base font-semibold text-white">{q}</div>
-        <ChevronDown
-          className={`h-5 w-5 text-white/70 transition ${
-            open ? "rotate-180" : ""
-          }`}
-        />
-      </div>
-      {open ? <div className="mt-3 text-sm leading-relaxed text-white/70">{a}</div> : null}
-    </button>
-  );
-};
+const btnPrimary =
+  "inline-flex items-center justify-center gap-2 rounded-lg bg-purple-700 px-6 py-3 text-sm font-semibold text-white hover:bg-purple-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600";
+const btnSecondary =
+  "inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 hover:border-slate-400 hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600";
 
 export default function Page() {
-  const [submitted, setSubmitted] = useState(false);
-
-  const pain = useMemo(
-    () => [
-      "Too many manual steps",
-      "Leads not followed up consistently",
-      "Dashboards that don’t match reality",
-      "Tools that don’t talk to each other",
-      "Busy teams, slow execution",
-    ],
-    []
-  );
-
   return (
-    <div className="min-h-screen bg-[#070910] text-white">
-      {/* Animated Purple Gradient Background */}
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 animate-gradient bg-[linear-gradient(120deg,rgba(168,85,247,0.25),rgba(139,92,246,0.25),rgba(99,102,241,0.25),rgba(236,72,153,0.25))] bg-[length:400%_400%]" />
-        <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-purple-500/30 blur-3xl animate-float" />
-        <div className="absolute -bottom-40 right-[-120px] h-[520px] w-[520px] rounded-full bg-fuchsia-500/25 blur-3xl animate-float-slow" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_55%)]" />
-        <style jsx>{`
-          @keyframes gradient {
-            0% {
-              background-position: 0% 50%;
-            }
-            50% {
-              background-position: 100% 50%;
-            }
-            100% {
-              background-position: 0% 50%;
-            }
-          }
-          @keyframes float {
-            0%,
-            100% {
-              transform: translateY(0);
-            }
-            50% {
-              transform: translateY(-20px);
-            }
-          }
-          .animate-gradient {
-            animation: gradient 18s ease infinite;
-          }
-          .animate-float {
-            animation: float 10s ease-in-out infinite;
-          }
-          .animate-float-slow {
-            animation: float 16s ease-in-out infinite;
-          }
-        `}</style>
-      </div>
+    <div className="min-h-screen bg-white text-slate-900">
+      <SiteHeader />
 
-      {/* Announcement Bar */}
-      <a
-        href="/work/farritech"
-        className="group relative flex items-center justify-center gap-3 overflow-hidden bg-gradient-to-r from-purple-600/90 via-fuchsia-600/90 to-purple-600/90 px-4 py-2.5 text-sm font-medium text-white transition-all hover:from-purple-500/90 hover:via-fuchsia-500/90 hover:to-purple-500/90"
-      >
-        <span className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.08)_50%,transparent_100%)] translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-        <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/20 text-xs">✦</span>
-        <span>See our latest build — <span className="underline underline-offset-2 decoration-white/50">FarriTech: SaaS for professional farriers</span></span>
-        <span className="hidden sm:inline-flex items-center gap-1 rounded-full border border-white/30 bg-white/10 px-2.5 py-0.5 text-xs font-semibold tracking-wide">
-          View Case Study →
-        </span>
-      </a>
-
-      {/* Nav */}
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#070910]/70 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-          <div className="flex items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center rounded-2xl bg-white/5 ring-1 ring-white/10">
-              <Zap className="h-5 w-5" />
-            </div>
-            <div className="leading-tight">
-              <div className="font-semibold">{brand.name}</div>
-              <div className="text-xs text-white/60">Automation • AI • Ops</div>
-            </div>
-          </div>
-
-          <div className="hidden items-center gap-6 text-sm text-white/70 md:flex">
-            <a className="hover:text-white" href="#what">
-              What we build
-            </a>
-            <a className="hover:text-white" href="#proof">
-              Proof
-            </a>
-            <a className="hover:text-white" href="#builder">
-              Builder
-            </a>
-            <a className="hover:text-white" href="#process">
-              Process
-            </a>
-            <a className="hover:text-white" href="#faq">
-              FAQ
-            </a>
-            <div className="relative group">
-              <button className="flex items-center gap-1 font-medium text-purple-400 hover:text-purple-300 focus:outline-none">
-                Work <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" />
-              </button>
-              <div className="absolute left-1/2 top-full -translate-x-1/2 pt-3 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 translate-y-1 group-hover:translate-y-0 z-50">
-                <div className="w-56 rounded-2xl border border-white/10 bg-[#0e1422] shadow-xl shadow-black/40 overflow-hidden backdrop-blur">
-                  <a
-                    href="/work/farritech"
-                    className="flex items-start gap-3 px-4 py-3 hover:bg-white/5 transition-colors group/item"
-                  >
-                    <span className="text-lg mt-0.5">🐴</span>
-                    <span>
-                      <span className="block text-sm font-semibold text-white group-hover/item:text-purple-300 transition-colors">FarriTech</span>
-                      <span className="block text-xs text-white/50 mt-0.5">SaaS for farriers</span>
-                    </span>
-                  </a>
-                  <div className="h-px bg-white/10 mx-4" />
-                  <a
-                    href="/work/servicepro"
-                    className="flex items-start gap-3 px-4 py-3 hover:bg-white/5 transition-colors group/item"
-                  >
-                    <span className="text-lg mt-0.5">🔧</span>
-                    <span>
-                      <span className="block text-sm font-semibold text-white group-hover/item:text-purple-300 transition-colors">ServicePro</span>
-                      <span className="block text-xs text-white/50 mt-0.5">Field service for the trades</span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <a
-            href={brand.primaryCta.href}
-            className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${purpleBtn}`}
-          >
-            {brand.primaryCta.label} <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-      </header>
-
-      {/* Hero */}
       <main>
-        <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-24">
-          <div className="grid items-center gap-10 lg:grid-cols-2">
+        {/* Hero */}
+        <section className="border-b border-slate-100 bg-gradient-to-b from-purple-50/70 to-white">
+          <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-white/80">
-                <ShieldCheck className="h-4 w-4" /> 
-              </div>
-              <h1 className="mt-5 text-balance text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-                Build an <span className="text-white">Automation + AI Engine</span> that runs your workflows and turns follow-ups into revenue.
+              <p className="text-sm font-semibold text-purple-700">Digital consulting services for small businesses</p>
+              <h1 className="mt-4 text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">
+                Smarter Technology. Simpler Business.
               </h1>
-              <p className="mt-5 text-pretty text-base leading-relaxed text-white/70 sm:text-lg">
-                {brand.tagline} We audit what you do today, remove friction, then deploy a done-for-you stack (Smartsheet,
-                Make/Zapier, CRM, email, reporting) with documentation so you own the playbook.
+              <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-slate-600">
+                Websites, AI-powered customer communications, and business automation solutions that help your business work smarter and grow.
               </p>
-
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <a
-                  href={brand.primaryCta.href}
-                  className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 text-sm font-semibold ${purpleBtn}`}
-                >
-                  {brand.primaryCta.label} <ArrowRight className="h-4 w-4" />
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a href="#lead" className={btnPrimary}>
+                  Request a Free Consultation <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
-                <a
-                  href={brand.secondaryCta.href}
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/[0.08]"
-                >
-                  {brand.secondaryCta.label}
+                <a href={`tel:${CONTACT.phone}`} className={btnSecondary}>
+                  <PhoneCall className="h-4 w-4" aria-hidden="true" /> Call {CONTACT.phoneDisplay}
                 </a>
               </div>
-
-              <p className="mt-3 text-xs text-white/60">
-                Delivered in 72 hours • No long sales call • Clear next steps
-              </p>
-              <p className="mt-2 text-xs text-white/55 sm:hidden">
-                Tip: rotate your phone for the best view of the live mock dashboard.
-              </p>
-
-              <div className="mt-8 sm:mt-10 space-y-4">
-                <MarqueeRow
-                  items={[
-                    "Stop manual busywork",
-                    "Instant routing & approvals",
-                    "AI email follow-ups",
-                    "Dashboards that match reality",
-                    "Human-in-the-loop safety",
-                  ]}
-                />
-              </div>
+              <p className="mt-4 text-sm text-slate-500">Based in South Florida. Working with businesses across the US.</p>
             </div>
 
-            {/* Visual */}
-            <div className="relative">
-              <div
-                className={`rounded-[2rem] border-2 border-purple-500 bg-gradient-to-b from-white/10 to-white/5 p-4 sm:p-6 ${glowCard} overflow-hidden`}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="text-sm font-semibold">AI Growth / Ops Engine</div>
-                  <div className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-white/70">
-                    Live mock
-                  </div>
-                </div>
+            <HeroIllustration />
+          </div>
+        </section>
 
-                <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
-                    <div className="flex items-center gap-2 text-xs text-white/60">
-                      <BarChart3 className="h-4 w-4" /> KPI Snapshot
-                    </div>
-                    <div className="mt-3 text-3xl font-semibold">+18%</div>
-                    <div className="mt-1 text-xs text-white/60">Cycle time reduced</div>
-
-                    <div className="mt-4 h-2 w-full rounded-full bg-white/10">
-                      <div className="h-2 w-2/3 rounded-full bg-white/70" />
-                    </div>
-
-                    <div className="mt-3 flex h-10 items-end gap-1">
-                      {[
-                        "40%",
-                        "65%",
-                        "55%",
-                        "80%",
-                        "60%",
-                      ].map((h, i) => (
-                        <div
-                          key={i}
-                          className="w-3 rounded bg-purple-400/70"
-                          style={{ height: h }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
-                    <div className="flex items-center gap-2 text-xs text-white/60">
-                      <Workflow className="h-4 w-4" /> Workflow
-                    </div>
-                    <ul className="mt-3 space-y-2 text-sm">
-                      {["Capture", "Validate", "Route", "Notify"].map((t) => (
-                        <li key={t} className="flex items-center gap-2 text-white/80">
-                          <span className="grid h-5 w-5 place-items-center rounded-full bg-white/10">
-                            <Check className="h-3 w-3" />
-                          </span>
-                          {t}
+        {/* Services */}
+        <section id="services" className="scroll-mt-20 py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHeading
+              kicker="What we do"
+              title="Four ways we help your business run better"
+              intro="Start with one, or let us recommend the right mix after a short conversation."
+            />
+            <div className="mt-12 grid gap-6 md:grid-cols-2">
+              {SERVICE_CARDS.map((c) => {
+                const s = byKey[c.key];
+                const Icon = c.icon;
+                return (
+                  <article key={c.key} className="flex flex-col rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
+                    <span className="grid h-11 w-11 place-items-center rounded-xl bg-purple-50 text-purple-700">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <h3 className="mt-5 text-xl font-semibold">{s.label}</h3>
+                    <p className="mt-2 text-slate-600">{c.summary}</p>
+                    <ul className="mt-5 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
+                      {c.items.map((i) => (
+                        <li key={i} className="flex gap-2">
+                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-purple-700" aria-hidden="true" /> {i}
                         </li>
                       ))}
                     </ul>
+                    <a href={s.ready ? s.href : "#lead"} className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-purple-700 hover:text-purple-900">
+                      {c.cta} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Problems */}
+        <section className="bg-slate-50 py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHeading kicker="Problems we solve" title="Sound familiar?" />
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {PROBLEMS.map((p) => {
+                const Icon = p.icon;
+                const s = byKey[p.fix];
+                return (
+                  <div key={p.title} className="rounded-2xl border border-slate-200 bg-white p-6">
+                    <Icon className="h-6 w-6 text-purple-700" aria-hidden="true" />
+                    <h3 className="mt-4 text-lg font-semibold">{p.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{p.desc}</p>
+                    <a href={serviceHref(s)} className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-purple-700 hover:text-purple-900">
+                      {s.label} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </a>
                   </div>
-
-                  <div className="sm:col-span-2 rounded-3xl border border-white/10 bg-black/20 p-4">
-                    <div className="text-xs text-white/60">What this replaces</div>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {pain.map((t) => (
-                        <span
-                          key={t}
-                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/75"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-fuchsia-500/15 blur-2xl" />
+                );
+              })}
             </div>
           </div>
         </section>
 
-        {/* Brand Transition Notice */}
-        <section className="mx-auto max-w-6xl px-4 pb-4 sm:px-6 sm:pb-8">
-          <div className="rounded-3xl border border-purple-500/40 bg-gradient-to-r from-purple-500/10 via-white/[0.04] to-fuchsia-500/10 px-6 py-6 text-center shadow-[0_0_0_1px_rgba(168,85,247,0.10),0_18px_45px_-28px_rgba(168,85,247,0.55)] sm:px-10">
-            <div className="text-sm font-semibold uppercase tracking-[0.18em] text-purple-300">
-              A New Name. The Same Experience.
-            </div>
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-              DAS Consulting Services is now DAS Digital
-            </h2>
-            <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-white/70 sm:text-base">
-              DAS Digital represents the evolution of DAS Consulting Services, with an expanded focus on AI, automation, payments, and modern business technology.
-            </p>
-          </div>
-        </section>
-
-        {/* Problem / Contrast */}
-        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6" id="what">
-          <SectionTitle
-            kicker="Why most systems fail"
-            title="Most teams don’t have a growth/ops engine — they have duct tape."
-            subtitle="If your processes live in people’s heads (or scattered tools), the business can’t scale predictably. We install a system that converts work into outcomes — reliably."
-          />
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            <div
-              className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-6 ${glowCard}`}
-            >
-              <div className="text-sm font-semibold text-white">Typical “agency / consultant” model</div>
-              <ul className="mt-4 space-y-3 text-sm text-white/70">
-                {["Sells deliverables, not results", "Outsources execution", "Hands you reports and disappears", "No documentation or ownership"].map(
-                  (t) => (
-                    <li key={t} className="flex items-start gap-2">
-                      <span className="mt-0.5 h-5 w-5 rounded-full bg-white/10" />
-                      {t}
-                    </li>
-                  )
-                )}
-              </ul>
-            </div>
-
-            <div
-              className={`rounded-3xl border-2 border-purple-500 bg-gradient-to-b from-white/10 to-white/5 p-6 ${glowCard}`}
-            >
-              <div className="text-sm font-semibold text-white">DAS Digital model</div>
-              <ul className="mt-4 space-y-3 text-sm text-white/80">
-                {["We embed with your team and execute", "Automate end-to-end (capture → approvals → updates → notifications)", "AI-assisted follow-ups with human checks", "Documentation + handoff so you own the playbook"].map(
-                  (t) => (
-                    <li key={t} className="flex items-start gap-2">
-                      <span className="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-white text-black">
-                        <Check className="h-3 w-3" />
-                      </span>
-                      {t}
-                    </li>
-                  )
-                )}
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            <Card icon={<Workflow className="h-5 w-5" />} title="Workflow automation">
-              Smartsheet + Make/Zapier scenarios that route work, validate data, update systems, and notify stakeholders.
-            </Card>
-            <Card icon={<Mail className="h-5 w-5" />} title="AI-powered follow-up">
-              Lead and customer follow-ups that feel human — with guardrails, approvals, and audit trails.
-            </Card>
-            <Card icon={<BarChart3 className="h-5 w-5" />} title="Executive dashboards">
-              KPIs that reconcile to source systems so leadership can trust the numbers.
-            </Card>
-          </div>
-        </section>
-
-        {/* Proof */}
-        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6" id="proof">
-          <SectionTitle
-            kicker="Proof"
-            title="Before → After outcomes you can feel"
-            subtitle="Swap chaos for clarity. These are common results once the engine is installed (your numbers will vary)."
-          />
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {[
-              { before: "Manual handoffs", after: "Automated routing", note: "Less waiting, fewer errors" },
-              { before: "Slow follow-up", after: "Instant responses", note: "Higher conversion, better CX" },
-              { before: "Unknown status", after: "Live dashboards", note: "Visibility across teams" },
-            ].map((x) => (
-              <div
-                key={x.before}
-                className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-6 ${glowCard}`}
-              >
-                <div className="text-xs text-white/60">Before</div>
-                <div className="mt-1 text-lg font-semibold">{x.before}</div>
-                <div className="mt-5 text-xs font-semibold text-purple-400">AFTER</div>
-                <div className="mt-1 text-lg font-semibold">{x.after}</div>
-                <div className="mt-3 text-sm text-white/70">{x.note}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Builder */}
-        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6" id="builder">
-          <SectionTitle
-            kicker="The builder behind DAS Digital"
-            title="I turn operational problems into working software."
-            subtitle="Two decades in payments taught me where work breaks down. Now I turn those friction points into focused software for field teams, sales organizations, and vertical businesses."
-          />
-
-          <div className="mx-auto mt-8 grid max-w-3xl grid-cols-3 gap-4">
-            {builderStats.map((x) => (
-              <div key={x.label} className="rounded-3xl border border-white/10 bg-white/5 p-4 text-center">
-                <div className="text-2xl font-semibold sm:text-3xl">{x.value}</div>
-                <div className="mt-1 text-xs uppercase tracking-wide text-white/60">{x.label}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Flagship */}
-          <div className={`mt-10 grid items-center gap-8 rounded-[2rem] border-2 border-purple-500 bg-gradient-to-b from-white/10 to-white/5 p-6 sm:p-10 lg:grid-cols-[1.2fr_0.8fr] ${glowCard}`}>
-            <div>
-            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-purple-300">01 / Flagship product · Vertical SaaS</div>
-            <h3 className="mt-3 text-2xl font-semibold tracking-tight sm:text-4xl">FarriTech: built for the people who keep horses moving.</h3>
-            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/70 sm:text-base">
-              A vertical SaaS platform created around the real workflow of independent farriers, from scheduling and customer
-              records to invoicing, payments, and business management. FarriTech brings the office into the barn: customer and
-              horse records, appointments, invoicing, payment acceptance, and a self-service customer experience in one
-              mobile-first system.
-            </p>
-            <a
-              href="/work/farritech"
-              className={`mt-6 inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold ${purpleBtn}`}
-            >
-              View the FarriTech case study <ArrowRight className="h-4 w-4" />
-            </a>
-            </div>
-            <figure>
-              <img
-                src="/builder/farritech-dashboard.png"
-                alt="FarriTech dashboard showing today's appointments, this month's revenue, and quick actions to find customers and horses, add a customer, and open invoices"
-                width={476}
-                height={480}
-                loading="lazy"
-                className="mx-auto w-full max-w-sm rounded-2xl shadow-2xl shadow-black/50"
-              />
-              <figcaption className="mt-2 text-center text-xs text-white/50">Actual FarriTech dashboard</figcaption>
-            </figure>
-          </div>
-
-          {/* Projects */}
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {builderProjects.map((p) => (
-              <div key={p.title} className={`flex flex-col rounded-3xl border-2 border-purple-500 bg-white/5 p-6 ${glowCard}`}>
-                <div className="text-xs font-semibold uppercase tracking-wide text-purple-300">{p.num}</div>
-                <h3 className="mt-3 text-xl font-semibold">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/70">{p.desc}</p>
-                {p.image ? (
-                  <figure className="mt-5">
-                    <img
-                      src={p.image.src}
-                      alt={p.image.alt}
-                      width={p.image.width}
-                      height={p.image.height}
-                      loading="lazy"
-                      className="w-full rounded-xl border border-white/10"
-                    />
-                    <figcaption className="mt-2 text-xs text-white/50">{p.image.caption}</figcaption>
-                  </figure>
-                ) : null}
-                <div className="mt-auto flex flex-wrap gap-2 pt-5">
-                  {p.tags.map((t) => (
-                    <span key={t} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/75">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Systems */}
-          <div className="mt-14">
-            <h3 className="text-xl font-semibold sm:text-2xl">Small tools. Real leverage.</h3>
-            <p className="mt-2 max-w-3xl text-sm text-white/70">
-              Each system began with a recurring operational problem: manual reports, slow quoting, wasted drive time,
-              inconsistent training, or unqualified leads.
-            </p>
-            <div className="mt-6 divide-y divide-white/10 rounded-3xl border border-white/10 bg-white/5">
-              {builderSystems.map((x) => (
-                <div key={x.index} className="grid grid-cols-[2.5rem_1fr] gap-x-3 gap-y-1 px-5 py-4 sm:grid-cols-[2.5rem_14rem_1fr_auto] sm:items-center">
-                  <span className="text-xs text-white/50">{x.index}</span>
-                  <span className="font-semibold">{x.name}</span>
-                  <span className="col-start-2 text-sm text-white/70 sm:col-start-auto">{x.desc}</span>
-                  <span className="hidden rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-wide text-white/60 sm:inline-block">
-                    {x.status}
-                  </span>
-                </div>
+        {/* How we work */}
+        <section className="py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHeading kicker="How we work" title="A simple, four-step process" />
+            <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {STEPS.map((s, i) => (
+                <li key={s.title} className="border-t-2 border-purple-700 pt-5">
+                  <span className="text-sm font-semibold text-purple-700">Step {i + 1}</span>
+                  <h3 className="mt-1 text-lg font-semibold">{s.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{s.desc}</p>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
+        </section>
 
-          {/* How I work */}
-          <div className={`mt-14 grid gap-8 rounded-[2rem] border-2 border-purple-500 bg-white/5 p-6 sm:p-10 lg:grid-cols-2 ${glowCard}`}>
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-purple-300">How I work</div>
-              <h3 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">Operational depth, translated into products.</h3>
-              <p className="mt-4 text-sm leading-relaxed text-white/70 sm:text-base">
-                I spent more than 20 years leading merchant-services operations, complex portfolio migrations, payment
-                implementations, and cross-functional teams. That experience now shapes how I build: start with the real
-                workflow, remove avoidable friction, and make the system usable by the people doing the work.
+        {/* Industries */}
+        <section className="bg-slate-900 py-20 text-white">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold text-purple-300">Industries we serve</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Built for local businesses</h2>
+              <p className="mt-4 text-slate-300">
+                We work with owner-led businesses where every call, lead and hour counts.
               </p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {builderPrinciples.map((x) => (
-                <div key={x.title} className="border-t border-white/10 pt-4">
-                  <div className="font-semibold">{x.title}</div>
-                  <div className="mt-1 text-sm text-white/70">{x.desc}</div>
+            <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {INDUSTRIES.map((x) => {
+                const Icon = x.icon;
+                return (
+                  <li key={x.label} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-4">
+                    <Icon className="h-5 w-5 text-purple-300" aria-hidden="true" />
+                    <span className="font-medium">{x.label}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </section>
+
+        {/* Why DAS Digital */}
+        <section className="py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHeading kicker="Why DAS Digital" title="Practical technology, from people who've run a business" />
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {REASONS.map((r) => (
+                <div key={r.title}>
+                  <h3 className="text-lg font-semibold">{r.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{r.desc}</p>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Process */}
-        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6" id="process">
-          <SectionTitle
-            kicker="How it works"
-            title="A simple, done-for-you process"
-            subtitle="We move fast, document everything, and leave you with a system you can run in-house."
-          />
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {[
-              {
-                step: "1",
-                title: "Audit + roadmap",
-                desc: "We map your workflows, data sources, and bottlenecks. You get a prioritized plan with quick wins + a 30/60/90 build path.",
-              },
-              {
-                step: "2",
-                title: "Build + integrate",
-                desc: "We implement automations, dashboards, and AI-assisted communications with guardrails, permissions, and testing.",
-              },
-              {
-                step: "3",
-                title: "Handoff + optimize",
-                desc: "Documentation, SOPs, training, and iterative improvements. You own the playbook — no vendor lock-in.",
-              },
-            ].map((s) => (
-              <div
-                key={s.step}
-                className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-6 ${glowCard}`}
-              >
-                <div className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white font-semibold shadow shadow-purple-500/40">
-                  {s.step}
-                </div>
-                <div className="mt-4 text-lg font-semibold">{s.title}</div>
-                <div className="mt-2 text-sm leading-relaxed text-white/70">{s.desc}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Lead form */}
-        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6" id="lead">
-          <div
-            className={`rounded-[2.25rem] border-2 border-purple-500 bg-gradient-to-b from-white/10 to-white/5 p-8 backdrop-blur ${glowCard} sm:p-10`}
-          >
-            <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div className="mt-12 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-white/80">
-                  <Sparkles className="h-4 w-4" /> Free plan
-                </div>
-                <h3 className="mt-4 text-balance text-3xl font-semibold">
-                  Get a free Automation Plan in 72 hours
-                </h3>
-                <p className="mt-3 text-white/70">
-                  Tell us what you’re trying to automate (or what’s breaking). We’ll respond with a clear blueprint: tools, steps,
-                  timeline, and rough ROI.
-                </p>
-
-                <ul className="mt-5 space-y-2 text-sm text-white/75">
-                  {[
-                    "No fluff. Clear next actions.",
-                    "Includes quick wins + longer-term build.",
-                    "Guardrails + security considerations.",
-                  ].map((t) => (
-                    <li key={t} className="flex items-start gap-2">
-                      <span className="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-white text-black">
-                        <Check className="h-3 w-3" />
-                      </span>
-                      {t}
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="font-semibold">Recent work</h3>
+                <p className="mt-1 text-sm text-slate-600">Software we've designed and built for small, hands-on industries.</p>
               </div>
-
-              {!submitted ? (
-              <form
-                className="rounded-3xl border border-white/10 bg-black/20 p-6"
-                onSubmit={async (e) => {
-                  e.preventDefault();
-
-                  const form = e.target;
-                  const data = new FormData(form);
-
-                  await fetch("https://formspree.io/f/mjgggdbg", {
-                    method: "POST",
-                    body: data,
-                    headers: { Accept: "application/json" },
-                  });
-
-                  setSubmitted(true);
-                  form.reset();
-                }}
-              >
-                <input
-                  type="hidden"
-                  name="_subject"
-                  value="New Automation Plan Request"
-                />
-
-                <div className="grid gap-4">
-                  <label className="grid gap-1 text-sm">
-                    <span className="text-white/80">Name</span>
-                    <input
-                      required
-                      name="name"
-                      className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 outline-none ring-0 focus:border-white/20"
-                      placeholder="Your name"
-                    />
-                  </label>
-
-                  <label className="grid gap-1 text-sm">
-                    <span className="text-white/80">Email</span>
-                    <input
-                      required
-                      name="email"
-                      type="email"
-                      className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 outline-none ring-0 focus:border-white/20"
-                      placeholder="you@company.com"
-                    />
-                  </label>
-
-                  <label className="grid gap-1 text-sm">
-                    <span className="text-white/80">What are you trying to automate?</span>
-                    <textarea
-                      required
-                      name="message"
-                      rows={4}
-                      className="resize-none rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 outline-none ring-0 focus:border-white/20"
-                      placeholder="Example: intake → approval → update CRM → notify customer"
-                    />
-                  </label>
-
-                  <button
-                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 text-sm font-semibold ${purpleBtn}`}
-                    type="submit"
-                  >
-                    Send request <ArrowRight className="h-4 w-4" />
-                  </button>
-                </div>
-              </form>
-            ) : (
-              <div className="rounded-3xl border border-white/10 bg-black/20 p-6 text-center">
-                <h4 className="text-xl font-semibold text-purple-400">Form submitted!</h4>
-                <p className="mt-3 text-white/70">Thank you — we received your request and will be in touch shortly.</p>
-              </div>
-            )}
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6" id="faq">
-          <SectionTitle kicker="FAQ" title="Answers to common questions" />
-          <div className="mt-10 grid gap-4">
-            <FAQItem
-              q="Do you work with Smartsheet + Make.com?"
-              a="Yes — those are two of our core tools. We also work with Zapier, Google Workspace, Microsoft 365, HubSpot/Salesforce, QuickBooks, and custom APIs when needed."
-            />
-            <FAQItem
-              q="Will we own everything you build?"
-              a="Yes. You own the automations, sheets, docs, prompts, and SOPs. We design for handoff so you’re not dependent on us long-term."
-            />
-            <FAQItem
-              q="How fast can we see impact?"
-              a="Most teams see quick wins in days (routing, notifications, data validation). Larger multi-system builds typically take 2–8 weeks depending on scope."
-            />
-            <FAQItem
-              q="Can you add AI safely without sending sensitive data everywhere?"
-              a="Yes. We can implement approvals, redaction, role-based controls, and ‘human in the loop’ steps. For sensitive environments, we’ll suggest the safest architecture available."
-            />
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="border-t border-white/10 bg-black/20">
-          <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-            <div className="grid gap-6 md:grid-cols-2 md:items-center">
-              <div>
-                <div className="text-lg font-semibold">{brand.name}</div>
-                <div className="mt-2 text-sm text-white/70">
-                  Automation • AI • Operations • Dashboards
-                </div>
-
-                <div className="mt-4 flex flex-col gap-3 text-sm text-white/70 sm:flex-row sm:flex-wrap">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2">
-                    <Mail className="h-4 w-4" />
-                    <a
-                      href="mailto:info@dasdigitalai.com?subject=Automation%20Inquiry"
-                      className="text-purple-400 hover:text-purple-300 underline-offset-2 hover:underline break-all"
-                    >
-                      info@dasdigitalai.com
-                    </a>
-                  </span>
-
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2">
-                    <Phone className="h-4 w-4" />
-                    <a
-                      href="tel:19546733041"
-                      className="text-purple-400 hover:text-purple-300 underline-offset-2 hover:underline"
-                    >
-                      (954) 673-3041
-                    </a>
-                  </span>
-                </div>
-              </div>
-
-              <nav aria-label="Services and work" className="grid grid-cols-2 gap-6 text-sm md:col-span-2 md:order-last">
-                <div>
-                  <div className="font-semibold text-white">Services</div>
-                  <ul className="mt-2 space-y-1 text-white/70">
-                    {SERVICE_PAGES.map((p) => (
-                      <li key={p.href}><a href={p.href} className="hover:text-white">{p.label}</a></li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <div className="font-semibold text-white">Work</div>
-                  <ul className="mt-2 space-y-1 text-white/70">
-                    {CASE_STUDIES.map((p) => (
-                      <li key={p.href}><a href={p.href} className="hover:text-white">{p.label}</a></li>
-                    ))}
-                  </ul>
-                </div>
-              </nav>
-
-              <div className="md:text-right">
-                <a
-                  href={brand.primaryCta.href}
-                  className={`inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold ${purpleBtn}`}
-                >
-                  {brand.primaryCta.label} <ArrowRight className="h-4 w-4" />
+              <div className="flex flex-col gap-2 text-sm font-semibold sm:flex-row sm:gap-6">
+                <a href="/work/farritech" className="inline-flex items-center gap-1 text-purple-700 hover:text-purple-900">
+                  FarriTech: software for farriers <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
-                <div className="mt-3 text-xs text-white/50">
-                  © {new Date().getFullYear()} {brand.name}. All rights reserved.
-                </div>
+                <a href="/work/servicepro" className="inline-flex items-center gap-1 text-purple-700 hover:text-purple-900">
+                  ServicePro: field service for the trades <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
               </div>
             </div>
           </div>
-        </footer>
+        </section>
+
+        {/* Consultation */}
+        <section id="lead" className="scroll-mt-20 bg-purple-50/60 py-20">
+          <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <p className="text-sm font-semibold text-purple-700">Free consultation</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Tell us what's slowing your business down</h2>
+              <p className="mt-4 text-slate-600">
+                Share a few details and we'll get back to you to set up a conversation. No obligation and no jargon.
+              </p>
+              <div className="mt-8 space-y-3 text-sm">
+                <p className="text-slate-600">Prefer to talk now?</p>
+                <a href={`tel:${CONTACT.phone}`} className="flex items-center gap-2 text-lg font-semibold text-slate-900 hover:text-purple-700">
+                  <PhoneCall className="h-5 w-5 text-purple-700" aria-hidden="true" /> {CONTACT.phoneDisplay}
+                </a>
+                <a href={`mailto:${CONTACT.email}`} className="block font-medium text-slate-700 hover:text-purple-700">{CONTACT.email}</a>
+              </div>
+            </div>
+            <LeadForm />
+          </div>
+        </section>
       </main>
+
+      <SiteFooter />
+    </div>
+  );
+}
+
+function SectionHeading({ kicker, title, intro }) {
+  return (
+    <div className="max-w-2xl">
+      <p className="text-sm font-semibold text-purple-700">{kicker}</p>
+      <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
+      {intro ? <p className="mt-4 text-slate-600">{intro}</p> : null}
+    </div>
+  );
+}
+
+// A simple picture of what the services do day to day. Illustrative only: no figures or claims.
+function HeroIllustration() {
+  const rows = [
+    { icon: Globe, title: "New website inquiry", note: "Sent to your inbox and CRM" },
+    { icon: PhoneCall, title: "After-hours call answered", note: "Caller details captured" },
+    { icon: CalendarClock, title: "Appointment reminder", note: "Sent to the customer automatically" },
+    { icon: LifeBuoy, title: "Follow-up scheduled", note: "No lead left waiting" },
+  ];
+  return (
+    <div aria-hidden="true" className="relative mx-auto w-full max-w-md">
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xl shadow-purple-900/5">
+        <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div className="flex items-center gap-2 text-sm font-semibold text-slate-800">
+            <Home className="h-4 w-4 text-purple-700" /> Your business, today
+          </div>
+          <span className="rounded-full bg-purple-50 px-2.5 py-1 text-xs font-medium text-purple-700">Example</span>
+        </div>
+        <ul className="mt-4 space-y-3">
+          {rows.map((r) => {
+            const Icon = r.icon;
+            return (
+              <li key={r.title} className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 px-4 py-3">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white text-purple-700 ring-1 ring-slate-200">
+                  <Icon className="h-4 w-4" />
+                </span>
+                <div className="min-w-0">
+                  <div className="text-sm font-semibold text-slate-800">{r.title}</div>
+                  <div className="text-xs text-slate-500">{r.note}</div>
+                </div>
+                <Check className="ml-auto h-4 w-4 shrink-0 text-emerald-600" />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
