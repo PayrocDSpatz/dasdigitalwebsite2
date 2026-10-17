@@ -122,10 +122,6 @@ const WEBSITES = [
   },
 ];
 
-const RECENT_WORK = [
-  { kind: "Software", title: "Field service platform", desc: "Dispatch, invoicing and service plans for HVAC, plumbing, lawn, pool and pest crews.", href: "/work/servicepro" },
-];
-
 const btnPrimary =
   "inline-flex items-center justify-center gap-2 rounded-lg bg-purple-700 px-6 py-3 text-sm font-semibold text-white hover:bg-purple-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600";
 const btnSecondary =
@@ -363,24 +359,19 @@ export default function Page() {
                     </figure>
                   </li>
                 ))}
-                {RECENT_WORK.map((w) => (
-                  <li key={w.title}>
-                    <a
-                      href={w.href}
-                      className="group flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white hover:border-purple-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-purple-600"
-                    >
-                      <DispatchMock />
-                      <span className="flex flex-1 flex-col p-5">
-                        <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">{w.kind}</span>
-                        <span className="mt-1 font-semibold text-slate-900">{w.title}</span>
-                        <span className="mt-1 text-sm text-slate-600">{w.desc}</span>
-                        <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-purple-700 group-hover:text-purple-900">
-                          Read the case study <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                        </span>
+                <li>
+                  <figure className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white">
+                    <TopCutMock />
+                    <figcaption className="p-5">
+                      <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">Website &middot; Sample design</span>
+                      <span className="mt-1 block font-semibold text-slate-900">Top Cut Lawn and Landscaping</span>
+                      <span className="mt-1 block text-sm text-slate-600">
+                        A sample website we designed for a lawn care company, with services, a quote request and click-to-call. The
+                        business is made up for illustration.
                       </span>
-                    </a>
-                  </li>
-                ))}
+                    </figcaption>
+                  </figure>
+                </li>
               </ul>
             </div>
           </div>
@@ -413,31 +404,30 @@ export default function Page() {
   );
 }
 
-// A simplified dispatch board, standing in for a screenshot of the field service platform.
-function DispatchMock() {
-  const jobs = [
-    { time: "8:00", job: "AC tune-up", tech: "Crew A", tone: "bg-emerald-100 text-emerald-700", status: "Done" },
-    { time: "10:30", job: "Water heater install", tech: "Crew B", tone: "bg-sky-100 text-sky-700", status: "On site" },
-    { time: "1:00", job: "Lawn service plan", tech: "Crew A", tone: "bg-amber-100 text-amber-700", status: "En route" },
-    { time: "3:30", job: "Pool inspection", tech: "Crew C", tone: "bg-slate-200 text-slate-600", status: "Scheduled" },
-  ];
+// A made-up lawn care company's home page, drawn in markup. Illustrative only.
+function TopCutMock() {
   return (
-    <span aria-hidden="true" className="block aspect-[2/1] border-b border-slate-200 bg-slate-50 p-4 sm:p-5">
-      <span className="flex items-center justify-between">
-        <span className="text-sm font-semibold text-slate-800">Today's jobs</span>
-        <span className="rounded-md bg-purple-700 px-2.5 py-1 text-[11px] font-semibold text-white">+ New job</span>
-      </span>
-      <span className="mt-3 block space-y-2">
-        {jobs.map((j) => (
-          <span key={j.time} className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs">
-            <span className="w-9 font-medium text-slate-500">{j.time}</span>
-            <span className="flex-1 truncate font-medium text-slate-800">{j.job}</span>
-            <span className="hidden text-slate-500 sm:inline">{j.tech}</span>
-            <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${j.tone}`}>{j.status}</span>
-          </span>
-        ))}
-      </span>
-    </span>
+    <div aria-hidden="true" className="relative overflow-hidden border-b border-slate-200 bg-gradient-to-br pb-5 sm:aspect-[2/1] sm:pb-0 from-green-800 via-green-700 to-emerald-600">
+      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-[repeating-linear-gradient(100deg,rgba(255,255,255,0.06)_0_14px,rgba(0,0,0,0.06)_14px_28px)]" />
+      <div className="relative flex items-center justify-between px-4 py-2.5 sm:px-5">
+        <span className="text-sm font-extrabold tracking-tight text-white">
+          TOP CUT <span className="font-semibold text-lime-300">Lawn &amp; Landscaping</span>
+        </span>
+        <span className="hidden gap-3 text-[10px] text-green-100 sm:flex">
+          <span>Services</span>
+          <span>Gallery</span>
+          <span>Contact</span>
+        </span>
+      </div>
+      <div className="relative px-4 pt-3 sm:px-5 sm:pt-5">
+        <div className="max-w-[70%] text-lg font-bold leading-tight text-white sm:text-2xl">A greener lawn without lifting a finger</div>
+        <div className="mt-1.5 text-[10px] text-green-100 sm:text-xs">Weekly mowing, landscaping and cleanups. Free quotes.</div>
+        <div className="mt-3 flex gap-2">
+          <span className="rounded-md bg-lime-400 px-3 py-1.5 text-[10px] font-semibold text-green-950 sm:text-xs">Get a free quote</span>
+          <span className="rounded-md border border-white/60 px-3 py-1.5 text-[10px] font-semibold text-white sm:text-xs">Call now</span>
+        </div>
+      </div>
+    </div>
   );
 }
 
