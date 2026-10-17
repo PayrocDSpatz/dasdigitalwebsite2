@@ -7,7 +7,7 @@
     },
     {
       "source": "/about.html",
-      "destination": "https://dasdigitalai.com/",
+      "destination": "https://dasdigitalai.com/about",
       "permanent": true
     },
     {
