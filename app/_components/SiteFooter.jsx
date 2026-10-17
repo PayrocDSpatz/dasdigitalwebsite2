@@ -29,6 +29,7 @@ export default function SiteFooter() {
           <span>© {new Date().getFullYear()} DAS Digital. All rights reserved.</span>
           <span className="flex gap-4">
             <a href="/privacy" className="hover:text-purple-700">Privacy Policy</a>
+            <a href="/accessibility" className="hover:text-purple-700">Accessibility</a>
             <span>Formerly DAS Consulting Services.</span>
           </span>
         </div>
