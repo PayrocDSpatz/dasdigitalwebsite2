@@ -156,7 +156,7 @@ export default function Page() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a href="#lead" className={btnPrimary}>
-                Request a Free Consultation <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                Let's Talk <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
               <a href={`tel:${CONTACT.phone}`} className={btnSecondary}>
                 <PhoneCall className="h-4 w-4" aria-hidden="true" /> Call {CONTACT.phoneDisplay}
@@ -256,11 +256,11 @@ export default function Page() {
           </div>
         </section>
 
-        {/* Consultation */}
+        {/* Contact */}
         <section id="lead" className="scroll-mt-20 bg-purple-50/60 py-20">
           <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
-              <p className="text-sm font-semibold text-purple-700">Free consultation</p>
+              <p className="text-sm font-semibold text-purple-700">Let's talk</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Tell us what takes up your time</h2>
               <p className="mt-4 text-slate-600">
                 Share a few details and we'll get back to you to set up a conversation. No obligation and no jargon.

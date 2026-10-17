@@ -1,4 +1,4 @@
-// Receives the consultation form and saves it to the owner's Google Sheet through an
+// Receives the contact form and saves it to the owner's Google Sheet through an
 // Apps Script web app (setup: LEADS_WEBHOOK_URL and LEADS_WEBHOOK_SECRET in Vercel).
 // Answers ok only after the Sheet confirms the row was written.
 

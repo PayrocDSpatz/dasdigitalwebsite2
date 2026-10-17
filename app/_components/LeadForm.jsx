@@ -9,7 +9,7 @@ const SERVICE_OPTIONS = ["Website Design", "AI Receptionists", "Business Automat
 const field =
   "w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-600/30";
 
-// The consultation request form. Shows "thank you" only once the server confirms the
+// The contact form. Shows "thank you" only once the server confirms the
 // inquiry was saved; otherwise it asks the visitor to call or email instead.
 export default function LeadForm() {
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
@@ -79,7 +79,7 @@ export default function LeadForm() {
         disabled={status === "sending"}
         className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-purple-700 px-6 py-3 text-sm font-semibold text-white hover:bg-purple-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 disabled:opacity-60 sm:w-auto"
       >
-        {status === "sending" ? "Sending…" : "Request a Free Consultation"} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        {status === "sending" ? "Sending…" : "Send Message"} <ArrowRight className="h-4 w-4" aria-hidden="true" />
       </button>
     </form>
   );
