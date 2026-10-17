@@ -44,7 +44,7 @@ export default function Page() {
               restaurant business, so I know what it's like to run a busy place where every customer and every minute counts.
             </p>
             <p>
-              In 1984 I started DAS Consulting Services to help customers with their businesses. Along the way I also worked as
+              In 1989 I started DAS Consulting Services to help customers with their businesses. Along the way I also worked as
               an executive for payment processing companies. Through all of it, my passion has been helping businesses find
               solutions that make their day easier.
             </p>
