@@ -45,7 +45,7 @@ export default function Page() {
             </p>
             <p>
               In 1989 I started DAS Consulting Services to help customers with their businesses. Along the way I also worked in
-              business development and operations for payment processing companies, including i3 Verticals
+              business development and operations for several payment processing companies, including i3 Verticals
               (Nasdaq: IIIV). Through all of it, my passion has been helping businesses find
               solutions that make their day easier.
             </p>
