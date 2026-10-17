@@ -20,6 +20,7 @@ import {
   Workflow,
   Wrench,
 } from "lucide-react";
+import Image from "next/image";
 import SiteHeader from "./_components/SiteHeader";
 import SiteFooter from "./_components/SiteFooter";
 import LeadForm from "./_components/LeadForm";
@@ -107,13 +108,6 @@ const REASONS = [
 ];
 
 const RECENT_WORK = [
-  {
-    kind: "Website",
-    title: "Palm Beach Farrier Supply",
-    desc: "A website for a farrier supply store in Wellington, Florida: products, store hours, directions and contact.",
-    href: "https://palmbeachfarriersupply.netlify.app/",
-    external: true,
-  },
   { kind: "Software", title: "FarriTech", desc: "Booking, invoicing, payments and reminders for professional farriers.", href: "/work/farritech" },
   { kind: "Software", title: "Field service platform", desc: "Dispatch, invoicing and service plans for HVAC, plumbing, lawn, pool and pest crews.", href: "/work/servicepro" },
 ];
@@ -269,20 +263,33 @@ export default function Page() {
             <div className="mt-12 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
               <h3 className="font-semibold">Recent work</h3>
               <p className="mt-1 text-sm text-slate-600">Websites and software we've designed and built for local businesses and hands-on industries.</p>
-              <ul className="mt-6 grid gap-4 md:grid-cols-3">
+              <figure className="mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white">
+                <Image
+                  src="/work/palm-beach-farrier-supply.jpg"
+                  alt="Home page of the Palm Beach Farrier Supply website: the headline “Everything for the farrier, just down the road from the show grounds” beside a photo of a farrier leading a horse at sunrise"
+                  width={1896}
+                  height={705}
+                  sizes="(min-width: 1152px) 1088px, 100vw"
+                  className="h-auto w-full"
+                />
+                <figcaption className="border-t border-slate-200 p-5">
+                  <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">Website</span>
+                  <span className="mt-1 block font-semibold text-slate-900">Palm Beach Farrier Supply</span>
+                  <span className="mt-1 block text-sm text-slate-600">A website for a farrier supply store in Wellington, Florida: products, store hours, directions and contact.</span>
+                </figcaption>
+              </figure>
+              <ul className="mt-4 grid gap-4 md:grid-cols-2">
                 {RECENT_WORK.map((w) => (
                   <li key={w.title}>
                     <a
                       href={w.href}
-                      {...(w.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       className="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-5 hover:border-purple-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-purple-600"
                     >
                       <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">{w.kind}</span>
                       <span className="mt-2 font-semibold text-slate-900">{w.title}</span>
                       <span className="mt-1 text-sm text-slate-600">{w.desc}</span>
                       <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-purple-700 group-hover:text-purple-900">
-                        {w.external ? "Visit the site" : "Read the case study"} <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                        {w.external ? <span className="sr-only">(opens in a new tab)</span> : null}
+                        Read the case study <ArrowRight className="h-4 w-4" aria-hidden="true" />
                       </span>
                     </a>
                   </li>
