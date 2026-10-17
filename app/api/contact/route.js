@@ -2,7 +2,7 @@
 // Apps Script web app (setup: LEADS_WEBHOOK_URL and LEADS_WEBHOOK_SECRET in Vercel).
 // Answers ok only after the Sheet confirms the row was written.
 
-const SERVICES = ["Website Design", "AI Receptionists", "Business Automation", "Technology Consulting", "Not sure yet"];
+const SERVICES = ["Website Design", "AI Receptionists", "Business Automation", "Technology Consulting", "Free website review", "Not sure yet"];
 const LIMITS = { name: 120, business: 160, email: 200, phone: 40, service: 60, message: 4000, page: 200 };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

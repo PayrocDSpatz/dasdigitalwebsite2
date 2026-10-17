@@ -7,19 +7,13 @@ import {
   Globe,
   Hammer,
   Home,
-  Inbox,
   LifeBuoy,
-  Link2,
-  MonitorSmartphone,
   PhoneCall,
-  PhoneMissed,
-  Search,
   ShoppingBag,
   Store,
   UtensilsCrossed,
   Workflow,
   Wrench,
-  X,
 } from "lucide-react";
 import Image from "next/image";
 import SiteHeader from "./_components/SiteHeader";
@@ -50,46 +44,35 @@ const SERVICE_CARDS = [
   {
     key: "website",
     icon: Globe,
-    summary: "A fast, professional website that explains what you do and turns visitors into inquiries.",
-    items: ["New websites and redesigns", "Mobile-friendly design", "Local SEO", "Hosting, updates and support"],
-    cta: "Discuss Your Website",
+    summary: "Modern websites that bring in customers.",
+    cta: "Learn more",
   },
   {
     key: "ai-receptionist",
     icon: PhoneCall,
-    summary: "Answer more calls after hours and when you're busy, and capture the details of every caller.",
-    items: ["AI-powered phone answering", "After-hours and overflow calls", "Appointment requests and lead capture", "Call summaries and notifications"],
-    cta: "Ask About AI Receptionists",
+    summary: "Never miss a call, day or night.",
+    cta: "Learn more",
   },
   {
     key: "automation",
     icon: Workflow,
-    summary: "Follow-ups, reminders and data entry that happen on their own, so nothing waits on someone's memory.",
-    items: ["Customer follow-ups and reminders", "Lead management and CRM integration", "Email and SMS workflows", "Payment links and invoices for quick payment"],
-    cta: "Explore Business Automation",
+    summary: "Follow-ups, reminders and invoices on autopilot.",
+    cta: "Learn more",
   },
   {
     key: "consulting",
     icon: Compass,
-    summary: "Straight advice on choosing, connecting and getting more out of the systems you already pay for.",
-    items: ["Technology assessments", "Software selection and setup", "Payment processing and POS", "Systems integration"],
-    cta: "Talk to Us About Your Systems",
+    summary: "Straight advice on the right tools for you.",
+    cta: "Learn more",
   },
 ];
 
-const PROBLEMS = [
-  { icon: PhoneMissed, title: "Missed calls", desc: "Calls that go to voicemail after hours or during a busy rush often go to a competitor instead.", fix: "ai-receptionist" },
-  { icon: MonitorSmartphone, title: "An outdated website", desc: "A slow site that looks dated on a phone makes a good business look smaller than it is.", fix: "website" },
-  { icon: Inbox, title: "Repetitive admin work", desc: "Hours each week spent copying information, sending reminders and chasing paperwork.", fix: "automation" },
-  { icon: Search, title: "Leads that slip through", desc: "Inquiries that sit in an inbox for days, or never get a second follow-up.", fix: "automation" },
-  { icon: Link2, title: "Systems that don't talk", desc: "A CRM, a calendar, a POS and spreadsheets that all hold part of the picture.", fix: "consulting" },
-];
 
 const STEPS = [
-  { title: "Discover", desc: "We learn how your business runs today: where calls, leads and paperwork go, and what slows you down." },
-  { title: "Recommend", desc: "You get a clear plan in plain language, with what to do first and what it will cost." },
-  { title: "Implement", desc: "We build and set everything up, connect it to the tools you already use, and test it with you." },
-  { title: "Support", desc: "We stay available for updates, questions and improvements after launch." },
+  { title: "Discover", desc: "We learn how your business runs." },
+  { title: "Recommend", desc: "A clear plan and price, in plain English." },
+  { title: "Implement", desc: "We set it all up and test it with you." },
+  { title: "Support", desc: "We're here when you need us." },
 ];
 
 const INDUSTRIES = [
@@ -101,12 +84,6 @@ const INDUSTRIES = [
   { icon: Store, label: "Other local businesses" },
 ];
 
-const REASONS = [
-  { title: "Practical experience", desc: "Built by someone who has spent years running operations, payments and sales teams, not just writing code." },
-  { title: "Sized to your business", desc: "Recommendations that fit your budget and your team, not complicated enterprise systems." },
-  { title: "You own what we build", desc: "Your website, workflows and data stay yours, with documentation so you're never locked in." },
-  { title: "Support after launch", desc: "A real person to call when something needs changing, long after the project is done." },
-];
 
 const POS_SYSTEMS = [
   { name: "Clover", desc: "Countertop, handheld and online ordering setups for restaurants, retail and service businesses." },
@@ -116,7 +93,7 @@ const POS_SYSTEMS = [
 const WEBSITES = [
   {
     title: "Palm Beach Farrier Supply",
-    desc: "A website for a farrier supply store in Wellington, Florida: products, store hours, directions and contact.",
+    desc: "A farrier supply store in Wellington, Florida.",
     src: "/work/palm-beach-farrier-supply.jpg",
     alt: "Home page of the Palm Beach Farrier Supply website: the headline \u201cEverything for the farrier, just down the road from the show grounds\u201d beside a photo of a farrier leading a horse at sunrise",
   },
@@ -142,7 +119,7 @@ export default function Page() {
                 Smarter Technology. Simpler Business.
               </h1>
               <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-slate-600">
-                Websites, AI-powered customer communications, and business automation solutions that help your business work smarter and grow.
+                Websites, AI phone answering and automation that help your business run smoother.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a href="#lead" className={btnPrimary}>
@@ -164,28 +141,20 @@ export default function Page() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <SectionHeading
               kicker="What we do"
-              title="Four ways we help your business run better"
-              intro="Start with one, or let us recommend the right mix after a short conversation."
+              title="How we help"
             />
-            <div className="mt-12 grid gap-6 md:grid-cols-2">
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {SERVICE_CARDS.map((c) => {
                 const s = byKey[c.key];
                 const Icon = c.icon;
                 return (
                   <article key={c.key} className="flex flex-col rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
-                    <span className="grid h-11 w-11 place-items-center rounded-xl bg-purple-50 text-purple-700">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    <span className="grid h-14 w-14 place-items-center rounded-2xl bg-purple-50 text-purple-700">
+                      <Icon className="h-7 w-7" aria-hidden="true" />
                     </span>
                     <h3 className="mt-5 text-xl font-semibold">{s.label}</h3>
                     <p className="mt-2 text-slate-600">{c.summary}</p>
-                    <ul className="mt-5 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
-                      {c.items.map((i) => (
-                        <li key={i} className="flex gap-2">
-                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-purple-700" aria-hidden="true" /> {i}
-                        </li>
-                      ))}
-                    </ul>
-                    <a href={s.ready ? s.href : "#lead"} className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-purple-700 hover:text-purple-900">
+                    <a href={s.ready ? s.href : "#lead"} className="mt-auto pt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-purple-700 hover:text-purple-900">
                       {c.cta} <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </a>
                   </article>
@@ -195,18 +164,20 @@ export default function Page() {
           </div>
         </section>
 
-        {/* Website before and after */}
-        <section className="border-t border-slate-100 py-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <SectionHeading
-              kicker="Website design"
-              title="What a website redesign can look like"
-              intro="An example of a typical service business website before and after a redesign. The business shown is made up for illustration."
-            />
-            <div className="mt-12 grid gap-8 lg:grid-cols-2">
-              <BeforeSite />
-              <AfterSite />
+        {/* Free website review */}
+        <section id="review" className="scroll-mt-20 bg-slate-50 py-20">
+          <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+            <div>
+              <p className="text-sm font-semibold text-purple-700">Free website review</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">See how your website scores</h2>
+              <p className="mt-4 text-slate-600">
+                We'll score your website and show you what to fix first. Free, no obligation.
+              </p>
+              <a href="#lead" className={`mt-8 ${btnPrimary}`}>
+                Get My Free Review <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
             </div>
+            <WebsiteScorecard />
           </div>
         </section>
 
@@ -217,14 +188,14 @@ export default function Page() {
               <p className="text-sm font-semibold text-purple-700">Point of sale</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">POS systems we work with</h2>
               <p className="mt-4 text-slate-600">
-                We help you pick the right point-of-sale system, get it set up, and make it work with the rest of your business.
+                We help you pick it, set it up and connect it.
               </p>
               <p className="mt-4 text-slate-600">
-                Have specific requirements or need certain features? Call us at{" "}
+                Need specific features? Call us at{" "}
                 <a href={`tel:${CONTACT.phone}`} className="whitespace-nowrap font-semibold text-slate-900 hover:text-purple-700">
                   {CONTACT.phoneDisplay}
-                </a>{" "}
-                and we'll help you find the right fit.
+                </a>
+                .
               </p>
               <a href="#lead" className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-purple-700 hover:text-purple-900">
                 Ask about POS for your business <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -246,33 +217,10 @@ export default function Page() {
           </p>
         </section>
 
-        {/* Problems */}
-        <section className="bg-slate-50 py-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <SectionHeading kicker="Problems we solve" title="Sound familiar?" />
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {PROBLEMS.map((p) => {
-                const Icon = p.icon;
-                const s = byKey[p.fix];
-                return (
-                  <div key={p.title} className="rounded-2xl border border-slate-200 bg-white p-6">
-                    <Icon className="h-6 w-6 text-purple-700" aria-hidden="true" />
-                    <h3 className="mt-4 text-lg font-semibold">{p.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{p.desc}</p>
-                    <a href={serviceHref(s)} className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-purple-700 hover:text-purple-900">
-                      {s.label} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                    </a>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
         {/* How we work */}
         <section className="py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <SectionHeading kicker="How we work" title="A simple, four-step process" />
+            <SectionHeading kicker="How we work" title="Four simple steps" />
             <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {STEPS.map((s, i) => (
                 <li key={s.title} className="border-t-2 border-purple-700 pt-5">
@@ -291,9 +239,6 @@ export default function Page() {
             <div className="max-w-2xl">
               <p className="text-sm font-semibold text-purple-300">Industries we serve</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Built for local businesses</h2>
-              <p className="mt-4 text-slate-300">
-                We work with owner-led businesses where every call, lead and hour counts.
-              </p>
             </div>
             <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {INDUSTRIES.map((x) => {
@@ -312,18 +257,9 @@ export default function Page() {
         {/* Why DAS Digital */}
         <section className="py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <p className="mb-12 rounded-2xl bg-purple-700 px-6 py-8 text-center text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            <p className="rounded-2xl bg-purple-700 px-6 py-8 text-center text-2xl font-bold tracking-tight text-white sm:text-3xl">
               Keep it simple. Keep it honest. Keep it working.
             </p>
-            <SectionHeading kicker="Why DAS Digital" title="Practical technology, from people who've run a business" />
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {REASONS.map((r) => (
-                <div key={r.title}>
-                  <h3 className="text-lg font-semibold">{r.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{r.desc}</p>
-                </div>
-              ))}
-            </div>
             <div id="about" className="mt-12 scroll-mt-20 grid gap-6 rounded-2xl border border-purple-100 bg-purple-50/50 p-6 sm:grid-cols-[auto_1fr] sm:p-8">
               <Image src="/about/david-spatz.jpg" alt="David Spatz" width={80} height={80} className="h-20 w-20 rounded-full object-cover ring-4 ring-white" />
               <div>
@@ -343,7 +279,7 @@ export default function Page() {
             </div>
             <div className="mt-12 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
               <h3 className="font-semibold">Recent work</h3>
-              <p className="mt-1 text-sm text-slate-600">Websites and software we've designed and built for local businesses and hands-on industries.</p>
+              
               <ul className="mt-6 grid gap-4 md:grid-cols-2">
                 {WEBSITES.map((w) => (
                   <li key={w.title}>
@@ -366,8 +302,7 @@ export default function Page() {
                       <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">Website &middot; Sample design</span>
                       <span className="mt-1 block font-semibold text-slate-900">Top Cut Lawn and Landscaping</span>
                       <span className="mt-1 block text-sm text-slate-600">
-                        A sample website we designed for a lawn care company, with services, a quote request and click-to-call. The
-                        business is made up for illustration.
+                        A sample lawn care website. (Made-up business.)
                       </span>
                     </figcaption>
                   </figure>
@@ -384,7 +319,7 @@ export default function Page() {
               <p className="text-sm font-semibold text-purple-700">Let's talk</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Tell us what's slowing your business down</h2>
               <p className="mt-4 text-slate-600">
-                Share a few details and we'll get back to you to set up a conversation. No obligation and no jargon.
+                Tell us what you need. We'll get back to you fast.
               </p>
               <div className="mt-8 space-y-3 text-sm">
                 <p className="text-slate-600">Prefer to talk now?</p>
@@ -401,6 +336,63 @@ export default function Page() {
 
       <SiteFooter />
     </div>
+  );
+}
+
+// A sample website scorecard for the made-up Example Plumbing site. Illustrative only.
+const SCORECARD = [
+  { label: "Mobile friendly", score: 38, fix: "Bigger text and buttons on phones" },
+  { label: "Page speed", score: 52, fix: "Shrink large images" },
+  { label: "Local search (SEO)", score: 45, fix: "Add your city and services to Google" },
+  { label: "Calls to action", score: 30, fix: "Add a call button at the top" },
+  { label: "Security", score: 90, fix: "Looks good" },
+];
+
+function scoreTone(n) {
+  if (n >= 80) return { bar: "bg-emerald-500", text: "text-emerald-700" };
+  if (n >= 50) return { bar: "bg-amber-400", text: "text-amber-700" };
+  return { bar: "bg-red-500", text: "text-red-700" };
+}
+
+function WebsiteScorecard() {
+  const overall = Math.round(SCORECARD.reduce((t, r) => t + r.score, 0) / SCORECARD.length);
+  return (
+    <figure className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg shadow-slate-900/5 sm:p-7">
+      <div className="flex items-start justify-between gap-4 border-b border-slate-100 pb-5">
+        <div>
+          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Website scorecard</div>
+          <div className="mt-1 font-semibold text-slate-900">Example Plumbing Co.</div>
+          <span className="mt-2 inline-block rounded-full bg-purple-50 px-2.5 py-1 text-xs font-medium text-purple-700">Sample report</span>
+        </div>
+        <div className="text-right">
+          <div className={`text-4xl font-bold ${scoreTone(overall).text}`}>{overall}</div>
+          <div className="text-xs text-slate-500">out of 100</div>
+        </div>
+      </div>
+      <ul className="mt-5 space-y-4">
+        {SCORECARD.map((r) => {
+          const tone = scoreTone(r.score);
+          return (
+            <li key={r.label}>
+              <div className="flex items-center justify-between text-sm">
+                <span className="font-medium text-slate-800">{r.label}</span>
+                <span className={`font-semibold ${tone.text}`}>{r.score}</span>
+              </div>
+              <div className="mt-1.5 h-2 rounded-full bg-slate-100" role="presentation">
+                <div className={`h-2 rounded-full ${tone.bar}`} style={{ width: `${r.score}%` }} />
+              </div>
+              <p className="mt-1.5 text-xs leading-relaxed text-slate-600">
+                <span className="font-semibold text-slate-700">Fix: </span>
+                {r.fix}
+              </p>
+            </li>
+          );
+        })}
+      </ul>
+      <figcaption className="mt-5 border-t border-slate-100 pt-4 text-xs text-slate-500">
+        Sample scorecard for a made-up business, for illustration.
+      </figcaption>
+    </figure>
   );
 }
 
@@ -428,120 +420,6 @@ function TopCutMock() {
         </div>
       </div>
     </div>
-  );
-}
-
-// Before/after mockups of a made-up plumbing company. Pure markup, illustrative only.
-function MockFrame({ label, tone, children, notes }) {
-  return (
-    <figure>
-      <div className="flex items-center gap-2">
-        <span className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${tone}`}>{label}</span>
-      </div>
-      <div aria-hidden="true" className="mt-3 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lg shadow-slate-900/5">
-        <div className="flex items-center gap-1.5 border-b border-slate-200 bg-slate-100 px-3 py-2">
-          <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-          <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-          <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-          <span className="ml-3 h-4 flex-1 rounded bg-white" />
-        </div>
-        {children}
-      </div>
-      <figcaption>
-        <ul className="mt-4 space-y-2 text-sm text-slate-600">
-          {notes.map((n) => (
-            <li key={n} className="flex gap-2">
-              {label === "After" ? (
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-purple-700" aria-hidden="true" />
-              ) : (
-                <X className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
-              )}{" "}
-              {n}
-            </li>
-          ))}
-        </ul>
-      </figcaption>
-    </figure>
-  );
-}
-
-function BeforeSite() {
-  return (
-    <MockFrame
-      label="Before"
-      tone="bg-slate-200 text-slate-700"
-      notes={[
-        "Cluttered layout that's hard to read on a phone",
-        "Phone number buried in small text",
-        "No clear next step for the visitor",
-      ]}
-    >
-      <div className="h-[340px] bg-[#e9e6dc] p-4 font-serif text-[#222]">
-        <div className="border-b-4 border-double border-[#1d3f8f] pb-2 text-center">
-          <div className="text-xl font-bold text-[#1d3f8f]">EXAMPLE PLUMBING CO.</div>
-          <div className="text-[10px] italic">Quality Work at Fair Prices</div>
-        </div>
-        <div className="mt-2 flex flex-wrap justify-center gap-x-2 text-[10px] text-[#1a0dab] underline">
-          <span>Home</span>|<span>About Us</span>|<span>Services</span>|<span>Coupons</span>|<span>Links</span>|<span>Gallery</span>|<span>Contact</span>
-        </div>
-        <div className="mt-3 text-center text-sm font-bold text-[#b00]">*** WELCOME TO OUR WEB SITE!!! ***</div>
-        <div className="mt-2 grid grid-cols-[1fr_80px] gap-3">
-          <div className="space-y-1.5">
-            <div className="h-2 w-full rounded-sm bg-[#bdb8a9]" />
-            <div className="h-2 w-11/12 rounded-sm bg-[#bdb8a9]" />
-            <div className="h-2 w-full rounded-sm bg-[#bdb8a9]" />
-            <div className="h-2 w-10/12 rounded-sm bg-[#bdb8a9]" />
-            <div className="h-2 w-full rounded-sm bg-[#bdb8a9]" />
-            <div className="h-2 w-9/12 rounded-sm bg-[#bdb8a9]" />
-            <div className="h-2 w-full rounded-sm bg-[#bdb8a9]" />
-            <div className="h-2 w-8/12 rounded-sm bg-[#bdb8a9]" />
-          </div>
-          <div className="grid h-20 place-items-center border-2 border-dashed border-[#999] text-center text-[9px] text-[#666]">photo coming soon</div>
-        </div>
-        <div className="mt-4 text-[10px] text-[#1a0dab] underline">Click here for more information</div>
-        <div className="mt-6 text-center text-[8px] text-[#555]">Call us at 555-0100 &middot; Mon-Fri 8-5 &middot; Best viewed in Internet Explorer</div>
-      </div>
-    </MockFrame>
-  );
-}
-
-function AfterSite() {
-  return (
-    <MockFrame
-      label="After"
-      tone="bg-purple-100 text-purple-800"
-      notes={[
-        "A clear headline that says what you do and where",
-        "Call and booking buttons right at the top",
-        "Clean, mobile-friendly design that builds trust",
-      ]}
-    >
-      <div className="h-[340px] bg-white">
-        <div className="flex items-center justify-between border-b border-slate-100 px-4 py-2.5">
-          <span className="text-sm font-bold text-sky-900">Example Plumbing</span>
-          <span className="rounded-md bg-sky-700 px-2.5 py-1 text-[10px] font-semibold text-white">Call (555) 010-0000</span>
-        </div>
-        <div className="bg-gradient-to-br from-sky-50 to-white px-4 py-5">
-          <div className="text-[10px] font-semibold uppercase tracking-wide text-sky-700">Licensed local plumbers</div>
-          <div className="mt-1.5 text-xl font-bold leading-tight text-slate-900">Fast, friendly plumbing repairs, same-day when you need it</div>
-          <div className="mt-2 text-[11px] text-slate-600">Leaks, clogs, water heaters and more. Upfront pricing before we start.</div>
-          <div className="mt-3 flex gap-2">
-            <span className="rounded-md bg-sky-700 px-3 py-1.5 text-[11px] font-semibold text-white">Book a visit</span>
-            <span className="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-800">Call now</span>
-          </div>
-        </div>
-        <div className="grid grid-cols-3 gap-2 px-4 py-3">
-          {["Drain cleaning", "Water heaters", "Leak repair"].map((t) => (
-            <div key={t} className="rounded-lg border border-slate-200 p-2">
-              <div className="h-5 w-5 rounded bg-sky-100" />
-              <div className="mt-1.5 text-[10px] font-semibold text-slate-800">{t}</div>
-              <div className="mt-1 h-1.5 w-full rounded-sm bg-slate-100" />
-              <div className="mt-1 h-1.5 w-3/4 rounded-sm bg-slate-100" />
-            </div>
-          ))}
-        </div>
-      </div>
-    </MockFrame>
   );
 }
 
