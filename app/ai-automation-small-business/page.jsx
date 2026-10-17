@@ -15,6 +15,43 @@ export const metadata = {
   openGraph: { title: "Business Automation for Small Business | DAS Digital", description, url: path, type: "website" },
 };
 
+// A phone taking a contactless card payment. Illustrative only.
+function TapToPay() {
+  return (
+    <div aria-hidden="true" className="flex justify-center rounded-xl bg-slate-50 py-5">
+      <svg viewBox="0 0 280 170" className="h-40 w-auto">
+        <g transform="rotate(-6 170 85)">
+          <rect x="96" y="40" width="168" height="92" rx="16" fill="#0f172a" />
+          <rect x="104" y="47" width="152" height="78" rx="11" fill="#1e293b" />
+          <circle cx="248" cy="86" r="3" fill="#334155" />
+          <text x="160" y="80" textAnchor="middle" fontSize="20" fontWeight="700" fill="#fff">$185.00</text>
+          <text x="160" y="98" textAnchor="middle" fontSize="8" fill="#94a3b8">Invoice #1042</text>
+          <circle cx="222" cy="78" r="15" fill="#7e22ce" />
+          <g fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round">
+            <path d="M216 72a8 8 0 0 1 0 12" />
+            <path d="M221 68a14 14 0 0 1 0 20" />
+            <path d="M226 64a20 20 0 0 1 0 28" />
+          </g>
+        </g>
+        <g transform="rotate(-18 70 95)">
+          <rect x="18" y="58" width="96" height="62" rx="8" fill="#64748b" />
+          <rect x="18" y="58" width="96" height="62" rx="8" fill="url(#cardShine)" />
+          <circle cx="94" cy="76" r="7" fill="#cbd5e1" opacity="0.7" />
+          <circle cx="102" cy="76" r="7" fill="#e2e8f0" opacity="0.7" />
+          <rect x="28" y="72" width="16" height="12" rx="2" fill="#e2e8f0" />
+          <rect x="28" y="102" width="44" height="4" rx="2" fill="#cbd5e1" />
+        </g>
+        <defs>
+          <linearGradient id="cardShine" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#fff" stopOpacity="0.25" />
+            <stop offset="1" stopColor="#fff" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  );
+}
+
 const TASKS = [
   {
     icon: BellRing,
@@ -34,7 +71,8 @@ const TASKS = [
   {
     icon: CreditCard,
     title: "Payment links and invoices",
-    desc: "Send a customer a link to pay by card right after the job, so you get paid faster and chase fewer checks.",
+    desc: "Send a customer a link to pay by card right after the job, or take a tap-to-pay payment on your phone, so you get paid faster and chase fewer checks.",
+    art: TapToPay,
   },
 ];
 
@@ -134,16 +172,26 @@ export default function Page() {
               <p className="text-sm font-semibold text-purple-700">What we can take off your plate</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Four common jobs we automate</h2>
             </div>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2">
+            <div className="mt-12 grid gap-6 lg:grid-cols-3">
               {TASKS.map((t) => {
                 const Icon = t.icon;
                 return (
-                  <div key={t.title} className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
+                  <div
+                    key={t.title}
+                    className={`rounded-2xl border border-slate-200 bg-white p-7 shadow-sm ${t.art ? "lg:col-span-3 md:grid md:grid-cols-[1fr_auto] md:items-center md:gap-10" : ""}`}
+                  >
+                    <div>
                     <span className="grid h-11 w-11 place-items-center rounded-xl bg-purple-50 text-purple-700">
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </span>
                     <h3 className="mt-5 text-xl font-semibold">{t.title}</h3>
                     <p className="mt-2 leading-relaxed text-slate-600">{t.desc}</p>
+                    </div>
+                    {t.art ? (
+                      <div className="mt-6 md:mt-0 md:w-80">
+                        <t.art />
+                      </div>
+                    ) : null}
                   </div>
                 );
               })}
