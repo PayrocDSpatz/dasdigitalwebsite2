@@ -292,23 +292,6 @@ export default function Page() {
             <p className="rounded-2xl bg-purple-700 px-6 py-8 text-center text-2xl font-bold tracking-tight text-white sm:text-3xl">
               Keep it simple. Keep it honest. Keep it working.
             </p>
-            <div id="about" className="mt-12 scroll-mt-20 grid gap-6 rounded-2xl border border-purple-100 bg-purple-50/50 p-6 sm:grid-cols-[auto_1fr] sm:p-8">
-              <Image src="/about/david-spatz.jpg" alt="David Spatz" width={80} height={80} className="h-20 w-20 rounded-full object-cover ring-4 ring-white" />
-              <div>
-                <h3 className="text-xl font-semibold">About me</h3>
-                <p className="mt-3 max-w-3xl leading-relaxed text-slate-700">
-                  Hi, I'm David Spatz. I was born in New Jersey, moved to Florida when I was 10, and grew up in the Miami area. I
-                  also grew up in the restaurant business, so I know what it's like to run a busy place where every customer and
-                  every minute counts.
-                </p>
-                <p className="mt-3 max-w-3xl leading-relaxed text-slate-700">
-                  Since then I've started my own consulting company and worked as an executive for payment processing companies.
-                  Through all of it, my passion has been helping businesses find solutions that make their day easier. That's what
-                  DAS Digital is about: practical technology, explained in plain language, from someone who has been on your side of
-                  the counter.
-                </p>
-              </div>
-            </div>
             <div className="mt-12 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
               <h3 className="font-semibold">Recent work</h3>
               

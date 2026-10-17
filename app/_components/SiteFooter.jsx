@@ -2,6 +2,7 @@ import Wordmark from "./Wordmark";
 import { CASE_STUDIES, CONTACT, SERVICES, serviceHref } from "./site";
 
 const MORE = [
+  { href: "/about", label: "About" },
   { href: "/custom-saas-development", label: "Custom software" },
   { href: "/merchant-services-sales-tools", label: "Merchant services tools" },
   { href: "/automation-consultant-florida", label: "South Florida" },

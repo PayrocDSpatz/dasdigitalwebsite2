@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import Wordmark from "./Wordmark";
 import { SERVICES, serviceHref } from "./site";
 
-// Site-wide header for the light design: wordmark, the four services, and the contact button.
+// Site-wide header for the light design: wordmark, the four services, About, and the contact button.
 // Below the lg breakpoint the links move into a menu opened by a button.
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -21,6 +21,9 @@ export default function SiteHeader() {
               {s.label}
             </a>
           ))}
+          <a href="/about" className="rounded hover:text-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-600">
+            About
+          </a>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -50,6 +53,11 @@ export default function SiteHeader() {
                 </a>
               </li>
             ))}
+            <li>
+              <a href="/about" onClick={() => setOpen(false)} className="block py-3 text-base font-medium text-slate-800">
+                About
+              </a>
+            </li>
           </ul>
           <a href="/#lead" onClick={() => setOpen(false)} className="mt-3 flex justify-center rounded-lg bg-purple-700 px-4 py-3 text-sm font-semibold text-white">
             Let's Talk
