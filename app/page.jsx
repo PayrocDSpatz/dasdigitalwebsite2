@@ -107,6 +107,11 @@ const REASONS = [
   { title: "Support after launch", desc: "A real person to call when something needs changing, long after the project is done." },
 ];
 
+const POS_SYSTEMS = [
+  { name: "Clover", desc: "Countertop, handheld and online ordering setups for restaurants, retail and service businesses." },
+  { name: "Square", desc: "Point of sale, payments and appointments for shops, cafes, salons and mobile businesses." },
+];
+
 const RECENT_WORK = [
   { kind: "Software", title: "FarriTech", desc: "Booking, invoicing, payments and reminders for professional farriers.", href: "/work/farritech" },
   { kind: "Software", title: "Field service platform", desc: "Dispatch, invoicing and service plans for HVAC, plumbing, lawn, pool and pest crews.", href: "/work/servicepro" },
@@ -183,6 +188,35 @@ export default function Page() {
               })}
             </div>
           </div>
+        </section>
+
+        {/* POS systems */}
+        <section id="pos" className="scroll-mt-20 border-t border-slate-100 pb-20 pt-4">
+          <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div>
+              <p className="text-sm font-semibold text-purple-700">Point of sale</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">POS systems we work with</h2>
+              <p className="mt-4 text-slate-600">
+                We help businesses choose the right point-of-sale system, set it up, and connect it to the rest of how they work.
+              </p>
+              <a href="#lead" className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-purple-700 hover:text-purple-900">
+                Ask about POS for your business <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
+            <ul className="grid gap-4 sm:grid-cols-2">
+              {POS_SYSTEMS.map((x) => (
+                <li key={x.name} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <span className="text-2xl font-bold tracking-tight text-slate-900">{x.name}</span>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{x.desc}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <p className="mx-auto mt-8 max-w-6xl px-4 text-xs leading-relaxed text-slate-500 sm:px-6">
+            Clover is a trademark of Clover Network, LLC. Square is a trademark of Block, Inc. All product names, logos and brands
+            are the property of their respective owners and are used here only to identify the systems we work with. DAS Digital
+            is an independent company and is not affiliated with, sponsored by or endorsed by Clover Network, LLC or Block, Inc.
+          </p>
         </section>
 
         {/* Problems */}
