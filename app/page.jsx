@@ -169,7 +169,7 @@ export default function Page() {
           <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
               <p className="text-sm font-semibold text-purple-700">Free website review</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">See how your website scores</h2>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Is your website up to today's standards?</h2>
               <p className="mt-4 text-slate-600">
                 We check 10 areas, from speed and mobile to Google and AI search, and show you what to fix first. Free, no obligation.
               </p>
