@@ -329,7 +329,7 @@ export default function Page() {
               ))}
             </div>
             <div id="about" className="mt-12 scroll-mt-20 grid gap-6 rounded-2xl border border-purple-100 bg-purple-50/50 p-6 sm:grid-cols-[auto_1fr] sm:p-8">
-              <span aria-hidden="true" className="grid h-16 w-16 place-items-center rounded-full bg-purple-700 text-xl font-bold text-white">DS</span>
+              <Image src="/about/david-spatz.jpg" alt="David Spatz" width={80} height={80} className="h-20 w-20 rounded-full object-cover ring-4 ring-white" />
               <div>
                 <h3 className="text-xl font-semibold">About me</h3>
                 <p className="mt-3 max-w-3xl leading-relaxed text-slate-700">
