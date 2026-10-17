@@ -316,6 +316,9 @@ export default function Page() {
         {/* Why DAS Digital */}
         <section className="py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <p className="mb-12 rounded-2xl bg-purple-700 px-6 py-8 text-center text-2xl font-bold tracking-tight text-white sm:text-3xl">
+              Keep it simple. Keep it honest. Keep it working.
+            </p>
             <SectionHeading kicker="Why DAS Digital" title="Practical technology, from people who've run a business" />
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {REASONS.map((r) => (
