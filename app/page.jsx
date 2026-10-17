@@ -19,6 +19,7 @@ import {
   UtensilsCrossed,
   Workflow,
   Wrench,
+  X,
 } from "lucide-react";
 import Image from "next/image";
 import SiteHeader from "./_components/SiteHeader";
@@ -205,6 +206,21 @@ export default function Page() {
           </div>
         </section>
 
+        {/* Website before and after */}
+        <section className="border-t border-slate-100 py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHeading
+              kicker="Website design"
+              title="What a website redesign can look like"
+              intro="An example of a typical service business website before and after a redesign. The business shown is made up for illustration."
+            />
+            <div className="mt-12 grid gap-8 lg:grid-cols-2">
+              <BeforeSite />
+              <AfterSite />
+            </div>
+          </div>
+        </section>
+
         {/* POS systems */}
         <section id="pos" className="scroll-mt-20 border-t border-slate-100 pb-20 pt-4">
           <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
@@ -373,6 +389,120 @@ export default function Page() {
 
       <SiteFooter />
     </div>
+  );
+}
+
+// Before/after mockups of a made-up plumbing company. Pure markup, illustrative only.
+function MockFrame({ label, tone, children, notes }) {
+  return (
+    <figure>
+      <div className="flex items-center gap-2">
+        <span className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${tone}`}>{label}</span>
+      </div>
+      <div aria-hidden="true" className="mt-3 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lg shadow-slate-900/5">
+        <div className="flex items-center gap-1.5 border-b border-slate-200 bg-slate-100 px-3 py-2">
+          <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+          <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+          <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+          <span className="ml-3 h-4 flex-1 rounded bg-white" />
+        </div>
+        {children}
+      </div>
+      <figcaption>
+        <ul className="mt-4 space-y-2 text-sm text-slate-600">
+          {notes.map((n) => (
+            <li key={n} className="flex gap-2">
+              {label === "After" ? (
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-purple-700" aria-hidden="true" />
+              ) : (
+                <X className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
+              )}{" "}
+              {n}
+            </li>
+          ))}
+        </ul>
+      </figcaption>
+    </figure>
+  );
+}
+
+function BeforeSite() {
+  return (
+    <MockFrame
+      label="Before"
+      tone="bg-slate-200 text-slate-700"
+      notes={[
+        "Cluttered layout that's hard to read on a phone",
+        "Phone number buried in small text",
+        "No clear next step for the visitor",
+      ]}
+    >
+      <div className="h-[340px] bg-[#e9e6dc] p-4 font-serif text-[#222]">
+        <div className="border-b-4 border-double border-[#1d3f8f] pb-2 text-center">
+          <div className="text-xl font-bold text-[#1d3f8f]">EXAMPLE PLUMBING CO.</div>
+          <div className="text-[10px] italic">Quality Work at Fair Prices</div>
+        </div>
+        <div className="mt-2 flex flex-wrap justify-center gap-x-2 text-[10px] text-[#1a0dab] underline">
+          <span>Home</span>|<span>About Us</span>|<span>Services</span>|<span>Coupons</span>|<span>Links</span>|<span>Gallery</span>|<span>Contact</span>
+        </div>
+        <div className="mt-3 text-center text-sm font-bold text-[#b00]">*** WELCOME TO OUR WEB SITE!!! ***</div>
+        <div className="mt-2 grid grid-cols-[1fr_80px] gap-3">
+          <div className="space-y-1.5">
+            <div className="h-2 w-full rounded-sm bg-[#bdb8a9]" />
+            <div className="h-2 w-11/12 rounded-sm bg-[#bdb8a9]" />
+            <div className="h-2 w-full rounded-sm bg-[#bdb8a9]" />
+            <div className="h-2 w-10/12 rounded-sm bg-[#bdb8a9]" />
+            <div className="h-2 w-full rounded-sm bg-[#bdb8a9]" />
+            <div className="h-2 w-9/12 rounded-sm bg-[#bdb8a9]" />
+            <div className="h-2 w-full rounded-sm bg-[#bdb8a9]" />
+            <div className="h-2 w-8/12 rounded-sm bg-[#bdb8a9]" />
+          </div>
+          <div className="grid h-20 place-items-center border-2 border-dashed border-[#999] text-center text-[9px] text-[#666]">photo coming soon</div>
+        </div>
+        <div className="mt-4 text-[10px] text-[#1a0dab] underline">Click here for more information</div>
+        <div className="mt-6 text-center text-[8px] text-[#555]">Call us at 555-0100 &middot; Mon-Fri 8-5 &middot; Best viewed in Internet Explorer</div>
+      </div>
+    </MockFrame>
+  );
+}
+
+function AfterSite() {
+  return (
+    <MockFrame
+      label="After"
+      tone="bg-purple-100 text-purple-800"
+      notes={[
+        "A clear headline that says what you do and where",
+        "Call and booking buttons right at the top",
+        "Clean, mobile-friendly design that builds trust",
+      ]}
+    >
+      <div className="h-[340px] bg-white">
+        <div className="flex items-center justify-between border-b border-slate-100 px-4 py-2.5">
+          <span className="text-sm font-bold text-sky-900">Example Plumbing</span>
+          <span className="rounded-md bg-sky-700 px-2.5 py-1 text-[10px] font-semibold text-white">Call (555) 010-0000</span>
+        </div>
+        <div className="bg-gradient-to-br from-sky-50 to-white px-4 py-5">
+          <div className="text-[10px] font-semibold uppercase tracking-wide text-sky-700">Licensed local plumbers</div>
+          <div className="mt-1.5 text-xl font-bold leading-tight text-slate-900">Fast, friendly plumbing repairs, same-day when you need it</div>
+          <div className="mt-2 text-[11px] text-slate-600">Leaks, clogs, water heaters and more. Upfront pricing before we start.</div>
+          <div className="mt-3 flex gap-2">
+            <span className="rounded-md bg-sky-700 px-3 py-1.5 text-[11px] font-semibold text-white">Book a visit</span>
+            <span className="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-800">Call now</span>
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-2 px-4 py-3">
+          {["Drain cleaning", "Water heaters", "Leak repair"].map((t) => (
+            <div key={t} className="rounded-lg border border-slate-200 p-2">
+              <div className="h-5 w-5 rounded bg-sky-100" />
+              <div className="mt-1.5 text-[10px] font-semibold text-slate-800">{t}</div>
+              <div className="mt-1 h-1.5 w-full rounded-sm bg-slate-100" />
+              <div className="mt-1 h-1.5 w-3/4 rounded-sm bg-slate-100" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </MockFrame>
   );
 }
 
