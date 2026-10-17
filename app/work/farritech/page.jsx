@@ -178,7 +178,7 @@ export default function FarriTechCaseStudy() {
         </div>
       </header>
 
-      <main>
+      <main id="main">
         {/* Breadcrumb */}
         <div className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
           <a
@@ -359,7 +359,7 @@ export default function FarriTechCaseStudy() {
               },
             ].map((s) => (
               <div key={s.step} className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-6 ${glowCard}`}>
-                <div className="text-3xl font-bold text-purple-500/40">{s.step}</div>
+                <div className="text-3xl font-bold text-purple-300">{s.step}</div>
                 <h3 className="mt-3 text-lg font-semibold text-white">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/70">{s.body}</p>
               </div>
@@ -367,19 +367,19 @@ export default function FarriTechCaseStudy() {
           </div>
         </section>
 
-        {/* Also see ServicePro */}
+        {/* Also see the field service platform */}
         <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <div className="text-xs font-semibold tracking-widest text-purple-400 uppercase mb-1">Also in this portfolio</div>
-              <div className="font-semibold text-white">ServicePro — Field service platform for the trades</div>
+              <div className="font-semibold text-white">Field service platform for the trades</div>
               <div className="text-sm text-white/60 mt-1">Dispatch, invoicing, service plans, and equipment tracking for HVAC, plumbing, lawn, pool, and pest crews.</div>
             </div>
             <a
               href="/work/servicepro"
               className={`inline-flex shrink-0 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold ${outlineBtn}`}
             >
-              View ServicePro <ArrowRight className="h-4 w-4" />
+              View the case study <ArrowRight className="h-4 w-4" />
             </a>
           </div>
         </section>
