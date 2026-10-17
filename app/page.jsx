@@ -173,6 +173,10 @@ export default function Page() {
               <p className="mt-4 text-slate-600">
                 We check 10 areas, from speed and mobile to Google and AI search, and show you what to fix first. Free, no obligation.
               </p>
+              <p className="mt-6 rounded-xl border-l-4 border-purple-700 bg-white px-4 py-3 text-sm text-slate-700">
+                <span className="font-semibold text-slate-900">Did you know?</span> Winn-Dixie and Domino's were both sued because
+                blind customers couldn't use their websites.
+              </p>
               <a href="#lead" className={`mt-8 ${btnPrimary}`}>
                 Get My Free Review <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
