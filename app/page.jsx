@@ -223,6 +223,13 @@ export default function Page() {
               <p className="mt-4 text-slate-600">
                 We help you pick the right point-of-sale system, get it set up, and make it work with the rest of your business.
               </p>
+              <p className="mt-4 text-slate-600">
+                Have specific requirements or need certain features? Call us at{" "}
+                <a href={`tel:${CONTACT.phone}`} className="whitespace-nowrap font-semibold text-slate-900 hover:text-purple-700">
+                  {CONTACT.phoneDisplay}
+                </a>{" "}
+                and we'll help you find the right fit.
+              </p>
               <a href="#lead" className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-purple-700 hover:text-purple-900">
                 Ask about POS for your business <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
