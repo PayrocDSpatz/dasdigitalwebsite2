@@ -22,7 +22,7 @@ export default function Page() {
         <section className="border-b border-slate-100 bg-gradient-to-b from-purple-50/70 to-white">
           <div className="mx-auto grid max-w-4xl items-center gap-8 px-4 py-16 sm:grid-cols-[auto_1fr] sm:px-6 sm:py-20">
             <Image
-              src="/about/david-spatz.jpg"
+              src="/about/david-spatz-headshot.jpg"
               alt="David Spatz"
               width={160}
               height={160}
