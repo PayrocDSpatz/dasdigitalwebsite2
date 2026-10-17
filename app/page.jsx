@@ -120,16 +120,9 @@ const WEBSITES = [
     src: "/work/palm-beach-farrier-supply.jpg",
     alt: "Home page of the Palm Beach Farrier Supply website: the headline \u201cEverything for the farrier, just down the road from the show grounds\u201d beside a photo of a farrier leading a horse at sunrise",
   },
-  {
-    title: "Tom Rautenbach Farrier Services",
-    desc: "A website for a professional farrier in Wellington, Florida, with online booking and easy ways to call or email.",
-    src: "/work/tom-rautenbach-farrier.jpg",
-    alt: "Home page of the Tom Rautenbach Farrier Services website, with buttons to book an appointment, call or email, and a panel listing location, disciplines and professional designation",
-  },
 ];
 
 const RECENT_WORK = [
-  { kind: "Software", title: "FarriTech", desc: "Booking, invoicing, payments and reminders for professional farriers.", href: "/work/farritech" },
   { kind: "Software", title: "Field service platform", desc: "Dispatch, invoicing and service plans for HVAC, plumbing, lawn, pool and pest crews.", href: "/work/servicepro" },
 ];
 
@@ -343,19 +336,20 @@ export default function Page() {
                     </figure>
                   </li>
                 ))}
-              </ul>
-              <ul className="mt-4 grid gap-4 md:grid-cols-2">
                 {RECENT_WORK.map((w) => (
                   <li key={w.title}>
                     <a
                       href={w.href}
-                      className="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-5 hover:border-purple-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-purple-600"
+                      className="group flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white hover:border-purple-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-purple-600"
                     >
-                      <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">{w.kind}</span>
-                      <span className="mt-2 font-semibold text-slate-900">{w.title}</span>
-                      <span className="mt-1 text-sm text-slate-600">{w.desc}</span>
-                      <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-purple-700 group-hover:text-purple-900">
-                        Read the case study <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      <DispatchMock />
+                      <span className="flex flex-1 flex-col p-5">
+                        <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">{w.kind}</span>
+                        <span className="mt-1 font-semibold text-slate-900">{w.title}</span>
+                        <span className="mt-1 text-sm text-slate-600">{w.desc}</span>
+                        <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-purple-700 group-hover:text-purple-900">
+                          Read the case study <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                        </span>
                       </span>
                     </a>
                   </li>
@@ -389,6 +383,34 @@ export default function Page() {
 
       <SiteFooter />
     </div>
+  );
+}
+
+// A simplified dispatch board, standing in for a screenshot of the field service platform.
+function DispatchMock() {
+  const jobs = [
+    { time: "8:00", job: "AC tune-up", tech: "Crew A", tone: "bg-emerald-100 text-emerald-700", status: "Done" },
+    { time: "10:30", job: "Water heater install", tech: "Crew B", tone: "bg-sky-100 text-sky-700", status: "On site" },
+    { time: "1:00", job: "Lawn service plan", tech: "Crew A", tone: "bg-amber-100 text-amber-700", status: "En route" },
+    { time: "3:30", job: "Pool inspection", tech: "Crew C", tone: "bg-slate-200 text-slate-600", status: "Scheduled" },
+  ];
+  return (
+    <span aria-hidden="true" className="block aspect-[2/1] border-b border-slate-200 bg-slate-50 p-4 sm:p-5">
+      <span className="flex items-center justify-between">
+        <span className="text-sm font-semibold text-slate-800">Today's jobs</span>
+        <span className="rounded-md bg-purple-700 px-2.5 py-1 text-[11px] font-semibold text-white">+ New job</span>
+      </span>
+      <span className="mt-3 block space-y-2">
+        {jobs.map((j) => (
+          <span key={j.time} className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs">
+            <span className="w-9 font-medium text-slate-500">{j.time}</span>
+            <span className="flex-1 truncate font-medium text-slate-800">{j.job}</span>
+            <span className="hidden text-slate-500 sm:inline">{j.tech}</span>
+            <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${j.tone}`}>{j.status}</span>
+          </span>
+        ))}
+      </span>
+    </span>
   );
 }
 
