@@ -64,7 +64,7 @@ const SERVICE_CARDS = [
     key: "automation",
     icon: Workflow,
     summary: "Follow-ups, reminders and data entry that happen on their own, so nothing waits on someone's memory.",
-    items: ["Customer follow-ups and reminders", "Lead management and CRM integration", "Email and SMS workflows", "Forms and customer onboarding"],
+    items: ["Customer follow-ups and reminders", "Lead management and CRM integration", "Email and SMS workflows", "Payment links and invoices for quick payment"],
     cta: "Explore Business Automation",
   },
   {
