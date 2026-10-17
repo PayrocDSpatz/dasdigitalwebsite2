@@ -121,9 +121,9 @@ const WEBSITES = [
   },
   {
     title: "Tom Rautenbach Farrier Services",
-    desc: "A website for a professional farrier in Wellington, Florida, with online booking and a QR code for appointments.",
+    desc: "A website for a professional farrier in Wellington, Florida, with online booking and easy ways to call or email.",
     src: "/work/tom-rautenbach-farrier.jpg",
-    alt: "Home page of the Tom Rautenbach Farrier Services website, with buttons to book an appointment, call or email, and a panel listing disciplines and a QR code to book",
+    alt: "Home page of the Tom Rautenbach Farrier Services website, with buttons to book an appointment, call or email, and a panel listing location, disciplines and professional designation",
   },
 ];
 
