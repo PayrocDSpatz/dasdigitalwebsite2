@@ -143,7 +143,7 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <SiteHeader />
 
-      <main>
+      <main id="main">
         {/* Hero */}
         <section className="border-b border-slate-100 bg-gradient-to-b from-purple-50/70 to-white">
           <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">

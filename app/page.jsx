@@ -109,7 +109,7 @@ export default function Page() {
     <div className="min-h-screen bg-white text-slate-900">
       <SiteHeader />
 
-      <main>
+      <main id="main">
         {/* Hero */}
         <section className="border-b border-slate-100 bg-gradient-to-b from-purple-50/70 to-white">
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1.1fr_0.9fr]">

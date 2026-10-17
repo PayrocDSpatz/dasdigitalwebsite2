@@ -176,7 +176,7 @@ export default function ServiceProCaseStudy() {
         </div>
       </header>
 
-      <main>
+      <main id="main">
         {/* Breadcrumb */}
         <div className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
           <a
@@ -422,7 +422,7 @@ export default function ServiceProCaseStudy() {
               },
             ].map((s) => (
               <div key={s.step} className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-6 ${glowCard}`}>
-                <div className="text-3xl font-bold text-purple-500/40">{s.step}</div>
+                <div className="text-3xl font-bold text-purple-300">{s.step}</div>
                 <h3 className="mt-3 text-lg font-semibold text-white">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/70">{s.body}</p>
               </div>

@@ -54,6 +54,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.className}>
       <body>
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-purple-700 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white">
+          Skip to content
+        </a>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
         {children}
         {GA_ID ? (

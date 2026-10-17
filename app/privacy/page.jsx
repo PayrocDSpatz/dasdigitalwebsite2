@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <SiteHeader />
-      <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+      <main id="main" className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
         <h1 className="text-4xl font-bold tracking-tight">Privacy Policy</h1>
         <p className="mt-2 text-sm text-slate-500">Last updated {UPDATED}</p>
 
