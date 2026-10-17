@@ -317,7 +317,7 @@ export default function Page() {
                       <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">Website &middot; Sample design</span>
                       <span className="mt-1 block font-semibold text-slate-900">Top Cut Lawn and Landscaping</span>
                       <span className="mt-1 block text-sm text-slate-600">
-                        A sample lawn care website. (Made-up business.)
+                        A sample lawn care website. For illustration purposes only.
                       </span>
                     </figcaption>
                   </figure>
@@ -424,7 +424,7 @@ function WebsiteScorecard() {
         </ol>
       </div>
       <figcaption className="mt-5 border-t border-slate-100 pt-4 text-xs text-slate-500">
-        Sample scorecard for a made-up business, for illustration.
+        Sample scorecard. For illustration purposes only.
       </figcaption>
     </figure>
   );
@@ -495,7 +495,7 @@ function PhoneTextMock() {
           </div>
         </div>
       </div>
-      <figcaption className="mt-4 text-center text-xs text-slate-500">Example texts. Made-up customers.</figcaption>
+      <figcaption className="mt-4 text-center text-xs text-slate-500">Example texts. For illustration purposes only.</figcaption>
     </figure>
   );
 }
