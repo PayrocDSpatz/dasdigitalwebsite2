@@ -28,5 +28,5 @@ export const SERVICE_PAGES = [
 
 export const CASE_STUDIES = [
   { href: "/work/farritech", label: "FarriTech case study" },
-  { href: "/work/servicepro", label: "ServicePro case study" },
+  { href: "/work/servicepro", label: "Field service platform case study" },
 ];

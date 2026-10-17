@@ -195,13 +195,13 @@ export default function ServiceProCaseStudy() {
                 <Sparkles className="h-4 w-4" /> Case Study · SaaS Product Build
               </div>
               <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                ServicePro
+                Field Service Platform
               </h1>
               <p className="mt-4 text-xl font-medium text-purple-400">
                 Field service management platform built for the trades.
               </p>
               <p className="mt-4 text-pretty text-base text-white/70 sm:text-lg">
-                HVAC shops, plumbers, lawn crews, pool techs, and pest operators all run the same playbook — but most manage it from a clipboard, a whiteboard, and a group text. ServicePro is a full-stack SaaS built to replace all of it: dispatch, customer records, invoicing, recurring service plans, equipment history, and owner-level reporting. One platform, five trades, zero paper.
+                HVAC shops, plumbers, lawn crews, pool techs, and pest operators all run the same playbook — but most manage it from a clipboard, a whiteboard, and a group text. This platform is a full-stack SaaS built to replace all of it: dispatch, customer records, invoicing, recurring service plans, equipment history, and owner-level reporting. One platform, five trades, zero paper.
               </p>
             </div>
 
@@ -254,7 +254,7 @@ export default function ServiceProCaseStudy() {
           <SectionTitle
             kicker="Five Trades, One Platform"
             title="Configured for the work you actually do"
-            subtitle="ServicePro ships with trade-specific defaults — service codes, recurrence patterns, equipment categories, and terminology — so each trade feels like the platform was built just for them."
+            subtitle="The platform ships with trade-specific defaults — service codes, recurrence patterns, equipment categories, and terminology — so each trade feels like the platform was built just for them."
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {trades.map((t) => (
@@ -401,7 +401,7 @@ export default function ServiceProCaseStudy() {
           <SectionTitle
             kicker="How It Was Built"
             title="Domain expertise + AI-assisted development"
-            subtitle="ServicePro wasn't built by a traditional software team. It was built the DAS Digital way — deep knowledge of the problem space, AI coding tools for execution speed, and real infrastructure from day one."
+            subtitle="This platform wasn't built by a traditional software team. It was built the DAS Digital way — deep knowledge of the problem space, AI coding tools for execution speed, and real infrastructure from day one."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {[
@@ -413,7 +413,7 @@ export default function ServiceProCaseStudy() {
               {
                 step: "02",
                 title: "Design for the truck first",
-                body: "Most FSM software was built for the office and ported to mobile as an afterthought. ServicePro started with the tech in the field — big targets, readable in sunlight, no unnecessary steps.",
+                body: "Most FSM software was built for the office and ported to mobile as an afterthought. This platform started with the tech in the field — big targets, readable in sunlight, no unnecessary steps.",
               },
               {
                 step: "03",
@@ -454,7 +454,7 @@ export default function ServiceProCaseStudy() {
               <Sparkles className="h-4 w-4" /> Want something like this?
             </div>
             <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              We build platforms like ServicePro for your industry.
+              We build platforms like this for your industry.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-white/70">
               SaaS product, internal ops tool, or client-facing workflow system — DAS Digital brings payments and operations domain expertise together with AI-assisted development to ship fast without a full dev team.

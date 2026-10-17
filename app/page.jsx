@@ -264,7 +264,7 @@ export default function Page() {
                   FarriTech: software for farriers <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
                 <a href="/work/servicepro" className="inline-flex items-center gap-1 text-purple-700 hover:text-purple-900">
-                  ServicePro: field service for the trades <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  Field service software for the trades <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>
             </div>
