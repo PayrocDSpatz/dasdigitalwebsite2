@@ -347,8 +347,8 @@ const SCORECARD = [
   { label: "Content", score: 60 },
   { label: "Design", score: 55 },
   { label: "Calls to action", score: 30 },
-  { label: "Accessibility", score: 64 },
-  { label: "Security", score: 90 },
+  { label: "ADA accessibility", score: 64 },
+  { label: "Security & privacy", score: 90 },
   { label: "Tracking", score: 20 },
   { label: "AI search", score: 25 },
 ];
