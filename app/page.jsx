@@ -171,7 +171,7 @@ export default function Page() {
               <p className="text-sm font-semibold text-purple-700">Free website review</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">See how your website scores</h2>
               <p className="mt-4 text-slate-600">
-                We'll score your website and show you what to fix first. Free, no obligation.
+                We check 10 areas, from speed and mobile to Google and AI search, and show you what to fix first. Free, no obligation.
               </p>
               <a href="#lead" className={`mt-8 ${btnPrimary}`}>
                 Get My Free Review <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -341,12 +341,19 @@ export default function Page() {
 
 // A sample website scorecard for the made-up Example Plumbing site. Illustrative only.
 const SCORECARD = [
-  { label: "Mobile friendly", score: 38, fix: "Bigger text and buttons on phones" },
-  { label: "Page speed", score: 52, fix: "Shrink large images" },
-  { label: "Local search (SEO)", score: 45, fix: "Add your city and services to Google" },
-  { label: "Calls to action", score: 30, fix: "Add a call button at the top" },
-  { label: "Security", score: 90, fix: "Looks good" },
+  { label: "Speed", score: 52 },
+  { label: "Mobile", score: 38 },
+  { label: "Google search (SEO)", score: 45 },
+  { label: "Content", score: 60 },
+  { label: "Design", score: 55 },
+  { label: "Calls to action", score: 30 },
+  { label: "Accessibility", score: 64 },
+  { label: "Security", score: 90 },
+  { label: "Tracking", score: 20 },
+  { label: "AI search", score: 25 },
 ];
+
+const TOP_FIXES = ["Add a call button at the top", "Make text and buttons bigger on phones", "Track where your leads come from"];
 
 function scoreTone(n) {
   if (n >= 80) return { bar: "bg-emerald-500", text: "text-emerald-700" };
@@ -369,7 +376,7 @@ function WebsiteScorecard() {
           <div className="text-xs text-slate-500">out of 100</div>
         </div>
       </div>
-      <ul className="mt-5 space-y-4">
+      <ul className="mt-5 grid gap-x-8 gap-y-3 sm:grid-cols-2">
         {SCORECARD.map((r) => {
           const tone = scoreTone(r.score);
           return (
@@ -378,17 +385,24 @@ function WebsiteScorecard() {
                 <span className="font-medium text-slate-800">{r.label}</span>
                 <span className={`font-semibold ${tone.text}`}>{r.score}</span>
               </div>
-              <div className="mt-1.5 h-2 rounded-full bg-slate-100" role="presentation">
-                <div className={`h-2 rounded-full ${tone.bar}`} style={{ width: `${r.score}%` }} />
+              <div className="mt-1 h-1.5 rounded-full bg-slate-100" role="presentation">
+                <div className={`h-1.5 rounded-full ${tone.bar}`} style={{ width: `${r.score}%` }} />
               </div>
-              <p className="mt-1.5 text-xs leading-relaxed text-slate-600">
-                <span className="font-semibold text-slate-700">Fix: </span>
-                {r.fix}
-              </p>
             </li>
           );
         })}
       </ul>
+      <div className="mt-6 rounded-xl bg-purple-50 p-4">
+        <div className="text-sm font-semibold text-purple-900">Top 3 fixes</div>
+        <ol className="mt-2 space-y-1.5 text-sm text-slate-700">
+          {TOP_FIXES.map((f, i) => (
+            <li key={f} className="flex gap-2">
+              <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-purple-700 text-[11px] font-semibold text-white">{i + 1}</span>
+              {f}
+            </li>
+          ))}
+        </ol>
+      </div>
       <figcaption className="mt-5 border-t border-slate-100 pt-4 text-xs text-slate-500">
         Sample scorecard for a made-up business, for illustration.
       </figcaption>
