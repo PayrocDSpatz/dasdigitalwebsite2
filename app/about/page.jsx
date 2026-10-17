@@ -44,8 +44,12 @@ export default function Page() {
               restaurant business, so I know what it's like to run a busy place where every customer and every minute counts.
             </p>
             <p>
-              Since then I've started my own consulting company and worked as an executive for payment processing companies.
-              Through all of it, my passion has been helping businesses find solutions that make their day easier.
+              In 1984 I started DAS Consulting Services to help customers with their businesses. Along the way I also worked as
+              an executive for payment processing companies. Through all of it, my passion has been helping businesses find
+              solutions that make their day easier.
+            </p>
+            <p>
+              Recently we updated what we offer, and DAS Consulting Services is now DAS Digital.
             </p>
             <p>
               That's what DAS Digital is about: practical technology, explained in plain language, from someone who has been on
