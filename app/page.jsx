@@ -106,6 +106,18 @@ const REASONS = [
   { title: "Support after launch", desc: "A real person to call when something needs changing, long after the project is done." },
 ];
 
+const RECENT_WORK = [
+  {
+    kind: "Website",
+    title: "Palm Beach Farrier Supply",
+    desc: "A website for a farrier supply store in Wellington, Florida: products, store hours, directions and contact.",
+    href: "https://palmbeachfarriersupply.netlify.app/",
+    external: true,
+  },
+  { kind: "Software", title: "FarriTech", desc: "Booking, invoicing, payments and reminders for professional farriers.", href: "/work/farritech" },
+  { kind: "Software", title: "Field service platform", desc: "Dispatch, invoicing and service plans for HVAC, plumbing, lawn, pool and pest crews.", href: "/work/servicepro" },
+];
+
 const btnPrimary =
   "inline-flex items-center justify-center gap-2 rounded-lg bg-purple-700 px-6 py-3 text-sm font-semibold text-white hover:bg-purple-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600";
 const btnSecondary =
@@ -254,19 +266,28 @@ export default function Page() {
                 </div>
               ))}
             </div>
-            <div className="mt-12 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h3 className="font-semibold">Recent work</h3>
-                <p className="mt-1 text-sm text-slate-600">Software we've designed and built for small, hands-on industries.</p>
-              </div>
-              <div className="flex flex-col gap-2 text-sm font-semibold sm:flex-row sm:gap-6">
-                <a href="/work/farritech" className="inline-flex items-center gap-1 text-purple-700 hover:text-purple-900">
-                  FarriTech: software for farriers <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </a>
-                <a href="/work/servicepro" className="inline-flex items-center gap-1 text-purple-700 hover:text-purple-900">
-                  Field service software for the trades <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </a>
-              </div>
+            <div className="mt-12 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
+              <h3 className="font-semibold">Recent work</h3>
+              <p className="mt-1 text-sm text-slate-600">Websites and software we've designed and built for local businesses and hands-on industries.</p>
+              <ul className="mt-6 grid gap-4 md:grid-cols-3">
+                {RECENT_WORK.map((w) => (
+                  <li key={w.title}>
+                    <a
+                      href={w.href}
+                      {...(w.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      className="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-5 hover:border-purple-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-purple-600"
+                    >
+                      <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">{w.kind}</span>
+                      <span className="mt-2 font-semibold text-slate-900">{w.title}</span>
+                      <span className="mt-1 text-sm text-slate-600">{w.desc}</span>
+                      <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-purple-700 group-hover:text-purple-900">
+                        {w.external ? "Visit the site" : "Read the case study"} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                        {w.external ? <span className="sr-only">(opens in a new tab)</span> : null}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
