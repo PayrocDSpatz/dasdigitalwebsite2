@@ -173,10 +173,23 @@ export default function Page() {
               <p className="mt-4 text-slate-600">
                 We check 10 areas, from speed and mobile to Google and AI search, and show you what to fix first. Free, no obligation.
               </p>
-              <p className="mt-6 rounded-xl border-l-4 border-purple-700 bg-white px-4 py-3 text-sm text-slate-700">
-                <span className="font-semibold text-slate-900">Did you know?</span> Winn-Dixie and Domino's were both sued because
-                blind customers couldn't use their websites.
-              </p>
+              <div className="mt-6 rounded-xl border-l-4 border-purple-700 bg-white px-5 py-4 text-sm text-slate-700">
+                <div className="font-semibold text-slate-900">Why it matters in Florida</div>
+                <ul className="mt-2 space-y-1.5">
+                  {ADA_FACTS.map((f) => (
+                    <li key={f} className="flex gap-2">
+                      <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-700" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-3 text-[11px] text-slate-500">
+                  Sources:{" "}
+                  <a href="https://www.mondaq.com/unitedstates/constitutional-administrative-law/1745806/ada-title-iii-federal-lawsuit-filings-fall-slightly-to-8667-in-2025" className="underline hover:text-purple-700" target="_blank" rel="noopener noreferrer">Seyfarth Shaw 2025 ADA report</a>,{" "}
+                  <a href="https://testparty.ai/blog/accessibility-overlay-lawsuits-data" className="underline hover:text-purple-700" target="_blank" rel="noopener noreferrer">UsableNet 2025 data</a>,{" "}
+                  <a href="https://ftc.gov/news-events/news/press-releases/2025/04/ftc-approves-final-order-requiring-accessibe-pay-1-million" className="underline hover:text-purple-700" target="_blank" rel="noopener noreferrer">FTC</a>.
+                </p>
+              </div>
               <a href="#lead" className={`mt-8 ${btnPrimary}`}>
                 Get My Free Review <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -355,6 +368,13 @@ const SCORECARD = [
   { label: "Security & privacy", score: 90 },
   { label: "Tracking", score: 20 },
   { label: "AI search", score: 25 },
+];
+
+const ADA_FACTS = [
+  "Florida ranked second in the country for federal ADA lawsuits in 2025, with 1,823 filings.",
+  "About 70% of website accessibility lawsuits target online stores and retail.",
+  "Accessibility widgets don't protect you. Companies using them were sued over 1,400 times in 2025, and the FTC ordered widget maker accessiBe to pay $1 million.",
+  "Winn-Dixie and Domino's were both sued because blind customers couldn't use their websites.",
 ];
 
 const TOP_FIXES = ["Add a call button at the top", "Make text and buttons bigger on phones", "Track where your leads come from"];
