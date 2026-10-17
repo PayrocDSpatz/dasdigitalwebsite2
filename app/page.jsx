@@ -112,6 +112,21 @@ const POS_SYSTEMS = [
   { name: "Square", desc: "Point of sale, payments and appointments for shops, cafes, salons and mobile businesses." },
 ];
 
+const WEBSITES = [
+  {
+    title: "Palm Beach Farrier Supply",
+    desc: "A website for a farrier supply store in Wellington, Florida: products, store hours, directions and contact.",
+    src: "/work/palm-beach-farrier-supply.jpg",
+    alt: "Home page of the Palm Beach Farrier Supply website: the headline \u201cEverything for the farrier, just down the road from the show grounds\u201d beside a photo of a farrier leading a horse at sunrise",
+  },
+  {
+    title: "Tom Rautenbach Farrier Services",
+    desc: "A website for a professional farrier in Wellington, Florida, with online booking and a QR code for appointments.",
+    src: "/work/tom-rautenbach-farrier.jpg",
+    alt: "Home page of the Tom Rautenbach Farrier Services website, with buttons to book an appointment, call or email, and a panel listing disciplines and a QR code to book",
+  },
+];
+
 const RECENT_WORK = [
   { kind: "Software", title: "FarriTech", desc: "Booking, invoicing, payments and reminders for professional farriers.", href: "/work/farritech" },
   { kind: "Software", title: "Field service platform", desc: "Dispatch, invoicing and service plans for HVAC, plumbing, lawn, pool and pest crews.", href: "/work/servicepro" },
@@ -297,21 +312,22 @@ export default function Page() {
             <div className="mt-12 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
               <h3 className="font-semibold">Recent work</h3>
               <p className="mt-1 text-sm text-slate-600">Websites and software we've designed and built for local businesses and hands-on industries.</p>
-              <figure className="mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white">
-                <Image
-                  src="/work/palm-beach-farrier-supply.jpg"
-                  alt="Home page of the Palm Beach Farrier Supply website: the headline “Everything for the farrier, just down the road from the show grounds” beside a photo of a farrier leading a horse at sunrise"
-                  width={1896}
-                  height={705}
-                  sizes="(min-width: 1152px) 1088px, 100vw"
-                  className="h-auto w-full"
-                />
-                <figcaption className="border-t border-slate-200 p-5">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">Website</span>
-                  <span className="mt-1 block font-semibold text-slate-900">Palm Beach Farrier Supply</span>
-                  <span className="mt-1 block text-sm text-slate-600">A website for a farrier supply store in Wellington, Florida: products, store hours, directions and contact.</span>
-                </figcaption>
-              </figure>
+              <ul className="mt-6 grid gap-4 md:grid-cols-2">
+                {WEBSITES.map((w) => (
+                  <li key={w.title}>
+                    <figure className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white">
+                      <div className="relative aspect-[2/1] border-b border-slate-200">
+                        <Image src={w.src} alt={w.alt} fill sizes="(min-width: 768px) 536px, 100vw" className="object-cover object-left-top" />
+                      </div>
+                      <figcaption className="p-5">
+                        <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">Website</span>
+                        <span className="mt-1 block font-semibold text-slate-900">{w.title}</span>
+                        <span className="mt-1 block text-sm text-slate-600">{w.desc}</span>
+                      </figcaption>
+                    </figure>
+                  </li>
+                ))}
+              </ul>
               <ul className="mt-4 grid gap-4 md:grid-cols-2">
                 {RECENT_WORK.map((w) => (
                   <li key={w.title}>
