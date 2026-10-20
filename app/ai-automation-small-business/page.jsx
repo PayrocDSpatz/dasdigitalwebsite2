@@ -7,13 +7,13 @@ import { CONTACT, SITE_URL } from "../_components/site";
 
 const path = "/ai-automation-small-business";
 const description =
-  "DAS Digital sets up simple business automation for small businesses: automatic follow-ups and reminders, lead tracking, email and text messages, and payment links. Based in South Florida.";
+  "DAS Digital sets up AI automation for small businesses: automatic follow-ups and reminders, lead tracking, email and text messages, and payment links. Based in South Florida.";
 
 export const metadata = {
-  title: "Business Automation for Small Business",
+  title: "AI Automation for Small Business",
   description,
   alternates: { canonical: path },
-  openGraph: { title: "Business Automation for Small Business | DAS Digital", description, url: path, type: "website" },
+  openGraph: { title: "AI Automation for Small Business | DAS Digital", description, url: path, type: "website" },
 };
 
 // A phone taking a contactless card payment (photo supplied by the owner).
@@ -93,7 +93,7 @@ export default function Page() {
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: "Business automation for small business",
+      name: "AI automation for small business",
       serviceType: "Business automation",
       url,
       description,
@@ -124,7 +124,7 @@ export default function Page() {
         {/* Hero */}
         <section className="border-b border-slate-100 bg-gradient-to-b from-purple-50/70 to-white">
           <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
-            <p className="text-sm font-semibold text-purple-700">Business Automation</p>
+            <p className="text-sm font-semibold text-purple-700">AI Automation for Small Business</p>
             <h1 className="mt-4 text-balance text-4xl font-bold tracking-tight sm:text-5xl">
               Let the busywork happen on its own
             </h1>

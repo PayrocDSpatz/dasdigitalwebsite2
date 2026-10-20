@@ -11,7 +11,7 @@ export const CONTACT = {
 // so links go to the services section of the home page instead of a 404.
 export const SERVICES = [
   { key: "website", label: "Website Design", href: "/website-design", ready: false },
-  { key: "ai-receptionist", label: "AI Receptionists", href: "/ai-receptionist", ready: false },
+  { key: "ai-receptionist", label: "AI Receptionists", href: "/ai-receptionist", ready: true },
   { key: "automation", label: "Business Automation", href: "/ai-automation-small-business", ready: true },
   { key: "consulting", label: "Technology Consulting", href: "/technology-consulting", ready: false },
 ];
@@ -24,6 +24,16 @@ export const SERVICE_PAGES = [
   { href: "/merchant-services-sales-tools", label: "Sales tools for merchant services" },
   { href: "/custom-saas-development", label: "Custom SaaS development" },
   { href: "/automation-consultant-florida", label: "Automation consultant in Florida" },
+];
+
+// Trade pages under /automation/<slug>; content lives in app/automation/industries.js.
+export const INDUSTRY_PAGES = [
+  { href: "/automation/hvac-companies", short: "HVAC companies" },
+  { href: "/automation/plumbers", short: "Plumbers" },
+  { href: "/automation/electricians", short: "Electricians" },
+  { href: "/automation/roofers", short: "Roofers" },
+  { href: "/automation/landscapers", short: "Landscapers" },
+  { href: "/automation/boutiques", short: "Boutiques" },
 ];
 
 export const CASE_STUDIES = [

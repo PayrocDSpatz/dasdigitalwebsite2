@@ -1,5 +1,5 @@
 import Wordmark from "./Wordmark";
-import { CASE_STUDIES, CONTACT, SERVICES, serviceHref } from "./site";
+import { CASE_STUDIES, CONTACT, INDUSTRY_PAGES, SERVICES, serviceHref } from "./site";
 
 const MORE = [
   { href: "/about", label: "About" },
@@ -11,7 +11,7 @@ const MORE = [
 export default function SiteFooter() {
   return (
     <footer className="border-t border-slate-200 bg-slate-50">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 text-sm sm:px-6 md:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 text-sm sm:px-6 md:grid-cols-3 lg:grid-cols-5">
         <div>
           <Wordmark />
           <p className="mt-3 text-slate-600">Smarter Technology. Simpler Business.</p>
@@ -21,6 +21,7 @@ export default function SiteFooter() {
           </div>
         </div>
         <FooterList title="Services" items={SERVICES.map((s) => ({ href: serviceHref(s), label: s.label }))} />
+        <FooterList title="Industries" items={INDUSTRY_PAGES.map((p) => ({ href: p.href, label: p.short }))} />
         <FooterList title="More" items={MORE} />
         <FooterList title="Work" items={CASE_STUDIES} />
       </div>

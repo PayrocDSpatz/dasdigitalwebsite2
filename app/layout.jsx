@@ -8,11 +8,11 @@ const inter = Inter({ subsets: ["latin"], display: "swap" });
 export const metadata = {
   metadataBase: new URL("https://dasdigitalai.com"),
   title: {
-    default: "DAS Digital | Digital Consulting Services for Small Business",
+    default: "DAS Digital | AI Receptionists & Digital Consulting Services",
     template: "%s | DAS Digital",
   },
   description:
-    "DAS Digital provides practical digital consulting services for small businesses: professional websites, AI phone answering and automated follow-ups. Based in South Florida.",
+    "DAS Digital provides practical digital consulting services for small businesses: professional websites, AI receptionists that answer your calls, and automated follow-ups. Based in South Florida.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "DAS Digital | Smarter Technology. Simpler Business.",

@@ -24,13 +24,13 @@ import Image from "next/image";
 import SiteHeader from "./_components/SiteHeader";
 import SiteFooter from "./_components/SiteFooter";
 import LeadForm from "./_components/LeadForm";
-import { CONTACT, SERVICES, serviceHref } from "./_components/site";
+import { CONTACT, INDUSTRY_PAGES, SERVICES, serviceHref } from "./_components/site";
 
 const description =
-  "DAS Digital provides practical digital consulting services for small businesses: professional websites, AI phone answering and automated follow-ups. Based in South Florida. Call or send us a message today.";
+  "DAS Digital provides practical digital consulting services for small businesses: professional websites, AI receptionists that answer your calls, and automated follow-ups. Based in South Florida. Call or send us a message today.";
 
 export const metadata = {
-  title: { absolute: "DAS Digital | Digital Consulting Services for Small Business" },
+  title: { absolute: "DAS Digital | AI Receptionists & Digital Consulting Services" },
   description,
   alternates: { canonical: "/" },
   openGraph: {
@@ -124,7 +124,7 @@ export default function Page() {
                 Smarter Technology. Simpler Business.
               </h1>
               <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-slate-600">
-                Websites, AI phone answering and automation that help your business run smoother.
+                Websites, AI receptionists and automation that help your business run smoother.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a href="#lead" className={btnPrimary}>
@@ -288,6 +288,18 @@ export default function Page() {
                 );
               })}
             </ul>
+            <div className="mt-8">
+              <p className="text-sm text-white/70">See what we set up for your trade:</p>
+              <ul className="mt-3 flex flex-wrap gap-3">
+                {INDUSTRY_PAGES.map((p) => (
+                  <li key={p.href}>
+                    <a href={p.href} className="inline-block rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-white hover:border-purple-300 hover:text-purple-200">
+                      {p.short}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
