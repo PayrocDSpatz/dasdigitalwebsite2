@@ -3,7 +3,7 @@ import ServiceLanding from "../_components/ServiceLanding";
 const path = "/custom-saas-development";
 const title = "Custom SaaS and vertical software development";
 const description =
-  "DAS Digital designs and builds custom SaaS and vertical software for small industries: scheduling, invoicing, payments, SMS, customer portals and mobile apps. See FarriTech and ServicePro.";
+  "DAS Digital designs and builds custom SaaS and vertical software for small industries: scheduling, invoicing, payments, SMS, customer portals and mobile apps. See FarriTech and our field service platform.";
 
 export const metadata = {
   title: "Custom SaaS & Vertical Software Development",
@@ -47,7 +47,7 @@ export default function Page() {
         intro: "Both were designed around a real trade's workflow and built with AI-assisted development, which is how we move from idea to working software quickly.",
         items: [
           { name: "FarriTech", href: "/work/farritech", desc: "SaaS for professional farriers: QR booking, invoicing, payments, SMS reminders, horse and visit scheduling, route planning, a customer portal and a mobile app." },
-          { name: "ServicePro", href: "/work/servicepro", desc: "field service for HVAC, plumbing, lawn, pool and pest crews: dispatch, invoicing, service plans, equipment tracking and owner KPIs." },
+          { name: "Field service platform", href: "/work/servicepro", desc: "field service for HVAC, plumbing, lawn, pool and pest crews: dispatch, invoicing, service plans, equipment tracking and owner KPIs." },
         ],
       }}
       steps={[

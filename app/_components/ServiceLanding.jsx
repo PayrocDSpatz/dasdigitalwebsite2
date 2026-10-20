@@ -51,7 +51,7 @@ export default function ServiceLanding({ path, kicker, title, intro, problems, o
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-4 sm:px-6">
+      <main id="main" className="mx-auto max-w-6xl px-4 sm:px-6">
         <section className="py-14 sm:py-20">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-purple-300">{kicker}</div>
           <h1 className="mt-3 max-w-4xl text-balance text-3xl font-semibold tracking-tight sm:text-5xl">{title}</h1>
