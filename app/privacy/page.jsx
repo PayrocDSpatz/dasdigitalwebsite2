@@ -20,8 +20,8 @@ export default function Page() {
 
         <div className="mt-10 space-y-8 leading-relaxed text-slate-700">
           <Section title="What we collect">
-            When you fill out the contact form, we collect what you enter: your name, business name, email, phone number,
-            the service you're interested in and your message. If you call or email us, we receive the details you share.
+            When you fill out the contact form or the free guide form, we collect what you enter: your name, business name, email, phone number,
+            the service you're interested in and your message (the guide form asks only for your name, email and phone). If you call or email us, we receive the details you share.
           </Section>
           <Section title="How we use it">
             We use your information only to reply to you, talk about your project and provide our services. We don't sell or
