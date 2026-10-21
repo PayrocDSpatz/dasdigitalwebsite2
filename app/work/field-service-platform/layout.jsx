@@ -2,12 +2,12 @@ export const metadata = {
   title: "Field Service Platform Case Study",
   description:
     "A field service platform for HVAC, plumbing, lawn, pool and pest crews, with dispatch, invoicing, service plans, equipment tracking and owner KPIs. Built by DAS Digital.",
-  alternates: { canonical: "/work/servicepro" },
+  alternates: { canonical: "/work/field-service-platform" },
   openGraph: {
     title: "Field Service Platform Case Study | DAS Digital",
     description:
       "Field service platform for the trades: dispatch, invoicing, service plans and equipment tracking for HVAC, plumbing, lawn, pool and pest crews.",
-    url: "https://dasdigitalai.com/work/servicepro",
+    url: "https://dasdigitalai.com/work/field-service-platform",
     siteName: "DAS Digital",
     type: "article",
   },

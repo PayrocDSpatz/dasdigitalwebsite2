@@ -16,6 +16,11 @@
       "permanent": true
     },
     {
+      "source": "/work/servicepro",
+      "destination": "https://dasdigitalai.com/work/field-service-platform",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!google[0-9a-f]+\\.html$).*)\\.html",
       "destination": "https://dasdigitalai.com/",
       "permanent": true

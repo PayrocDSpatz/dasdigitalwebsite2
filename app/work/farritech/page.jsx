@@ -376,7 +376,7 @@ export default function FarriTechCaseStudy() {
               <div className="text-sm text-white/60 mt-1">Dispatch, invoicing, service plans, and equipment tracking for HVAC, plumbing, lawn, pool, and pest crews.</div>
             </div>
             <a
-              href="/work/servicepro"
+              href="/work/field-service-platform"
               className={`inline-flex shrink-0 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold ${outlineBtn}`}
             >
               View the case study <ArrowRight className="h-4 w-4" />
