@@ -1,4 +1,4 @@
-// The free guide offered at /free-guide. The PDF is a first draft for the owner to approve:
+// The free guide offered at /free-guide. The PDF is the owner-supplied guide (Oct 21 2026):
 // once it's final, swap the file here if the name changes and remove `noindex` on the page.
 export const GUIDE = {
   title: "5 Tasks to Automate in Your Business This Week",
