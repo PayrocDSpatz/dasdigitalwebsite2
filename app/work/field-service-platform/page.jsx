@@ -141,7 +141,7 @@ const outcomes = [
   { before: "Maintenance contracts tracked in spreadsheets", after: "Auto-scheduling service plans", note: "Contracts run themselves — no manual follow-up to book the next visit" },
 ];
 
-export default function ServiceProCaseStudy() {
+export default function FieldServicePlatformCaseStudy() {
   return (
     <div className="min-h-screen bg-[#070910] text-white">
       <Background />

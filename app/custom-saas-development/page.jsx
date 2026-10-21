@@ -47,7 +47,7 @@ export default function Page() {
         intro: "Both were designed around a real trade's workflow and built with AI-assisted development, which is how we move from idea to working software quickly.",
         items: [
           { name: "FarriTech", href: "/work/farritech", desc: "SaaS for professional farriers: QR booking, invoicing, payments, SMS reminders, horse and visit scheduling, route planning, a customer portal and a mobile app." },
-          { name: "Field service platform", href: "/work/servicepro", desc: "field service for HVAC, plumbing, lawn, pool and pest crews: dispatch, invoicing, service plans, equipment tracking and owner KPIs." },
+          { name: "Field service platform", href: "/work/field-service-platform", desc: "field service for HVAC, plumbing, lawn, pool and pest crews: dispatch, invoicing, service plans, equipment tracking and owner KPIs." },
         ],
       }}
       steps={[

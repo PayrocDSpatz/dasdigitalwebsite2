@@ -12,7 +12,7 @@ numbers we can't back up.
 | `/merchant-services-sales-tools` | merchant services sales tools, ISO sales software, payments sales enablement |
 | `/custom-saas-development` | custom SaaS development, vertical SaaS developer, build software for my industry |
 | `/automation-consultant-florida` | automation consultant Florida, AI consultant Florida |
-| `/work/farritech`, `/work/servicepro` | case studies; now with their own titles and descriptions |
+| `/work/farritech`, `/work/field-service-platform` | case studies; now with their own titles and descriptions |
 
 Every page has its own title, description and canonical link, structured data (business, service,
 FAQ, breadcrumb), and a link-preview image. All are in `sitemap.xml` and linked from the footer.
