@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
 
-// "Recent work" cards: client and sample sites as screenshots. Used on the home and website design pages.
+// "Recent work" cards: client and sample sites as screenshots. Used on the home and website design pages,
+// and with its own `items` on other service pages.
 // Clicking a card opens the full page image in a dialog.
 const WEBSITES = [
   {
@@ -21,9 +22,9 @@ const WEBSITES = [
     kind: "Website \u00b7 Sample design",
     desc: "A sample family dental office website. For illustration purposes only.",
     src: "/work/bright-smiles-dental-sample.jpg",
-    width: 763,
-    height: 1024,
-    alt: "Sample dental office home page: the headline \u201cExpert Dental Care for the Whole Family\u201d in navy and blue beside a smiling family, with a Click to Call Now button",
+    width: 1024,
+    height: 1536,
+    alt: "Sample dental office home page: the headline \u201cHealthy Smiles. Brighter Futures.\u201d in navy and blue beside a smiling family, with service cards, new patient specials and a Click to Call Now button",
   },
   {
     title: "Palm Beach Farrier Supply",
@@ -61,7 +62,7 @@ const WEBSITES = [
   },
 ];
 
-export default function RecentWork({ className = "" }) {
+export default function RecentWork({ className = "", title = "Recent work", items = WEBSITES }) {
   const [open, setOpen] = useState(null);
   const dialogRef = useRef(null);
 
@@ -74,9 +75,9 @@ export default function RecentWork({ className = "" }) {
 
   return (
     <div className={`rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8 ${className}`}>
-      <h2 className="font-semibold">Recent work</h2>
-      <ul className="mt-6 grid gap-4 md:grid-cols-2">
-        {WEBSITES.map((w) => (
+      <h2 className="font-semibold">{title}</h2>
+      <ul className={`mt-6 grid gap-4 ${items.length > 1 ? "md:grid-cols-2" : "md:max-w-2xl"}`}>
+        {items.map((w) => (
           <li key={w.title}>
             <button
               type="button"

@@ -5,6 +5,7 @@ import { CASE_STUDIES, INDUSTRY_PAGES, SERVICES, SERVICE_PAGES, SITE_URL } from 
 const UPDATED = {
   "/": "2026-10-22",
   "/website-design": "2026-10-22",
+  "/online-store": "2026-10-22",
   "/ai-receptionist": "2026-10-22",
   "/ai-automation-small-business": "2026-10-22",
   "/technology-consulting": "2026-10-22",

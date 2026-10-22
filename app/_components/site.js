@@ -56,6 +56,7 @@ export const serviceHref = (s) => (s.ready ? s.href : "/#services");
 
 // Pages written for specific searches. Each is linked from the footer and from the other service pages.
 export const SERVICE_PAGES = [
+  { href: "/online-store", label: "Online store setup" },
   { href: "/ai-automation-small-business", label: "AI automation for small business" },
   { href: "/merchant-services-sales-tools", label: "Sales tools for merchant services" },
   { href: "/custom-saas-development", label: "Custom SaaS development" },
