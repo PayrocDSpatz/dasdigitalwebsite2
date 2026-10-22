@@ -138,6 +138,16 @@ export default function RileyDemo() {
               Talk to Riley, a live AI receptionist, right from your browser. Ask a question, ask about hours, or try booking an
               appointment, and hear how your callers would be helped.
             </p>
+            <div className="mt-6 max-w-lg rounded-xl bg-white/10 px-5 py-4 text-sm text-white ring-1 ring-white/20">
+              <p>
+                <span className="font-semibold">This demo is set up for a home service business</span> (HVAC, electrical and
+                plumbing).
+              </p>
+              <p className="mt-2 text-purple-100">
+                We customize your receptionist for any kind of business. It can be as simple as taking down each caller's details,
+                or add features like text message confirmations.
+              </p>
+            </div>
             <ul className="mt-6 space-y-2 text-sm text-purple-100">
               <li>Works on your phone or computer. Your browser will ask to use your microphone.</li>
               <li>Demo calls last up to 3 minutes.</li>
