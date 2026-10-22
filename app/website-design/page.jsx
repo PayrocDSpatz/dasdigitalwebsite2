@@ -22,8 +22,8 @@ export default function Page() {
       serviceName="Small business website design"
       serviceType="Website design"
       showAreas
-      extra={
-        <section className="py-12">
+      afterHero={
+        <section className="pt-12">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <RecentWork />
           </div>
