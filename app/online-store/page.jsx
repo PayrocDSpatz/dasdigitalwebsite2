@@ -15,7 +15,7 @@ export const metadata = {
 
 const PACKAGE_PRICE = "$995";
 const PACKAGE_DISCLAIMER =
-  "One-time setup price. Does not include monthly hosting or store plan fees, domain name fees, card processing fees, or any other recurring fees charged by other companies.";
+  "One-time setup price. Does not include monthly hosting or store plan fees, domain name fees, or any other recurring fees charged by other companies.";
 
 const SAMPLES = [
   {
@@ -33,7 +33,7 @@ const SAMPLES = [
 const PACKAGE = [
   "A store designed to match your brand, built for phones first",
   "Up to 50 products added for you, with photos, prices and descriptions",
-  "Card, Apple Pay and Google Pay checkout",
+  "Integrated card payments and secure checkout, set up by us, with Apple Pay and Google Pay",
   "Shipping, local pickup and sales tax set up",
   "Order alerts by text or email, plus automatic receipts for customers",
   "Set up to be found on Google, with each product on its own page",
@@ -117,7 +117,7 @@ export default function Page() {
         title: "What your online store includes",
         items: [
           { title: "Built for phones first", desc: "Most shoppers buy on a phone. Big photos, simple menus and a checkout that takes a minute." },
-          { title: "Easy checkout", desc: "Customers pay by card, Apple Pay or Google Pay. The money goes straight to your account." },
+          { title: "Secure checkout, built in", desc: "We set up integrated card payments for you, so there's no separate payment company to sign up with. Customers pay by card, Apple Pay or Google Pay." },
           { title: "Shipping or pickup", desc: "Ship anywhere, offer local pickup or delivery, and charge the right sales tax automatically." },
           { title: "Orders on your phone", desc: "Get a text or email for every order. Customers get a receipt and updates without you lifting a finger." },
           { title: "Sell on Google and Facebook", desc: "Your products show up in Google Shopping and your Facebook shop, so people can find them where they already look. Orders all come back to one place." },
@@ -139,11 +139,11 @@ export default function Page() {
       faqs={[
         { q: "What can I sell?", a: "Physical products, gift cards, services you book and pay for ahead of time, or digital downloads. If you're not sure, ask us." },
         { q: "Can you add a store to my current website?", a: "Often, yes. We can add a shop to the site you have or build a new site with the store built in. We'll tell you which makes more sense." },
-        { q: "How do I get paid?", a: "Customers pay by card, Apple Pay or Google Pay, and the money goes to your bank account, usually within a few business days. Standard card processing fees apply." },
+        { q: "How do I get paid?", a: "We set up integrated card payments and a secure checkout for you as part of the package, so you don't need to sign up with a separate payment company. Customers pay by card, Apple Pay or Google Pay, and the money goes to your bank account. We go over your card processing rates with you up front." },
         { q: "Can I sell on Google and Facebook too?", a: "Yes. The package lists your products on Google Shopping and in a Facebook shop, connected to your store, so your products and prices stay the same everywhere and every order comes back to you." },
         { q: "Can I run the store myself after it's set up?", a: "Yes. We show you how to add products, change prices and handle orders. If you'd rather not, we can help with updates too." },
         { q: "Do I own the store?", a: "Yes. You own the store, your products, your customer list and your domain." },
-        { q: "What does it cost?", a: "The Online Store Starter Package is a one-time $995. That does not include monthly hosting or store plan fees, domain name fees, card processing fees or other recurring fees charged by other companies. If you need more than the package covers, like a large product catalog or custom features, we give you a clear price before any work starts." },
+        { q: "What does it cost?", a: "The Online Store Starter Package is a one-time $995. That does not include monthly hosting or store plan fees, domain name fees or other recurring fees charged by other companies. If you need more than the package covers, like a large product catalog or custom features, we give you a clear price before any work starts." },
       ]}
     />
   );

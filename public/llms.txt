@@ -11,7 +11,7 @@
 ## Services
 
 - [Website Design](https://dasdigitalai.com/website-design): fast, phone-friendly small business websites that make it easy to call, book and find the business on Google.
-- [Online Store Setup](https://dasdigitalai.com/online-store): online stores for small businesses with card checkout, shipping or pickup, order alerts, and products listed on Google and Facebook; offered as the Online Store Starter Package for $995.
+- [Online Store Setup](https://dasdigitalai.com/online-store): online stores for small businesses with integrated card payments and secure checkout, shipping or pickup, order alerts, and products listed on Google and Facebook; offered as the Online Store Starter Package for $995.
 - [AI Receptionists](https://dasdigitalai.com/ai-receptionist): answers calls 24/7, takes the caller's details, flags urgent calls and texts the owner right away.
 - [Business Automation](https://dasdigitalai.com/ai-automation-small-business): automatic follow-ups, reminders, lead tracking, texts and payment links.
 - [Technology Consulting](https://dasdigitalai.com/technology-consulting): straight advice on which software, phone and point-of-sale tools to keep, replace or connect.
