@@ -3,7 +3,7 @@ import ServiceLanding from "../_components/ServiceLanding";
 const path = "/merchant-services-sales-tools";
 const title = "Sales and operations tools for merchant services teams";
 const description =
-  "Custom sales tools for merchant services and payments teams: lead generation, quoting and proposals, POS configuration, CRM lead review, route sheets and rep training. Built by a 20-year payments operator.";
+  "Custom sales tools for merchant services teams: lead generation, quoting, POS configuration, CRM lead review, route sheets and rep training.";
 
 export const metadata = {
   title: "Sales Tools for Merchant Services Teams",
@@ -19,7 +19,7 @@ export default function Page() {
       serviceName="Sales and operations tools for merchant services"
       kicker="Payments + merchant services"
       title={title}
-      intro={description}
+      intro="Custom sales tools for merchant services and payments teams: lead generation, quoting and proposals, POS configuration, CRM lead review, route sheets and rep training. Built by a 20-year payments operator."
       problems={{
         title: "Where merchant services teams lose time",
         items: [

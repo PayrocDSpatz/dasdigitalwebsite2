@@ -24,13 +24,14 @@ import Image from "next/image";
 import SiteHeader from "./_components/SiteHeader";
 import SiteFooter from "./_components/SiteFooter";
 import LeadForm from "./_components/LeadForm";
-import { CONTACT, INDUSTRY_PAGES, SERVICES, serviceHref } from "./_components/site";
+import { AreasWeServe } from "./_components/ServiceLanding";
+import { CONTACT, FOUNDED, INDUSTRY_PAGES, LOCATION, SERVICES, serviceHref } from "./_components/site";
 
 const description =
-  "DAS Digital provides practical digital consulting services for small businesses: professional websites, AI receptionists that answer your calls, and automated follow-ups. Based in South Florida. Call or send us a message today.";
+  "DAS Digital provides digital consulting services for small businesses: websites, AI receptionists and automation. Based in West Palm Beach, Florida.";
 
 export const metadata = {
-  title: { absolute: "DAS Digital | AI Receptionists & Digital Consulting Services" },
+  title: { absolute: "DAS Digital | AI Receptionists & Digital Consulting Services, South Florida" },
   description,
   alternates: { canonical: "/" },
   openGraph: {
@@ -109,9 +110,47 @@ const btnPrimary =
 const btnSecondary =
   "inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 hover:border-slate-400 hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600";
 
+const FACTS = [
+  { label: "What we do", value: "Website design, AI receptionists, business automation and technology consulting for small businesses." },
+  { label: "Where we are", value: `${LOCATION.city}, Florida. We serve Palm Beach, Broward and Miami-Dade counties.` },
+  { label: "Since", value: `${FOUNDED}, as DAS Consulting Services. Now DAS Digital.` },
+  { label: "Founder", value: "David Spatz" },
+  { label: "Contact", value: `${CONTACT.phoneDisplay} · ${CONTACT.email}` },
+];
+
+const FAQS = [
+  {
+    q: "What does DAS Digital do?",
+    a: "We help small businesses with four things: websites that bring in customers, AI receptionists that answer every call, automation for follow-ups, reminders and invoices, and straight advice on which technology to use.",
+  },
+  {
+    q: "Where is DAS Digital located?",
+    a: "We're based in West Palm Beach, Florida, and work with businesses in Palm Beach, Broward and Miami-Dade counties.",
+  },
+  {
+    q: "What is an AI receptionist?",
+    a: "It answers your business phone when you can't, takes the caller's name, number and what they need, flags urgent calls and texts you the details right away. It can answer in English or Spanish.",
+  },
+  {
+    q: "What does it cost?",
+    a: "It depends on what you need. After a short conversation we give you a clear price before any work starts.",
+  },
+  {
+    q: "Is DAS Digital the same company as DAS Consulting Services?",
+    a: `Yes. David Spatz started DAS Consulting Services in ${FOUNDED}. It's now DAS Digital.`,
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+
 export default function Page() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <SiteHeader />
 
       <main id="main">
@@ -119,12 +158,12 @@ export default function Page() {
         <section className="border-b border-slate-100 bg-gradient-to-b from-purple-50/70 to-white">
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <p className="text-sm font-semibold text-purple-700">Digital consulting services for small businesses</p>
-              <h1 className="mt-4 text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">
-                Smarter Technology. Simpler Business.
+              <p className="text-sm font-semibold text-purple-700">Smarter Technology. Simpler Business.</p>
+              <h1 className="mt-4 text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                Websites, AI receptionists and automation for South Florida businesses
               </h1>
               <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-slate-600">
-                Websites, AI receptionists and automation that help your business run smoother.
+                Digital consulting services for small businesses. We set up the technology that helps your business run smoother, and explain it in plain English.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a href="#lead" className={btnPrimary}>
@@ -134,7 +173,7 @@ export default function Page() {
                   <PhoneCall className="h-4 w-4" aria-hidden="true" /> Call {CONTACT.phoneDisplay}
                 </a>
               </div>
-              <p className="mt-4 text-sm text-slate-500">Based in South Florida. Working with businesses across the US.</p>
+              <p className="mt-4 text-sm text-slate-500">{LOCATION.summary}</p>
             </div>
 
             <HeroIllustration />
@@ -178,9 +217,14 @@ export default function Page() {
               <p className="mt-4 max-w-lg text-lg text-slate-600">
                 When you can't pick up, your AI receptionist answers, takes down the details and texts you right away.
               </p>
-              <a href="#lead" className={`${btnPrimary} mt-8`}>
-                Let's Talk <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a href="#lead" className={btnPrimary}>
+                  Let's Talk <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+                <a href="/ai-receptionist" className="inline-flex items-center gap-1.5 px-2 text-sm font-semibold text-purple-700 hover:text-purple-900">
+                  See how it works <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+              </div>
             </div>
             <PhoneTextMock />
           </div>
@@ -298,6 +342,11 @@ export default function Page() {
                     </a>
                   </li>
                 ))}
+                <li>
+                  <a href="/automation" className="inline-block rounded-full px-4 py-2 text-sm font-semibold text-purple-200 hover:text-white">
+                    All trades <ArrowRight className="inline h-4 w-4" aria-hidden="true" />
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -310,7 +359,7 @@ export default function Page() {
               Keep it simple. Keep it honest. Keep it working.
             </p>
             <div className="mt-12 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
-              <h3 className="font-semibold">Recent work</h3>
+              <h2 className="font-semibold">Recent work</h2>
               
               <ul className="mt-6 grid gap-4 md:grid-cols-2">
                 {WEBSITES.map((w) => (
@@ -340,6 +389,39 @@ export default function Page() {
                   </figure>
                 </li>
               </ul>
+            </div>
+          </div>
+        </section>
+
+        <AreasWeServe />
+
+        {/* About DAS Digital: plain facts and common questions, written so search engines and AI tools can quote them */}
+        <section id="faq" className="scroll-mt-20 py-20">
+          <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <p className="text-sm font-semibold text-purple-700">About DAS Digital</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">The short version</h2>
+              <dl className="mt-8 space-y-4 text-sm">
+                {FACTS.map((f) => (
+                  <div key={f.label} className="border-l-2 border-purple-700 pl-4">
+                    <dt className="font-semibold text-slate-900">{f.label}</dt>
+                    <dd className="mt-0.5 text-slate-600">{f.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold tracking-tight">Common questions</h3>
+              <dl className="mt-6 divide-y divide-slate-200">
+                {FAQS.map((f) => (
+                  <div key={f.q} className="py-5">
+                    <dt className="flex gap-2 text-lg font-semibold">
+                      <Check className="mt-1 h-5 w-5 shrink-0 text-purple-700" aria-hidden="true" /> {f.q}
+                    </dt>
+                    <dd className="mt-2 pl-7 leading-relaxed text-slate-600">{f.a}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
           </div>
         </section>

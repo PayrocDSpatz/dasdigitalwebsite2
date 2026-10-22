@@ -2,9 +2,10 @@ import { ArrowRight, Check, PhoneCall } from "lucide-react";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
 import LeadForm from "./LeadForm";
-import { CONTACT, INDUSTRY_PAGES, SITE_URL } from "./site";
+import { AREA_SERVED, CONTACT, INDUSTRY_PAGES, LOCATION, PROVIDER, SITE_URL, breadcrumbs } from "./site";
+import { AreasWeServe } from "./ServiceLanding";
 
-// One page per trade ("automation for HVAC companies", …), in the light site design.
+// One page per trade ("automation for HVAC companies", …) or core service, in the light site design.
 // Rendered on the server so search engines get the full text, the page's own
 // metadata, and its structured data (Service, FAQPage, BreadcrumbList).
 
@@ -13,13 +14,13 @@ const btnPrimary =
 const btnSecondary =
   "inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 hover:border-slate-400 hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600";
 
-const STEPS = [
+const DEFAULT_STEPS = [
   { title: "We talk", desc: "You tell us where the time goes and which calls and follow-ups slip. We look at the tools you already use." },
   { title: "We set it up", desc: "We build the automations and the AI receptionist, connect them to your tools and test them with you before they go live." },
   { title: "We stay in touch", desc: "If something needs changing later, you call us. You own everything we set up." },
 ];
 
-export default function IndustryLanding({ path, kicker, title, intro, serviceName, serviceType = "Business automation", problems, jobs, example, faqs }) {
+export default function IndustryLanding({ path, kicker, title, intro, serviceName, serviceType = "Business automation", problems, jobs, example, faqs, steps = DEFAULT_STEPS, parent, showAreas = false, extra = null }) {
   const url = `${SITE_URL}${path}`;
   const jsonLd = [
     {
@@ -29,22 +30,15 @@ export default function IndustryLanding({ path, kicker, title, intro, serviceNam
       serviceType,
       url,
       description: intro,
-      areaServed: ["South Florida", "Florida", "United States"],
-      provider: { "@type": "Organization", name: "DAS Digital", url: SITE_URL, email: CONTACT.email, telephone: CONTACT.phone },
+      areaServed: AREA_SERVED,
+      provider: PROVIDER,
     },
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "DAS Digital", item: SITE_URL },
-        { "@type": "ListItem", position: 2, name: kicker, item: url },
-      ],
-    },
+    breadcrumbs([...(parent ? [parent] : []), { name: kicker, href: path }]),
   ];
   const others = INDUSTRY_PAGES.filter((p) => p.href !== path);
 
@@ -68,6 +62,7 @@ export default function IndustryLanding({ path, kicker, title, intro, serviceNam
                 <PhoneCall className="h-4 w-4" aria-hidden="true" /> Call {CONTACT.phoneDisplay}
               </a>
             </div>
+            <p className="mt-4 text-sm text-slate-500">{LOCATION.summary}</p>
           </div>
         </section>
 
@@ -128,6 +123,9 @@ export default function IndustryLanding({ path, kicker, title, intro, serviceNam
           </div>
         </section>
 
+        {extra}
+        {showAreas ? <AreasWeServe /> : null}
+
         {/* How it works */}
         <section className="border-t border-slate-100 py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -136,7 +134,7 @@ export default function IndustryLanding({ path, kicker, title, intro, serviceNam
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Three simple steps</h2>
             </div>
             <ol className="mt-12 grid gap-6 md:grid-cols-3">
-              {STEPS.map((s, i) => (
+              {steps.map((s, i) => (
                 <li key={s.title} className="border-t-2 border-purple-700 pt-5">
                   <span className="text-sm font-semibold text-purple-700">Step {i + 1}</span>
                   <h3 className="mt-1 text-lg font-semibold">{s.title}</h3>

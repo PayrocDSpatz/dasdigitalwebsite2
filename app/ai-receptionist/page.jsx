@@ -2,7 +2,7 @@ import IndustryLanding from "../_components/IndustryLanding";
 
 const path = "/ai-receptionist";
 const description =
-  "DAS Digital sets up AI receptionists for small businesses: answer every call 24/7, take the caller's details, flag urgent calls and text you right away. For HVAC, plumbers, electricians, roofers, landscapers and shops in South Florida.";
+  "AI receptionists for South Florida small businesses: answer every call 24/7 in English or Spanish, flag urgent calls and text you the details right away.";
 
 export const metadata = {
   title: "AI Receptionist for Small Business",
@@ -20,6 +20,7 @@ export default function Page() {
       intro="When you can't pick up, your AI receptionist answers, takes down the details and texts you right away. Day or night, on the job or with a customer, every caller gets an answer and every lead gets to you."
       serviceName="AI receptionist for small business"
       serviceType="AI receptionist"
+      showAreas
       problems={{
         title: "What a missed call really costs",
         items: [
@@ -53,6 +54,7 @@ export default function Page() {
         { q: "Will callers know it's an AI?", a: "It sounds natural and friendly, and we can set it up to say it's an assistant for your business. Most callers just want to be helped quickly." },
         { q: "Can I still answer calls myself?", a: "Yes. You choose when it picks up: after a few rings, after hours, or all the time." },
         { q: "Do I need a new phone number?", a: "Usually not. We can forward your existing number to the AI receptionist when you don't answer." },
+        { q: "Can it answer calls in Spanish?", a: "Yes. We can set it up to greet callers and take their details in Spanish as well as English." },
         { q: "What does it cost?", a: "It depends on your call volume and what you want it to do. After a short conversation we give you a clear price before any work starts." },
       ]}
     />

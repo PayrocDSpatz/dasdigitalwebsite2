@@ -23,5 +23,5 @@ export function generateMetadata({ params }) {
 export default function Page({ params }) {
   const page = INDUSTRIES[params.slug];
   if (!page) notFound();
-  return <IndustryLanding path={`/automation/${params.slug}`} {...page} />;
+  return <IndustryLanding path={`/automation/${params.slug}`} parent={{ name: "Automation by trade", href: "/automation" }} {...page} />;
 }

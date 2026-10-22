@@ -13,7 +13,7 @@ const COMMON_FAQS = [
   },
   {
     q: "Do you work outside South Florida?",
-    a: "Yes. We're based in South Florida and work with businesses anywhere in the US. Most of the setup is done remotely.",
+    a: "We're based in West Palm Beach and serve Palm Beach, Broward and Miami-Dade counties. Much of the setup is done remotely, so we can also help businesses elsewhere in the US.",
   },
 ];
 
@@ -22,7 +22,7 @@ export const INDUSTRIES = {
     short: "HVAC companies",
     metaTitle: "Automation & AI Receptionist for HVAC Companies",
     description:
-      "DAS Digital sets up automation and AI receptionists for HVAC companies: answer every service call, send maintenance reminders, follow up on estimates and get paid faster. Based in South Florida.",
+      "AI receptionists and automation for HVAC companies in South Florida: answer every service call, send tune-up reminders and follow up on estimates.",
     kicker: "Automation for HVAC companies",
     title: "Answer every AC call, even when you're on a roof",
     intro:
@@ -67,7 +67,7 @@ export const INDUSTRIES = {
     short: "Plumbers",
     metaTitle: "Automation & AI Receptionist for Plumbers",
     description:
-      "DAS Digital sets up automation and AI receptionists for plumbing companies: answer emergency calls 24/7, confirm appointments, follow up on quotes and collect payment on the spot. Based in South Florida.",
+      "AI receptionists and automation for plumbers in South Florida: answer emergency calls 24/7, confirm appointments and follow up on every quote.",
     kicker: "Automation for plumbers",
     title: "Never miss another emergency plumbing call",
     intro:
@@ -112,7 +112,7 @@ export const INDUSTRIES = {
     short: "Electricians",
     metaTitle: "Automation & AI Receptionist for Electricians",
     description:
-      "DAS Digital sets up automation and AI receptionists for electricians: answer every call, sort service calls from project inquiries, follow up on quotes and get paid faster. Based in South Florida.",
+      "AI receptionists and automation for electricians in South Florida: answer every call, sort service calls from project quotes and get paid faster.",
     kicker: "Automation for electricians",
     title: "Answer every call without putting down the tools",
     intro:
@@ -157,7 +157,7 @@ export const INDUSTRIES = {
     short: "Roofers",
     metaTitle: "Automation & AI Receptionist for Roofing Companies",
     description:
-      "DAS Digital sets up automation and AI receptionists for roofing companies: answer every call after a storm, book inspections, follow up on estimates and keep customers updated. Based in South Florida.",
+      "AI receptionists and automation for roofers in South Florida: answer every call after a storm, book inspections and follow up on estimates.",
     kicker: "Automation for roofing companies",
     title: "Catch every roofing lead, especially after a storm",
     intro:
@@ -202,7 +202,7 @@ export const INDUSTRIES = {
     short: "Landscapers",
     metaTitle: "Automation & AI Receptionist for Landscapers & Lawn Care",
     description:
-      "DAS Digital sets up automation and AI receptionists for landscaping and lawn care companies: answer every call, send service reminders, collect payments automatically and win more estimates. Based in South Florida.",
+      "AI receptionists and automation for landscapers in South Florida: answer every call, send service reminders and collect payments automatically.",
     kicker: "Automation for landscapers and lawn care",
     title: "Spend your day on lawns, not on the phone",
     intro:
@@ -247,7 +247,7 @@ export const INDUSTRIES = {
     short: "Boutiques",
     metaTitle: "Automation & AI Receptionist for Boutiques & Retail Shops",
     description:
-      "DAS Digital sets up automation and AI receptionists for boutiques and retail shops: answer customer calls, text new arrivals, bring back regular customers and collect more reviews. Based in South Florida.",
+      "AI receptionists and automation for South Florida boutiques: answer customer calls, text new arrivals and bring regular customers back.",
     kicker: "Automation for boutiques and retail shops",
     title: "Keep customers coming back without spending hours on it",
     intro:

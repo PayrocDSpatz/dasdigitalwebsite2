@@ -1,16 +1,19 @@
-import { ArrowRight, Check } from "lucide-react";
-import { CASE_STUDIES, CONTACT, SERVICE_PAGES, SITE_URL } from "./site";
+import { ArrowRight, Check, MapPin, PhoneCall } from "lucide-react";
+import SiteHeader from "./SiteHeader";
+import SiteFooter from "./SiteFooter";
+import LeadForm from "./LeadForm";
+import { AREA_SERVED, CONTACT, LOCATION, PROVIDER, SITE_URL, breadcrumbs } from "./site";
 
-// One page written for a specific search ("AI automation for small business", …).
+// One page written for a specific search ("automation consultant Florida", …), in the light site design.
 // Rendered on the server so search engines get the full text, the page's own
 // metadata, and its structured data (Service, FAQPage, BreadcrumbList).
 
-const glowCard =
-  "shadow-[0_0_0_1px_rgba(168,85,247,0.25),0_20px_40px_-25px_rgba(168,85,247,0.45)]";
-const purpleBtn =
-  "bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-lg shadow-purple-500/30 hover:from-purple-500 hover:to-fuchsia-500";
+const btnPrimary =
+  "inline-flex items-center justify-center gap-2 rounded-lg bg-purple-700 px-6 py-3 text-sm font-semibold text-white hover:bg-purple-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600";
+const btnSecondary =
+  "inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 hover:border-slate-400 hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600";
 
-export default function ServiceLanding({ path, kicker, title, intro, problems, offers, proof, steps, faqs, serviceName, areaServed = "United States" }) {
+export default function ServiceLanding({ path, kicker, title, intro, problems, offers, proof, steps, faqs, serviceName, showAreas = false }) {
   const url = `${SITE_URL}${path}`;
   const jsonLd = [
     {
@@ -20,158 +23,183 @@ export default function ServiceLanding({ path, kicker, title, intro, problems, o
       serviceType: serviceName,
       url,
       description: intro,
-      areaServed,
-      provider: { "@type": "Organization", name: "DAS Digital", url: SITE_URL, email: CONTACT.email, telephone: CONTACT.phone },
+      areaServed: AREA_SERVED,
+      provider: PROVIDER,
     },
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "DAS Digital", item: SITE_URL },
-        { "@type": "ListItem", position: 2, name: title, item: url },
-      ],
-    },
+    breadcrumbs([{ name: title, href: path }]),
   ];
 
   return (
-    <div className="min-h-screen bg-[#070910] bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.22),transparent_60%)] text-white">
+    <div className="min-h-screen bg-white text-slate-900">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <SiteHeader />
 
-      <header className="border-b border-white/10 bg-[#070910]/70 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-          <a href="/" className="font-semibold">DAS Digital</a>
-          <a href="/#lead" className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${purpleBtn}`}>
-            Get a free automation plan <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-      </header>
-
-      <main id="main" className="mx-auto max-w-6xl px-4 sm:px-6">
-        <section className="py-14 sm:py-20">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-purple-300">{kicker}</div>
-          <h1 className="mt-3 max-w-4xl text-balance text-3xl font-semibold tracking-tight sm:text-5xl">{title}</h1>
-          <p className="mt-5 max-w-3xl text-pretty text-base leading-relaxed text-white/70 sm:text-lg">{intro}</p>
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-            <a href="/#lead" className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 text-sm font-semibold ${purpleBtn}`}>
-              Get my free automation plan <ArrowRight className="h-4 w-4" />
-            </a>
-            <a href={`tel:${CONTACT.phone}`} className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold hover:bg-white/[0.08]">
-              Call {CONTACT.phoneDisplay}
-            </a>
+      <main id="main">
+        {/* Hero */}
+        <section className="border-b border-slate-100 bg-gradient-to-b from-purple-50/70 to-white">
+          <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
+            <p className="text-sm font-semibold text-purple-700">{kicker}</p>
+            <h1 className="mt-4 text-balance text-4xl font-bold tracking-tight sm:text-5xl">{title}</h1>
+            <p className="mt-6 text-pretty text-lg leading-relaxed text-slate-600">{intro}</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="#lead" className={btnPrimary}>
+                Let's Talk <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+              <a href={`tel:${CONTACT.phone}`} className={btnSecondary}>
+                <PhoneCall className="h-4 w-4" aria-hidden="true" /> Call {CONTACT.phoneDisplay}
+              </a>
+            </div>
+            <p className="mt-4 text-sm text-slate-500">{LOCATION.summary}</p>
           </div>
         </section>
 
-        <section className="py-10">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{problems.title}</h2>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {problems.items.map((t) => (
-              <li key={t} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/80">
-                <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-fuchsia-400" />
-                {t}
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="py-10">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{offers.title}</h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {offers.items.map((o) => (
-              <div key={o.title} className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-6 ${glowCard}`}>
-                <h3 className="text-lg font-semibold">{o.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/70">{o.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="py-10">
-          <div className={`rounded-[2rem] border-2 border-purple-500 bg-gradient-to-b from-white/10 to-white/5 p-6 sm:p-10 ${glowCard}`}>
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{proof.title}</h2>
-            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-white/70 sm:text-base">{proof.intro}</p>
-            <ul className="mt-6 space-y-3">
-              {proof.items.map((p) => (
-                <li key={p.name} className="flex items-start gap-3 text-sm text-white/80">
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-white text-black"><Check className="h-3 w-3" /></span>
-                  <span>
-                    {p.href ? <a href={p.href} className="font-semibold text-purple-300 underline-offset-2 hover:underline">{p.name}</a> : <span className="font-semibold text-white">{p.name}</span>}
-                    {": "}{p.desc}
-                  </span>
+        {/* Problems */}
+        <section className="py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold text-purple-700">Sound familiar?</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{problems.title}</h2>
+            </div>
+            <ul className="mt-10 grid gap-3 sm:grid-cols-2">
+              {problems.items.map((t) => (
+                <li key={t} className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4 text-slate-700">
+                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-purple-600" aria-hidden="true" />
+                  {t}
                 </li>
               ))}
             </ul>
           </div>
         </section>
 
-        <section className="py-10">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">How it works</h2>
-          <ol className="mt-6 grid gap-6 lg:grid-cols-3">
-            {steps.map((s, i) => (
-              <li key={s.title} className={`rounded-3xl border-2 border-purple-500 bg-white/5 p-6 ${glowCard}`}>
-                <div className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-r from-purple-600 to-fuchsia-600 font-semibold">{i + 1}</div>
-                <h3 className="mt-4 text-lg font-semibold">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/70">{s.desc}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="py-10">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Questions</h2>
-          <div className="mt-6 space-y-3">
-            {faqs.map((f) => (
-              <details key={f.q} className="group rounded-3xl border border-white/10 bg-white/5 p-5">
-                <summary className="cursor-pointer list-none text-base font-semibold">{f.q}</summary>
-                <p className="mt-3 text-sm leading-relaxed text-white/70">{f.a}</p>
-              </details>
-            ))}
+        {/* Offers */}
+        <section className="bg-slate-50 py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold text-purple-700">What we do</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{offers.title}</h2>
+            </div>
+            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {offers.items.map((o) => (
+                <div key={o.title} className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
+                  <h3 className="text-xl font-semibold">{o.title}</h3>
+                  <p className="mt-2 leading-relaxed text-slate-600">{o.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="py-14 text-center">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Get a free automation plan</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-white/70 sm:text-base">
-            Tell us what slows your team down. You get a prioritized plan in 72 hours, with no long sales call.
-          </p>
-          <a href="/#lead" className={`mt-6 inline-flex items-center gap-2 rounded-2xl px-6 py-3 text-sm font-semibold ${purpleBtn}`}>
-            Start here <ArrowRight className="h-4 w-4" />
-          </a>
+        {/* Proof */}
+        <section className="py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
+              <h2 className="text-3xl font-bold tracking-tight">{proof.title}</h2>
+              <p className="mt-3 max-w-3xl leading-relaxed text-slate-600">{proof.intro}</p>
+              <ul className="mt-6 space-y-3">
+                {proof.items.map((p) => (
+                  <li key={p.name} className="flex items-start gap-3 text-slate-700">
+                    <Check className="mt-1 h-5 w-5 shrink-0 text-purple-700" aria-hidden="true" />
+                    <span>
+                      {p.href ? <a href={p.href} className="font-semibold text-purple-700 underline-offset-2 hover:underline">{p.name}</a> : <span className="font-semibold text-slate-900">{p.name}</span>}
+                      {": "}{p.desc}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {showAreas ? <AreasWeServe /> : null}
+
+        {/* How it works */}
+        <section className="border-t border-slate-100 py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold text-purple-700">How it works</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Three simple steps</h2>
+            </div>
+            <ol className="mt-12 grid gap-6 md:grid-cols-3">
+              {steps.map((s, i) => (
+                <li key={s.title} className="border-t-2 border-purple-700 pt-5">
+                  <span className="text-sm font-semibold text-purple-700">Step {i + 1}</span>
+                  <h3 className="mt-1 text-lg font-semibold">{s.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{s.desc}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="border-t border-slate-100 py-20">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Common questions</h2>
+            <dl className="mt-10 divide-y divide-slate-200">
+              {faqs.map((f) => (
+                <div key={f.q} className="py-6">
+                  <dt className="flex gap-2 text-lg font-semibold">
+                    <Check className="mt-1 h-5 w-5 shrink-0 text-purple-700" aria-hidden="true" /> {f.q}
+                  </dt>
+                  <dd className="mt-2 pl-7 leading-relaxed text-slate-600">{f.a}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section id="lead" className="scroll-mt-20 bg-purple-50/60 py-20">
+          <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <p className="text-sm font-semibold text-purple-700">Let's talk</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Tell us what takes up your time</h2>
+              <p className="mt-4 text-slate-600">
+                Share a few details and we'll get back to you to set up a conversation. No obligation and no jargon.
+              </p>
+              <div className="mt-8 space-y-3 text-sm">
+                <p className="text-slate-600">Prefer to talk now?</p>
+                <a href={`tel:${CONTACT.phone}`} className="flex items-center gap-2 text-lg font-semibold text-slate-900 hover:text-purple-700">
+                  <PhoneCall className="h-5 w-5 text-purple-700" aria-hidden="true" /> {CONTACT.phoneDisplay}
+                </a>
+                <a href={`mailto:${CONTACT.email}`} className="block font-medium text-slate-700 hover:text-purple-700">{CONTACT.email}</a>
+              </div>
+            </div>
+            <LeadForm />
+          </div>
         </section>
       </main>
 
-      <footer className="border-t border-white/10 bg-black/20">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 text-sm sm:px-6 md:grid-cols-3">
-          <div>
-            <a href="/" className="text-lg font-semibold">DAS Digital</a>
-            <div className="mt-2 text-white/60">Automation • AI • Operations • Dashboards</div>
-            <div className="mt-3 space-y-1 text-white/70">
-              <a href={`mailto:${CONTACT.email}`} className="block hover:text-white">{CONTACT.email}</a>
-              <a href={`tel:${CONTACT.phone}`} className="block hover:text-white">{CONTACT.phoneDisplay}</a>
-            </div>
-          </div>
-          <nav aria-label="Services">
-            <div className="font-semibold">Services</div>
-            <ul className="mt-2 space-y-1 text-white/70">
-              {SERVICE_PAGES.filter((p) => p.href !== path).map((p) => (
-                <li key={p.href}><a href={p.href} className="hover:text-white">{p.label}</a></li>
-              ))}
-            </ul>
-          </nav>
-          <nav aria-label="Work">
-            <div className="font-semibold">Work</div>
-            <ul className="mt-2 space-y-1 text-white/70">
-              {CASE_STUDIES.map((p) => (
-                <li key={p.href}><a href={p.href} className="hover:text-white">{p.label}</a></li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
+  );
+}
+
+// The counties DAS Digital serves in person, from the shared LOCATION facts.
+export function AreasWeServe({ className = "bg-slate-50" }) {
+  return (
+    <section className={`py-16 ${className}`}>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold text-purple-700">Areas we serve</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Local to South Florida</h2>
+          <p className="mt-4 text-slate-600">
+            We're based in {LOCATION.city} and work with businesses across these three counties, in person or by phone.
+          </p>
+        </div>
+        <ul className="mt-8 grid gap-3 sm:grid-cols-3">
+          {LOCATION.counties.map((c) => (
+            <li key={c} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4 font-medium text-slate-800">
+              <MapPin className="h-5 w-5 text-purple-700" aria-hidden="true" /> {c}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
 }

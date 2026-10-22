@@ -3,7 +3,7 @@ import ServiceLanding from "../_components/ServiceLanding";
 const path = "/custom-saas-development";
 const title = "Custom SaaS and vertical software development";
 const description =
-  "DAS Digital designs and builds custom SaaS and vertical software for small industries: scheduling, invoicing, payments, SMS, customer portals and mobile apps. See FarriTech and our field service platform.";
+  "DAS Digital designs and builds custom SaaS and vertical software for small industries: scheduling, invoicing, payments, text reminders and customer portals.";
 
 export const metadata = {
   title: "Custom SaaS & Vertical Software Development",
@@ -19,7 +19,7 @@ export default function Page() {
       serviceName="Custom SaaS development"
       kicker="Vertical SaaS"
       title={title}
-      intro={description}
+      intro="DAS Digital designs and builds custom SaaS and vertical software for small industries: scheduling, invoicing, payments, text reminders, customer portals and mobile apps. See FarriTech and our field service platform."
       problems={{
         title: "When off-the-shelf software doesn't fit",
         items: [
@@ -35,8 +35,8 @@ export default function Page() {
         title: "What we build",
         items: [
           { title: "Scheduling and booking", desc: "Online and QR-code booking, calendar sync, recurring visits and reminders." },
-          { title: "Invoicing and payments", desc: "Digital invoices, card payments through Stripe and other processors, refunds and payment links." },
-          { title: "SMS and email", desc: "Reminders, confirmations and receipts through Twilio and email providers." },
+          { title: "Invoicing and payments", desc: "Digital invoices, card payments, refunds and payment links." },
+          { title: "SMS and email", desc: "Reminders, confirmations and receipts sent by text and email." },
           { title: "Customer portals", desc: "Passwordless portals where customers see their history and pay their invoices." },
           { title: "Mobile-first apps", desc: "Installable web apps built for small screens, gloves and bad signal." },
           { title: "Reporting", desc: "The numbers an owner actually runs the business on: revenue, overdue invoices, retention." },
@@ -57,7 +57,7 @@ export default function Page() {
       ]}
       faqs={[
         { q: "How long does a first version take?", a: "It depends on scope. Smaller tools are usually 2 to 8 weeks. A full platform is built in stages, with something working you can show customers early." },
-        { q: "Do you take payments inside the software?", a: "Yes. FarriTech takes card payments through Stripe, with pay links, refunds and a customer portal." },
+        { q: "Do you take payments inside the software?", a: "Yes. FarriTech takes card payments, with pay links, refunds and a customer portal." },
         { q: "Who owns the code?", a: "You do. We hand over the code, the accounts and the documentation." },
         { q: "Can you build for an industry you haven't worked in?", a: "Yes. We learn the workflow first, the same way FarriTech started with how farriers schedule, invoice and get paid." },
       ]}

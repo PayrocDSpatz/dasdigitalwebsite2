@@ -1,20 +1,43 @@
+import { PROVIDER, SITE_URL, breadcrumbs } from "../../_components/site";
+
+const path = "/work/farritech";
+const description =
+  "FarriTech case study: booking, invoicing, card payments, text reminders and a phone app for professional farriers, designed and built by DAS Digital.";
+
 export const metadata = {
   title: "FarriTech Case Study",
-  description:
-    "How DAS Digital built FarriTech — a full-stack SaaS platform for professional farriers with QR booking, Stripe payments, Twilio SMS, and a mobile PWA. Shipped with AI-assisted development.",
-  alternates: { canonical: "/work/farritech" },
+  description,
+  alternates: { canonical: path },
   openGraph: {
-    title: "FarriTech Case Study",
-    description:
-      "Full-stack SaaS built for farriers: QR booking, Stripe payments, Twilio SMS, Firebase, and a barn-ready mobile PWA — shipped with AI-assisted development.",
-    url: "https://dasdigitalai.com/work/farritech",
+    title: "FarriTech Case Study | DAS Digital",
+    description,
+    url: path,
     siteName: "DAS Digital",
     type: "article",
   },
 };
 
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: "FarriTech case study",
+    url: `${SITE_URL}${path}`,
+    description,
+    about: { "@type": "SoftwareApplication", name: "FarriTech", applicationCategory: "BusinessApplication", url: "https://www.farritech.com" },
+    creator: PROVIDER,
+    publisher: PROVIDER,
+  },
+  breadcrumbs([{ name: "FarriTech case study", href: path }]),
+];
+
 // Next.js only reads metadata from a page or layout, and the page is a client
-// component, so this layout carries it.
+// component, so this layout carries it and the structured data.
 export default function Layout({ children }) {
-  return children;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {children}
+    </>
+  );
 }

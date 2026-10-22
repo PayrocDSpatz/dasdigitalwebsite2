@@ -3,11 +3,11 @@ import Image from "next/image";
 import SiteHeader from "../_components/SiteHeader";
 import SiteFooter from "../_components/SiteFooter";
 import LeadForm from "../_components/LeadForm";
-import { CONTACT, SITE_URL } from "../_components/site";
+import { AREA_SERVED, CONTACT, PROVIDER, SITE_URL, breadcrumbs } from "../_components/site";
 
 const path = "/ai-automation-small-business";
 const description =
-  "DAS Digital sets up AI automation for small businesses: automatic follow-ups and reminders, lead tracking, email and text messages, and payment links. Based in South Florida.";
+  "AI automation for small businesses: automatic follow-ups and reminders, lead tracking, texts and payment links. Based in West Palm Beach, Florida.";
 
 export const metadata = {
   title: "AI Automation for Small Business",
@@ -97,22 +97,15 @@ export default function Page() {
       serviceType: "Business automation",
       url,
       description,
-      areaServed: "United States",
-      provider: { "@type": "Organization", name: "DAS Digital", url: SITE_URL, email: CONTACT.email, telephone: CONTACT.phone },
+      areaServed: AREA_SERVED,
+      provider: PROVIDER,
     },
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       mainEntity: FAQS.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "DAS Digital", item: SITE_URL },
-        { "@type": "ListItem", position: 2, name: "Business Automation", item: url },
-      ],
-    },
+    breadcrumbs([{ name: "Business Automation", href: path }]),
   ];
 
   return (
