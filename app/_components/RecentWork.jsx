@@ -8,6 +8,24 @@ import { X } from "lucide-react";
 // Clicking a card opens the full page image in a scrollable dialog.
 const WEBSITES = [
   {
+    title: "Radiant Med Spa",
+    kind: "Website \u00b7 Sample design",
+    desc: "A sample med spa website. For illustration purposes only.",
+    src: "/work/radiant-med-spa-sample.jpg",
+    width: 762,
+    height: 1024,
+    alt: "Sample med spa home page: the headline \u201cNatural Results, Real Confidence\u201d in soft rose and cream beside a portrait of a smiling woman, with a Click to Call Now button",
+  },
+  {
+    title: "Bright Smiles Dental Care",
+    kind: "Website \u00b7 Sample design",
+    desc: "A sample family dental office website. For illustration purposes only.",
+    src: "/work/bright-smiles-dental-sample.jpg",
+    width: 763,
+    height: 1024,
+    alt: "Sample dental office home page: the headline \u201cExpert Dental Care for the Whole Family\u201d in navy and blue beside a smiling family, with a Click to Call Now button",
+  },
+  {
     title: "Palm Beach Farrier Supply",
     desc: "A farrier supply store in Wellington, Florida.",
     src: "/work/palm-beach-farrier-supply.jpg",
@@ -40,24 +58,6 @@ const WEBSITES = [
     width: 1024,
     height: 1536,
     alt: "Sample HVAC company home page: the headline \u201cComfort you can count on\u201d beside a smiling technician and a branded service van, with a red Click to Call Now button",
-  },
-  {
-    title: "Radiant Med Spa",
-    kind: "Website \u00b7 Sample design",
-    desc: "A sample med spa website. For illustration purposes only.",
-    src: "/work/radiant-med-spa-sample.jpg",
-    width: 762,
-    height: 1024,
-    alt: "Sample med spa home page: the headline \u201cNatural Results, Real Confidence\u201d in soft rose and cream beside a portrait of a smiling woman, with a Click to Call Now button",
-  },
-  {
-    title: "Bright Smiles Dental Care",
-    kind: "Website \u00b7 Sample design",
-    desc: "A sample family dental office website. For illustration purposes only.",
-    src: "/work/bright-smiles-dental-sample.jpg",
-    width: 763,
-    height: 1024,
-    alt: "Sample dental office home page: the headline \u201cExpert Dental Care for the Whole Family\u201d in navy and blue beside a smiling family, with a Click to Call Now button",
   },
 ];
 
