@@ -36,7 +36,6 @@ const PACKAGE = [
   "Integrated card payments and secure checkout, set up by us, with Apple Pay and Google Pay",
   "Shipping, local pickup and sales tax set up",
   "Order alerts by text or email, plus automatic receipts for customers",
-  "Set up to be found on Google, with each product on its own page",
   "Your products listed for sale on Google and Facebook",
   "A walkthrough so you can add products and manage orders yourself",
   "30 days of help after launch",
