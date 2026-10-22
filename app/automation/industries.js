@@ -287,4 +287,49 @@ export const INDUSTRIES = {
       ...COMMON_FAQS,
     ],
   },
+  hospitality: {
+    short: "Hospitality",
+    metaTitle: "Automation & AI Receptionist for Restaurants, Hotels & Hospitality",
+    description:
+      "AI receptionists and automation for South Florida restaurants, hotels and event venues: answer every call, confirm reservations and bring guests back.",
+    kicker: "Automation for hospitality businesses",
+    title: "Every guest answered, even on your busiest night",
+    intro:
+      "Restaurants, hotels, vacation rentals and event venues get calls at the worst times: the dinner rush, check-in, late at night. We set up an AI receptionist and simple automations so hospitality businesses answer every call, confirm every booking and turn first-time guests into regulars.",
+    serviceName: "Automation and AI receptionist for hospitality businesses",
+    problems: {
+      title: "Where hospitality businesses lose guests",
+      items: [
+        "The phone rings during the rush and nobody can pick up",
+        "The same questions all day: hours, menu, parking, \"do you have a table for six?\"",
+        "Reservations and bookings that turn into no-shows",
+        "Private event and catering inquiries that wait days for an answer",
+        "Guests who visit once and never hear from you again",
+        "Few online reviews, even after a great visit",
+      ],
+    },
+    jobs: {
+      title: "What we can set up for your hospitality business",
+      items: [
+        { title: "AI receptionist", desc: "Answers every call in English or Spanish, handles hours, menu and directions questions, takes reservation and booking requests, and texts you anything that needs a person." },
+        { title: "Reservation confirmations", desc: "Guests get a confirmation and a reminder text before they arrive, so fewer tables and rooms sit empty." },
+        { title: "Event and catering inquiries", desc: "Every private party, catering or group request is captured with the date, guest count and contact details, and sent to you right away." },
+        { title: "Guest follow-up", desc: "A thank-you message after the visit or stay, with an offer to come back, goes out on its own." },
+        { title: "Review requests", desc: "Happy guests get a text with a link to leave a Google review, so new guests find you first." },
+        { title: "Online ordering and payments", desc: "Take orders, deposits and gift card sales online with a secure checkout." },
+      ],
+    },
+    example: [
+      "A guest calls during the Friday dinner rush to book a table for six on Saturday.",
+      "Your AI receptionist answers, takes their name, number, party size and time.",
+      "You get a text with the request, and the guest gets a confirmation.",
+      "The day before, the guest gets a reminder text.",
+      "After the visit, they get a thank-you message and a review request.",
+    ],
+    faqs: [
+      { q: "Can the AI receptionist take reservations?", a: "Yes. It can take reservation and booking requests and send them to you, or book them directly if your reservation system allows it. We set it up around how you take bookings today." },
+      { q: "Does it work for hotels and vacation rentals too?", a: "Yes. It can answer questions about check-in, parking and amenities, take booking requests and send guests reminders before they arrive." },
+      ...COMMON_FAQS,
+    ],
+  },
 };
