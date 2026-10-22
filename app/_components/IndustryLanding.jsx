@@ -20,7 +20,7 @@ const DEFAULT_STEPS = [
   { title: "We stay in touch", desc: "If something needs changing later, you call us. You own everything we set up." },
 ];
 
-export default function IndustryLanding({ path, kicker, title, intro, serviceName, serviceType = "Business automation", problems, jobs, example, faqs, steps = DEFAULT_STEPS, parent, showAreas = false, extra = null, afterHero = null }) {
+export default function IndustryLanding({ path, kicker, title, intro, serviceName, serviceType = "Business automation", problems, jobs, example, faqs, steps = DEFAULT_STEPS, parent, showAreas = false, extra = null, top = null }) {
   const url = `${SITE_URL}${path}`;
   const jsonLd = [
     {
@@ -48,6 +48,8 @@ export default function IndustryLanding({ path, kicker, title, intro, serviceNam
       <SiteHeader />
 
       <main id="main">
+        {top}
+
         {/* Hero */}
         <section className="border-b border-slate-100 bg-gradient-to-b from-purple-50/70 to-white">
           <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
@@ -65,8 +67,6 @@ export default function IndustryLanding({ path, kicker, title, intro, serviceNam
             <p className="mt-4 text-sm text-slate-500">{LOCATION.summary}</p>
           </div>
         </section>
-
-        {afterHero}
 
         {/* Problems */}
         <section className="py-20">

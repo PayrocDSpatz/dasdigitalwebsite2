@@ -30,7 +30,7 @@ function friendlyError(err) {
   return "We couldn't connect the call. Please try again in a moment.";
 }
 
-export default function RileyDemo() {
+export default function RileyDemo({ className = "py-20" }) {
   // idle → connecting → live → ended, or error
   const [state, setState] = useState("idle");
   const [seconds, setSeconds] = useState(0);
@@ -128,7 +128,7 @@ export default function RileyDemo() {
   const live = state === "live";
 
   return (
-    <section id="try-riley" className="scroll-mt-20 py-20">
+    <section id="try-riley" className={`scroll-mt-20 ${className}`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid items-center gap-10 overflow-hidden rounded-3xl bg-gradient-to-br from-purple-700 via-purple-700 to-fuchsia-700 px-6 py-10 text-white sm:px-10 lg:grid-cols-[1.1fr_0.9fr] lg:py-14">
           <div>
@@ -154,7 +154,7 @@ export default function RileyDemo() {
             </ul>
           </div>
 
-          <div className="rounded-2xl bg-white p-6 text-slate-900 shadow-xl sm:p-8" aria-live="polite">
+          <div className="order-first rounded-2xl bg-white p-6 text-slate-900 shadow-xl sm:p-8 lg:order-last" aria-live="polite">
             <div className="flex flex-col items-center text-center">
               <div className="relative grid h-24 w-24 place-items-center">
                 {live ? <span className="absolute inset-0 animate-ping rounded-full bg-purple-400/40 motion-reduce:animate-none" aria-hidden="true" /> : null}
