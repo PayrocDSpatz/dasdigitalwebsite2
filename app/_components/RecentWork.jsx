@@ -21,9 +21,9 @@ const WEBSITES = [
     kind: "Website \u00b7 Sample design",
     desc: "A sample family dental office website. For illustration purposes only.",
     src: "/work/bright-smiles-dental-sample.jpg",
-    width: 763,
-    height: 1024,
-    alt: "Sample dental office home page: the headline \u201cExpert Dental Care for the Whole Family\u201d in navy and blue beside a smiling family, with a Click to Call Now button",
+    width: 1024,
+    height: 1536,
+    alt: "Sample dental office home page: the headline \u201cHealthy Smiles. Brighter Futures.\u201d in navy and blue beside a smiling family, with service cards, new patient specials and a Click to Call Now button",
   },
   {
     title: "Palm Beach Farrier Supply",
