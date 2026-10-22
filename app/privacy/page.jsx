@@ -6,6 +6,7 @@ export const metadata = {
   title: "Privacy Policy",
   description: "How DAS Digital collects, uses and protects the information you share through this website.",
   alternates: { canonical: "/privacy" },
+  openGraph: { title: "Privacy Policy | DAS Digital", description: "How DAS Digital collects, uses and protects the information you share through this website.", url: "/privacy", type: "website" },
 };
 
 const UPDATED = "October 17, 2026";

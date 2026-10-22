@@ -4,14 +4,13 @@ import SiteFooter from "../_components/SiteFooter";
 import GuideForm from "../_components/GuideForm";
 import { GUIDE } from "../_components/guide";
 
-const description = `Download your free copy of "${GUIDE.title}" from DAS Digital. ${GUIDE.intro}`;
+const description = `Download your free copy of "${GUIDE.title}" from DAS Digital: a short, plain-English guide for business owners.`;
 
 export const metadata = {
   title: `Free Guide: ${GUIDE.title}`,
   description,
   alternates: { canonical: "/free-guide" },
-  // Placeholder guide: keep out of search results until the real guide is in place.
-  robots: { index: false, follow: true },
+  openGraph: { title: `Free Guide: ${GUIDE.title} | DAS Digital`, description, url: "/free-guide", type: "website" },
 };
 
 export default function Page() {

@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
+import SiteHeader from "../../_components/SiteHeader";
+import SiteFooter from "../../_components/SiteFooter";
 import {
   ArrowRight,
   ArrowLeft,
   Check,
   ChevronDown,
   Sparkles,
-  Zap,
   CalendarCheck,
   CreditCard,
   MessageSquare,
@@ -15,8 +16,6 @@ import {
   Smartphone,
   Users,
   Globe,
-  Mail,
-  Phone,
   ExternalLink,
 } from "lucide-react";
 
@@ -149,34 +148,7 @@ export default function FarriTechCaseStudy() {
     <div className="min-h-screen bg-[#070910] text-white">
       <Background />
 
-      {/* Nav */}
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#070910]/70 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-          <a href="/" className="flex items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center rounded-2xl bg-white/5 ring-1 ring-white/10">
-              <Zap className="h-5 w-5" />
-            </div>
-            <div className="leading-tight">
-              <div className="font-semibold">DAS Digital</div>
-              <div className="text-xs text-white/60">Automation • AI • Ops</div>
-            </div>
-          </a>
-
-          <div className="hidden items-center gap-6 text-sm text-white/70 md:flex">
-            <a className="hover:text-white" href="/#what">What we build</a>
-            <a className="hover:text-white" href="/#proof">Proof</a>
-            <a className="hover:text-white" href="/#process">Process</a>
-            <a className="hover:text-white" href="/#faq">FAQ</a>
-          </div>
-
-          <a
-            href="/#lead"
-            className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${purpleBtn}`}
-          >
-            Get My Free Plan <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main id="main">
         {/* Breadcrumb */}
@@ -426,7 +398,7 @@ export default function FarriTechCaseStudy() {
                 href="/#lead"
                 className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold ${purpleBtn}`}
               >
-                Get My Free Automation Plan <ArrowRight className="h-4 w-4" />
+                Let's Talk <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="/"
@@ -439,48 +411,7 @@ export default function FarriTechCaseStudy() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-white/10 bg-[#070910]/80">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-          <div className="grid gap-6 md:grid-cols-2 md:items-center">
-            <div>
-              <div className="text-lg font-semibold">DAS Digital</div>
-              <div className="mt-2 text-sm text-white/70">Automation • AI • Operations • Dashboards</div>
-              <div className="mt-4 flex flex-col gap-3 text-sm text-white/70 sm:flex-row sm:flex-wrap">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2">
-                  <Mail className="h-4 w-4" />
-                  <a
-                    href="mailto:info@dasdigitalai.com?subject=Automation%20Inquiry"
-                    className="text-purple-400 hover:text-purple-300 underline-offset-2 hover:underline break-all"
-                  >
-                    info@dasdigitalai.com
-                  </a>
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2">
-                  <Phone className="h-4 w-4" />
-                  <a
-                    href="tel:19546733041"
-                    className="text-purple-400 hover:text-purple-300 underline-offset-2 hover:underline"
-                  >
-                    (954) 673-3041
-                  </a>
-                </span>
-              </div>
-            </div>
-            <div className="md:text-right">
-              <a
-                href="/#lead"
-                className={`inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold ${purpleBtn}`}
-              >
-                Get My Free Automation Plan <ArrowRight className="h-4 w-4" />
-              </a>
-              <div className="mt-3 text-xs text-white/50">
-                © {new Date().getFullYear()} DAS Digital. All rights reserved.
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

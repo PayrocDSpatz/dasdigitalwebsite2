@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 html { scroll-behavior: smooth; }
+
+/* Headings use the brand font (Montserrat); body text stays Inter. */
+h1, h2, h3 { font-family: var(--font-brand), Arial, sans-serif; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }

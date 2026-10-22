@@ -50,7 +50,8 @@ export default function Page() {
               solutions that make their day easier.
             </p>
             <p>
-              Recently we updated what we offer, and DAS Consulting Services is now DAS Digital.
+              Recently we updated what we offer, and DAS Consulting Services is now DAS Digital. We're based in West Palm Beach
+              and work with businesses in Palm Beach, Broward and Miami-Dade counties.
             </p>
             <p>
               That's what DAS Digital is about: practical technology, explained in plain language, from someone who has been on

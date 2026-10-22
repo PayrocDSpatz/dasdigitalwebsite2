@@ -6,6 +6,7 @@ export const metadata = {
   title: "Accessibility Statement",
   description: "DAS Digital wants everyone to be able to use this website. Here's what we do and how to reach us if something isn't working for you.",
   alternates: { canonical: "/accessibility" },
+  openGraph: { title: "Accessibility Statement | DAS Digital", description: "DAS Digital wants everyone to be able to use this website. Here's what we do and how to reach us if something isn't working for you.", url: "/accessibility", type: "website" },
 };
 
 const UPDATED = "October 17, 2026";
