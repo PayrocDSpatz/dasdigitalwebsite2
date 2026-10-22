@@ -22,7 +22,7 @@ export default function Page() {
       serviceName="AI receptionist for small business"
       serviceType="AI receptionist"
       showAreas
-      afterHero={<RileyDemo />}
+      top={<RileyDemo className="pb-4 pt-8 sm:pt-12" />}
       problems={{
         title: "What a missed call really costs",
         items: [
