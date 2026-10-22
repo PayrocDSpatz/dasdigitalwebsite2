@@ -9,6 +9,12 @@ const WEBSITES = [
     src: "/work/palm-beach-farrier-supply.jpg",
     alt: "Home page of the Palm Beach Farrier Supply website: the headline \u201cEverything for the farrier, just down the road from the show grounds\u201d beside a photo of a farrier leading a horse at sunrise",
   },
+  {
+    title: "Merchant Sales Academy",
+    desc: "A sales training site for merchant services reps.",
+    src: "/work/merchant-sales-academy.jpg",
+    alt: "Home page of the Merchant Sales Academy website: the headline \u201cStop avoiding the call\u201d beside an illustration of a sales rep on a headset",
+  },
 ];
 
 export default function RecentWork({ className = "" }) {
