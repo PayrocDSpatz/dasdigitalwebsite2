@@ -154,7 +154,7 @@ export default function RileyDemo({ className = "py-20" }) {
             </ul>
           </div>
 
-          <div className="rounded-2xl bg-white p-6 text-slate-900 shadow-xl sm:p-8" aria-live="polite">
+          <div className="order-first rounded-2xl bg-white p-6 text-slate-900 shadow-xl sm:p-8 lg:order-last" aria-live="polite">
             <div className="flex flex-col items-center text-center">
               <div className="relative grid h-24 w-24 place-items-center">
                 {live ? <span className="absolute inset-0 animate-ping rounded-full bg-purple-400/40 motion-reduce:animate-none" aria-hidden="true" /> : null}
