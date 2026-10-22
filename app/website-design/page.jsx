@@ -1,4 +1,5 @@
 import IndustryLanding from "../_components/IndustryLanding";
+import RecentWork from "../_components/RecentWork";
 
 const path = "/website-design";
 const description =
@@ -21,6 +22,13 @@ export default function Page() {
       serviceName="Small business website design"
       serviceType="Website design"
       showAreas
+      extra={
+        <section className="py-12">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <RecentWork />
+          </div>
+        </section>
+      }
       problems={{
         title: "Signs your website is costing you customers",
         items: [
