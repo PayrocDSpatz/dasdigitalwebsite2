@@ -4,7 +4,7 @@ import RecentWork from "../_components/RecentWork";
 
 const path = "/online-store";
 const description =
-  "Online store setup for small businesses in Palm Beach, Broward and Miami-Dade: sell your products online, take card payments and manage orders from your phone.";
+  "Online store setup for small businesses in Palm Beach, Broward and Miami-Dade: sell your products online and on Google and Facebook, take card payments and manage orders from your phone.";
 
 export const metadata = {
   title: "Online Store Setup for Small Business in South Florida",
@@ -37,6 +37,7 @@ const PACKAGE = [
   "Shipping, local pickup and sales tax set up",
   "Order alerts by text or email, plus automatic receipts for customers",
   "Set up to be found on Google, with each product on its own page",
+  "Your products listed for sale on Google and Facebook",
   "A walkthrough so you can add products and manage orders yourself",
   "30 days of help after launch",
 ];
@@ -86,7 +87,7 @@ export default function Page() {
       path={path}
       kicker="Online Stores"
       title="Sell your products online"
-      intro="DAS Digital sets up online stores for small businesses in South Florida. Customers can browse and buy from their phone any time, you get paid by card, and every order shows up on your phone right away."
+      intro="DAS Digital sets up online stores for small businesses in South Florida. Customers can find and buy your products any time, on your website, on Google or on Facebook. You get paid by card, and every order shows up on your phone right away."
       serviceName="Online store setup for small business"
       serviceType="E-commerce website design"
       parent={{ name: "Website Design", href: "/website-design" }}
@@ -119,12 +120,12 @@ export default function Page() {
           { title: "Easy checkout", desc: "Customers pay by card, Apple Pay or Google Pay. The money goes straight to your account." },
           { title: "Shipping or pickup", desc: "Ship anywhere, offer local pickup or delivery, and charge the right sales tax automatically." },
           { title: "Orders on your phone", desc: "Get a text or email for every order. Customers get a receipt and updates without you lifting a finger." },
-          { title: "Found on Google", desc: "Each product gets its own page with the details Google and AI search tools look for." },
+          { title: "Sell on Google and Facebook", desc: "Your products show up in Google Shopping and your Facebook shop, so people can find them where they already look. Orders all come back to one place." },
           { title: "Easy to update", desc: "We show you how to add products, change prices and mark items sold out yourself, in plain English." },
         ],
       }}
       example={[
-        "A customer finds your product on Google or your social media page.",
+        "A customer sees your product on Google Shopping or your Facebook shop.",
         "They tap through to your store on their phone and add it to the cart.",
         "They pay by card or Apple Pay in under a minute.",
         "You get a text with the order, and they get a receipt by email.",
@@ -139,6 +140,7 @@ export default function Page() {
         { q: "What can I sell?", a: "Physical products, gift cards, services you book and pay for ahead of time, or digital downloads. If you're not sure, ask us." },
         { q: "Can you add a store to my current website?", a: "Often, yes. We can add a shop to the site you have or build a new site with the store built in. We'll tell you which makes more sense." },
         { q: "How do I get paid?", a: "Customers pay by card, Apple Pay or Google Pay, and the money goes to your bank account, usually within a few business days. Standard card processing fees apply." },
+        { q: "Can I sell on Google and Facebook too?", a: "Yes. The package lists your products on Google Shopping and in a Facebook shop, connected to your store, so your products and prices stay the same everywhere and every order comes back to you." },
         { q: "Can I run the store myself after it's set up?", a: "Yes. We show you how to add products, change prices and handle orders. If you'd rather not, we can help with updates too." },
         { q: "Do I own the store?", a: "Yes. You own the store, your products, your customer list and your domain." },
         { q: "What does it cost?", a: "The Online Store Starter Package is a one-time $995. That does not include monthly hosting or store plan fees, domain name fees, card processing fees or other recurring fees charged by other companies. If you need more than the package covers, like a large product catalog or custom features, we give you a clear price before any work starts." },
