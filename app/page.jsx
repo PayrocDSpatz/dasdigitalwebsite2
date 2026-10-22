@@ -1,5 +1,6 @@
 import {
   ArrowRight,
+  BookOpen,
   Building2,
   CalendarClock,
   Check,
@@ -20,6 +21,7 @@ import SiteFooter from "./_components/SiteFooter";
 import LeadForm from "./_components/LeadForm";
 import { AreasWeServe } from "./_components/ServiceLanding";
 import RecentWork from "./_components/RecentWork";
+import { GUIDE } from "./_components/guide";
 import { CONTACT, FOUNDED, INDUSTRY_PAGES, LOCATION, SERVICES, serviceHref } from "./_components/site";
 
 const description =
@@ -220,6 +222,34 @@ export default function Page() {
               </div>
             </div>
             <PhoneTextMock />
+          </div>
+        </section>
+
+        {/* Free guide */}
+        <section aria-labelledby="free-guide-heading" className="py-16">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="grid items-center gap-8 rounded-2xl bg-purple-700 px-6 py-10 text-white sm:px-10 md:grid-cols-[auto_1fr_auto]">
+              <span className="grid h-16 w-16 place-items-center rounded-2xl bg-white/15">
+                <BookOpen className="h-8 w-8" aria-hidden="true" />
+              </span>
+              <div>
+                <p className="text-sm font-semibold text-purple-100">Free guide</p>
+                <h2 id="free-guide-heading" className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">{GUIDE.title}</h2>
+                <ul className="mt-4 space-y-1.5 text-purple-50">
+                  {GUIDE.points.map((pt) => (
+                    <li key={pt} className="flex items-start gap-2">
+                      <Check className="mt-1 h-4 w-4 shrink-0" aria-hidden="true" /> {pt}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <a
+                href="/free-guide"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-purple-800 hover:bg-purple-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                Get the Free Guide <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
           </div>
         </section>
 
