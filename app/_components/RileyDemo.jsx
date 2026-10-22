@@ -8,6 +8,8 @@ import { Loader2, Mic, MicOff, Phone, PhoneOff, RotateCcw } from "lucide-react";
 // fetched from /api/retell-config when the page loads. The private Retell API key is never used here.
 // Riley's 3-minute limit is set on the agent in Retell.
 const MAX_SECONDS = 180;
+// The same Riley demo agent also answers this phone number.
+const RILEY_PHONE = { display: "(561) 220-9234", tel: "+15612209234" };
 
 const btnPrimary =
   "inline-flex items-center justify-center gap-2 rounded-lg bg-purple-700 px-6 py-3 text-sm font-semibold text-white hover:bg-purple-800 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600";
@@ -210,6 +212,13 @@ export default function RileyDemo() {
                   Get an AI receptionist for your business
                 </a>
               ) : null}
+
+              <p className="mt-4 text-sm text-slate-600">
+                Rather use your phone? Call Riley at{" "}
+                <a href={`tel:${RILEY_PHONE.tel}`} className="whitespace-nowrap font-semibold text-purple-700 hover:text-purple-900">
+                  {RILEY_PHONE.display}
+                </a>
+              </p>
             </div>
           </div>
         </div>
