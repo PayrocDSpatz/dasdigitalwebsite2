@@ -14,7 +14,6 @@ h1, h2, h3 { font-family: var(--font-brand), Arial, sans-serif; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .ticker-track { animation: ticker 40s linear infinite; }
 .ticker:hover .ticker-track, .ticker[data-paused="true"] .ticker-track { animation-play-state: paused; }
-body { padding-bottom: 2.5rem; }
 @media (prefers-reduced-motion: reduce) {
   .ticker-track { animation: none; }
 }
