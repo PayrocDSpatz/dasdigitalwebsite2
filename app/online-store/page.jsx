@@ -32,7 +32,7 @@ const SAMPLES = [
 // What's in the Online Store Starter Package. Keep in sync with what we actually deliver.
 const PACKAGE = [
   "A store designed to match your brand, built for phones first",
-  "Up to 25 products added for you, with photos, prices and descriptions",
+  "Up to 50 products added for you, with photos, prices and descriptions",
   "Card, Apple Pay and Google Pay checkout",
   "Shipping, local pickup and sales tax set up",
   "Order alerts by text or email, plus automatic receipts for customers",
