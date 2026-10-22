@@ -7,7 +7,7 @@ import { CONTACT, LOCATION, breadcrumbs } from "../_components/site";
 // Hub for the trade pages under /automation/<slug>, so the parent URL isn't a 404 and each trade page has a parent.
 const path = "/automation";
 const description =
-  "AI receptionists and automation for South Florida trades and shops: HVAC, plumbers, electricians, roofers, landscapers and boutiques.";
+  "AI receptionists and automation for South Florida trades and shops: HVAC, plumbers, electricians, roofers, landscapers, boutiques and hospitality businesses (restaurants, hotels, event venues).";
 
 export const metadata = {
   title: "Automation by Trade",

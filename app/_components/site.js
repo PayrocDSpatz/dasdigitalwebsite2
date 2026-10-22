@@ -71,6 +71,7 @@ export const INDUSTRY_PAGES = [
   { href: "/automation/roofers", short: "Roofers" },
   { href: "/automation/landscapers", short: "Landscapers" },
   { href: "/automation/boutiques", short: "Boutiques" },
+  { href: "/automation/hospitality", short: "Hospitality" },
 ];
 
 export const CASE_STUDIES = [
