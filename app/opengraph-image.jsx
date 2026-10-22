@@ -1,9 +1,14 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 // The preview image when a DAS Digital link is shared (LinkedIn, Facebook, texts…).
 export const alt = "DAS Digital: Smarter Technology. Simpler Business.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// The full logo (icon, name and tagline as outlines), read at build time so it renders in the brand fonts.
+const LOGO = `data:image/svg+xml;base64,${readFileSync(join(process.cwd(), "public/brand/das-digitalai-logo-horizontal.svg")).toString("base64")}`;
 
 export default function Image() {
   return new ImageResponse(
@@ -17,15 +22,12 @@ export default function Image() {
           justifyContent: "space-between",
           padding: 72,
           background: "#ffffff",
-          borderTop: "16px solid #7e22ce",
+          borderTop: "16px solid #9333ea",
           color: "#0f172a",
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 18, fontSize: 36, fontWeight: 700 }}>
-          <div style={{ width: 56, height: 56, borderRadius: 12, background: "#7e22ce", color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 30, fontWeight: 800 }}>D</div>
-          DAS Digital
-        </div>
+        <img src={LOGO} width={610} height={80} alt="" />
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           <div style={{ fontSize: 72, fontWeight: 700, lineHeight: 1.05, maxWidth: 1000 }}>
             Smarter Technology. Simpler Business.
