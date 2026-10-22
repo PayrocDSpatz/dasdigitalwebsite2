@@ -1,5 +1,6 @@
 import { ArrowRight, Check } from "lucide-react";
 import IndustryLanding from "../_components/IndustryLanding";
+import RecentWork from "../_components/RecentWork";
 
 const path = "/online-store";
 const description =
@@ -11,6 +12,22 @@ export const metadata = {
   alternates: { canonical: path },
   openGraph: { title: "Online Store Setup for Small Business in South Florida | DAS Digital", description, url: path, type: "website" },
 };
+
+const PACKAGE_PRICE = "$995";
+const PACKAGE_DISCLAIMER =
+  "One-time setup price. Does not include monthly hosting or store plan fees, domain name fees, card processing fees, or any other recurring fees charged by other companies.";
+
+const SAMPLES = [
+  {
+    title: "Saddle & Grace",
+    kind: "Online store \u00b7 Sample design",
+    desc: "A sample equestrian clothing and gear store. For illustration purposes only.",
+    src: "/work/saddle-and-grace-store-sample.jpg",
+    width: 1024,
+    height: 1536,
+    alt: "Sample online store home page for an equestrian boutique: the headline \u201cFor a Life in the Saddle and Beyond\u201d beside a rider and her horse, with shop categories and a best sellers row with prices",
+  },
+];
 
 // What's in the Online Store Starter Package. Keep in sync with what we actually deliver.
 const PACKAGE = [
@@ -32,14 +49,21 @@ function StarterPackage() {
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-purple-200">The package</p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Online Store Starter Package</h2>
+            <p className="mt-6 flex items-baseline gap-2">
+              <span className="text-5xl font-bold tracking-tight">{PACKAGE_PRICE}</span>
+              <span className="text-purple-200">package price</span>
+            </p>
             <p className="mt-4 max-w-md text-lg text-purple-100">
-              Everything you need to start selling online, set up for you. One clear price agreed before any work starts, and you own the store.
+              Everything you need to start selling online, set up for you. You own the store.
+            </p>
+            <p className="mt-4 max-w-md text-sm text-purple-200">
+              {PACKAGE_DISCLAIMER}
             </p>
             <a
               href="#lead"
               className="mt-8 inline-flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-purple-800 hover:bg-purple-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              Ask about the package <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              Get started <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </a>
           </div>
           <ul className="grid gap-3 rounded-2xl bg-white p-6 text-slate-800 shadow-xl sm:p-8">
@@ -67,7 +91,16 @@ export default function Page() {
       serviceType="E-commerce website design"
       parent={{ name: "Website Design", href: "/website-design" }}
       showAreas
-      afterHero={<StarterPackage />}
+      afterHero={
+        <>
+          <StarterPackage />
+          <section className="pb-4">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6">
+              <RecentWork title="Sample online store" items={SAMPLES} />
+            </div>
+          </section>
+        </>
+      }
       problems={{
         title: "Signs it's time to sell online",
         items: [
@@ -108,7 +141,7 @@ export default function Page() {
         { q: "How do I get paid?", a: "Customers pay by card, Apple Pay or Google Pay, and the money goes to your bank account, usually within a few business days. Standard card processing fees apply." },
         { q: "Can I run the store myself after it's set up?", a: "Yes. We show you how to add products, change prices and handle orders. If you'd rather not, we can help with updates too." },
         { q: "Do I own the store?", a: "Yes. You own the store, your products, your customer list and your domain." },
-        { q: "What does it cost?", a: "It depends on how many products you have and what the store needs to do. After a short conversation we give you a clear price for the package before any work starts." },
+        { q: "What does it cost?", a: "The Online Store Starter Package is a one-time $995. That does not include monthly hosting or store plan fees, domain name fees, card processing fees or other recurring fees charged by other companies. If you need more than the package covers, like a large product catalog or custom features, we give you a clear price before any work starts." },
       ]}
     />
   );

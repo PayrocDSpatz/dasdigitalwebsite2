@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
 
-// "Recent work" cards: client and sample sites as screenshots. Used on the home and website design pages.
+// "Recent work" cards: client and sample sites as screenshots. Used on the home and website design pages,
+// and with its own `items` on other service pages.
 // Clicking a card opens the full page image in a dialog.
 const WEBSITES = [
   {
@@ -61,7 +62,7 @@ const WEBSITES = [
   },
 ];
 
-export default function RecentWork({ className = "" }) {
+export default function RecentWork({ className = "", title = "Recent work", items = WEBSITES }) {
   const [open, setOpen] = useState(null);
   const dialogRef = useRef(null);
 
@@ -74,9 +75,9 @@ export default function RecentWork({ className = "" }) {
 
   return (
     <div className={`rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8 ${className}`}>
-      <h2 className="font-semibold">Recent work</h2>
-      <ul className="mt-6 grid gap-4 md:grid-cols-2">
-        {WEBSITES.map((w) => (
+      <h2 className="font-semibold">{title}</h2>
+      <ul className={`mt-6 grid gap-4 ${items.length > 1 ? "md:grid-cols-2" : "md:max-w-2xl"}`}>
+        {items.map((w) => (
           <li key={w.title}>
             <button
               type="button"
