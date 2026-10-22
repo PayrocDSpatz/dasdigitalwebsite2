@@ -9,3 +9,12 @@ h1, h2, h3 { font-family: var(--font-brand), Arial, sans-serif; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* Bottom ticker (TickerBar): the list is rendered twice, so sliding it left by half loops seamlessly. */
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ticker-track { animation: ticker 40s linear infinite; }
+.ticker:hover .ticker-track, .ticker[data-paused="true"] .ticker-track { animation-play-state: paused; }
+body { padding-bottom: 2.5rem; }
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+}
