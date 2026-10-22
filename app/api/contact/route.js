@@ -27,6 +27,7 @@ export async function POST(request) {
     return Response.json({ ok: false, error: "missing" }, { status: 400 });
   }
   if (!SERVICES.includes(lead.service)) lead.service = "Not sure yet";
+  lead.tips = body.tips === "yes" ? "Yes" : "";
 
   const saved = await saveToSheet(lead, "Contact form");
   if (saved === "unavailable") return Response.json({ ok: false, error: "unavailable" }, { status: 503 });

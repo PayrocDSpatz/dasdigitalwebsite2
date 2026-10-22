@@ -9,7 +9,7 @@ export const metadata = {
   openGraph: { title: "Privacy Policy | DAS Digital", description: "How DAS Digital collects, uses and protects the information you share through this website.", url: "/privacy", type: "website" },
 };
 
-const UPDATED = "October 17, 2026";
+const UPDATED = "October 22, 2026";
 
 export default function Page() {
   return (
@@ -26,7 +26,8 @@ export default function Page() {
           </Section>
           <Section title="How we use it">
             We use your information only to reply to you, talk about your project and provide our services. We don't sell or
-            rent your information, and we don't add you to a mailing list without asking.
+            rent your information, and we don't add you to a mailing list without asking. If you tick the box for our weekly
+            automation tips, we'll email them to you until you ask us to stop.
           </Section>
           <Section title="Where it's stored">
             Form messages are saved to a private Google Sheet and sent to our email so we can respond. This website is hosted

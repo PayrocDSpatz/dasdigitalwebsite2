@@ -29,7 +29,7 @@ export async function POST(request) {
   }
 
   const saved = await saveToSheet(
-    { ...lead, business: "", service: "Guide download", message: `Downloaded the free guide: ${GUIDE.title}` },
+    { ...lead, business: "", service: "Guide download", message: `Downloaded the free guide: ${GUIDE.title}`, tips: body.tips === "yes" ? "Yes" : "" },
     "Guide form",
   );
   if (saved === "unavailable") return Response.json({ ok: false, error: "unavailable" }, { status: 503 });
