@@ -221,8 +221,8 @@ export default function Page() {
                 <a href="#lead" className={btnPrimary}>
                   Let's Talk <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
-                <a href="/ai-receptionist" className="inline-flex items-center gap-1.5 px-2 text-sm font-semibold text-purple-700 hover:text-purple-900">
-                  See how it works <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                <a href="/ai-receptionist#try-riley" className="inline-flex items-center gap-1.5 px-2 text-sm font-semibold text-purple-700 hover:text-purple-900">
+                  Talk to Riley, our AI receptionist <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>
             </div>

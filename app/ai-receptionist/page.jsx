@@ -1,4 +1,5 @@
 import IndustryLanding from "../_components/IndustryLanding";
+import RileyDemo from "../_components/RileyDemo";
 
 const path = "/ai-receptionist";
 const description =
@@ -21,6 +22,7 @@ export default function Page() {
       serviceName="AI receptionist for small business"
       serviceType="AI receptionist"
       showAreas
+      afterHero={<RileyDemo />}
       problems={{
         title: "What a missed call really costs",
         items: [
