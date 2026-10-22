@@ -15,6 +15,13 @@ const WEBSITES = [
     src: "/work/merchant-sales-academy.jpg",
     alt: "Home page of the Merchant Sales Academy website: the headline \u201cStop avoiding the call\u201d beside an illustration of a sales rep on a headset",
   },
+  {
+    title: "FarriTech",
+    kind: "Landing page",
+    desc: "A landing page for an all-in-one farrier scheduling and invoicing app.",
+    src: "/work/farritech-landing-page.jpg",
+    alt: "FarriTech landing page: the headline \u201cFarrier Software That Helps You Run Your Business Like a Pro\u201d on a dark blue background with Get Started Free and See How It Works buttons",
+  },
 ];
 
 export default function RecentWork({ className = "" }) {
@@ -29,7 +36,7 @@ export default function RecentWork({ className = "" }) {
                 <Image src={w.src} alt={w.alt} fill sizes="(min-width: 768px) 536px, 100vw" className="object-cover object-left-top" />
               </div>
               <figcaption className="p-5">
-                <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">Website</span>
+                <span className="text-xs font-semibold uppercase tracking-wide text-purple-700">{w.kind || "Website"}</span>
                 <span className="mt-1 block font-semibold text-slate-900">{w.title}</span>
                 <span className="mt-1 block text-sm text-slate-600">{w.desc}</span>
               </figcaption>
