@@ -4,10 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { Loader2, Mic, MicOff, Phone, PhoneOff, RotateCcw } from "lucide-react";
 
 // Live "Talk to Riley" demo: a browser voice call with the DAS Digital AI receptionist through Retell.
-// Uses a Retell public key (safe in the browser, limited to our domains in the Retell dashboard).
-// The private Retell API key is never used here. Riley's 3-minute limit is set on the agent in Retell.
-const PUBLIC_KEY = process.env.NEXT_PUBLIC_RETELL_PUBLIC_KEY;
-const AGENT_ID = process.env.NEXT_PUBLIC_RETELL_AGENT_ID || "agent_af7f0cbcafb66bb97e196fd8db";
+// Uses a Retell public key (safe in the browser, limited to our domains in the Retell dashboard),
+// fetched from /api/retell-config when the page loads. The private Retell API key is never used here.
+// Riley's 3-minute limit is set on the agent in Retell.
 const MAX_SECONDS = 180;
 
 const btnPrimary =
@@ -37,6 +36,18 @@ export default function RileyDemo() {
   const [error, setError] = useState("");
   const callRef = useRef(null);
   const cancelledRef = useRef(false);
+  // null while loading, then { publicKey, agentId }
+  const [config, setConfig] = useState(null);
+  const publicKey = config?.publicKey;
+
+  useEffect(() => {
+    let active = true;
+    fetch("/api/retell-config", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : { publicKey: null }))
+      .catch(() => ({ publicKey: null }))
+      .then((c) => active && setConfig(c));
+    return () => { active = false; };
+  }, []);
 
   // Count the call time while live.
   useEffect(() => {
@@ -49,7 +60,7 @@ export default function RileyDemo() {
   useEffect(() => () => { callRef.current?.end().catch(() => {}); }, []);
 
   async function start() {
-    if (!PUBLIC_KEY || state === "connecting" || state === "live") return;
+    if (!publicKey || state === "connecting" || state === "live") return;
     setError("");
     setSeconds(0);
     setMuted(false);
@@ -59,10 +70,10 @@ export default function RileyDemo() {
       // Load the SDK only when someone starts a call, so it doesn't slow down the page.
       const { RetellClient } = await import("retell-client-js-sdk");
       if (cancelledRef.current) return; // Hung up while loading.
-      const client = new RetellClient({ key: PUBLIC_KEY });
+      const client = new RetellClient({ key: publicKey });
       let failed = false;
       const call = client.createWebCall({
-        agent_id: AGENT_ID,
+        agent_id: config.agentId,
         hooks: {
           onStatus: (status) => {
             if (status === "live") setState("live");
@@ -148,8 +159,9 @@ export default function RileyDemo() {
               <div className="text-sm text-slate-500">AI receptionist</div>
 
               <p className="mt-4 min-h-[3rem] text-sm text-slate-600">
-                {!PUBLIC_KEY && "The live demo is being set up. Check back soon."}
-                {PUBLIC_KEY && state === "idle" && "Press the button and start talking when Riley says hello."}
+                {config === null && "Loading…"}
+                {config && !publicKey && "The live demo is being set up. Check back soon."}
+                {publicKey && state === "idle" && "Press the button and start talking when Riley says hello."}
                 {state === "connecting" && "Connecting you to Riley…"}
                 {live && (
                   <>
@@ -186,7 +198,7 @@ export default function RileyDemo() {
                     ) : null}
                   </>
                 ) : (
-                  <button type="button" onClick={start} disabled={!PUBLIC_KEY} className={btnPrimary}>
+                  <button type="button" onClick={start} disabled={!publicKey} className={btnPrimary}>
                     {state === "idle" ? <Mic className="h-4 w-4" aria-hidden="true" /> : <RotateCcw className="h-4 w-4" aria-hidden="true" />}
                     {state === "idle" ? "Talk to Riley" : "Talk to Riley again"}
                   </button>
