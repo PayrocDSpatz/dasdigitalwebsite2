@@ -5,7 +5,7 @@ import Image from "next/image";
 import { X } from "lucide-react";
 
 // "Recent work" cards: client and sample sites as screenshots. Used on the home and website design pages.
-// Clicking a card opens the full page image in a scrollable dialog.
+// Clicking a card opens the full page image in a dialog.
 const WEBSITES = [
   {
     title: "Radiant Med Spa",
@@ -103,7 +103,7 @@ export default function RecentWork({ className = "" }) {
         onClose={() => setOpen(null)}
         onClick={(e) => e.target === e.currentTarget && setOpen(null)}
         aria-label={open ? `${open.title}, full page` : undefined}
-        className="w-[min(100vw-2rem,64rem)] max-w-none overflow-hidden rounded-2xl bg-white p-0 shadow-2xl backdrop:bg-slate-900/70"
+        className="max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl bg-white p-0 shadow-2xl backdrop:bg-slate-900/70"
       >
         {open ? (
           <div className="flex max-h-[90vh] flex-col">
@@ -118,8 +118,9 @@ export default function RecentWork({ className = "" }) {
                 <X className="h-5 w-5" aria-hidden="true" />
               </button>
             </div>
-            <div className="overflow-y-auto">
-              <Image src={open.src} alt={open.alt} width={open.width} height={open.height} sizes="(min-width: 1024px) 1024px, 100vw" className="h-auto w-full" />
+            <div className="overflow-auto">
+              {/* Sized to fit the whole page in the window, so nothing is cut off. */}
+              <Image src={open.src} alt={open.alt} width={open.width} height={open.height} sizes="(min-width: 1024px) 1024px, 100vw" className="mx-auto block h-auto max-h-[calc(90vh-4rem)] w-auto max-w-full" />
             </div>
           </div>
         ) : null}
