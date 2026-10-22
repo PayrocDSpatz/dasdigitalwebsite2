@@ -22,6 +22,13 @@ const WEBSITES = [
     src: "/work/farritech-landing-page.jpg",
     alt: "FarriTech landing page: the headline \u201cFarrier Software That Helps You Run Your Business Like a Pro\u201d on a dark blue background with Get Started Free and See How It Works buttons",
   },
+  {
+    title: "Premier HVAC",
+    kind: "Website \u00b7 Sample design",
+    desc: "A sample heating and cooling company website. For illustration purposes only.",
+    src: "/work/premier-hvac-sample.jpg",
+    alt: "Sample HVAC company home page: the headline \u201cComfort you can count on\u201d beside a smiling technician and a branded service van, with a red Click to Call Now button",
+  },
 ];
 
 export default function RecentWork({ className = "" }) {
