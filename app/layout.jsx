@@ -1,3 +1,4 @@
+import TickerBar from "./_components/TickerBar";
 import Script from "next/script";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
@@ -111,6 +112,7 @@ export default function RootLayout({ children }) {
         </a>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
         {children}
+        <TickerBar />
         {GA_ID ? (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
