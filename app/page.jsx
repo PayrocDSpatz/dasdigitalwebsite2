@@ -166,6 +166,13 @@ export default function Page() {
           </div>
         </section>
 
+        {/* Recent work */}
+        <section id="work" className="scroll-mt-20 pt-16">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <RecentWork />
+          </div>
+        </section>
+
         {/* Services */}
         <section id="services" className="scroll-mt-20 py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -344,7 +351,6 @@ export default function Page() {
             <p className="rounded-2xl bg-purple-700 px-6 py-8 text-center text-2xl font-bold tracking-tight text-white sm:text-3xl">
               Keep it simple. Keep it honest. Keep it working.
             </p>
-            <RecentWork className="mt-12" />
           </div>
         </section>
 
