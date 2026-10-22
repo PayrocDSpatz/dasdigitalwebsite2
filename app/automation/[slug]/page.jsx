@@ -1,8 +1,12 @@
 import { notFound } from "next/navigation";
 import IndustryLanding from "../../_components/IndustryLanding";
+import RileyDemo from "../../_components/RileyDemo";
 import { INDUSTRIES } from "../industries";
 
 export const dynamicParams = false;
+
+// Trade pages that show the live "Talk to Riley" demo right under the hero.
+const RILEY_DEMO = new Set(["hvac-companies", "roofers", "landscapers", "boutiques"]);
 
 export function generateStaticParams() {
   return Object.keys(INDUSTRIES).map((slug) => ({ slug }));
@@ -23,5 +27,12 @@ export function generateMetadata({ params }) {
 export default function Page({ params }) {
   const page = INDUSTRIES[params.slug];
   if (!page) notFound();
-  return <IndustryLanding path={`/automation/${params.slug}`} parent={{ name: "Automation by trade", href: "/automation" }} {...page} />;
+  return (
+    <IndustryLanding
+      path={`/automation/${params.slug}`}
+      parent={{ name: "Automation by trade", href: "/automation" }}
+      afterHero={RILEY_DEMO.has(params.slug) ? <RileyDemo className="pt-16" /> : null}
+      {...page}
+    />
+  );
 }
