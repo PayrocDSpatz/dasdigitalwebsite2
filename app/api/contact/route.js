@@ -4,7 +4,7 @@
 
 import { saveToSheet } from "../_lib/sheet";
 
-const SERVICES = ["Website Design", "AI Receptionists", "Business Automation", "Technology Consulting", "Free website review", "Not sure yet"];
+const SERVICES = ["Website Design", "Online Store", "AI Receptionists", "Business Automation", "Technology Consulting", "Free website review", "Not sure yet"];
 const LIMITS = { name: 120, business: 160, email: 200, phone: 40, service: 60, message: 4000, page: 200 };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
