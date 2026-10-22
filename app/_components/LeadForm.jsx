@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { CONTACT } from "./site";
+import TipsOptIn from "./TipsOptIn";
 
 const SERVICE_OPTIONS = ["Website Design", "Online Store", "AI Receptionists", "Business Automation", "Technology Consulting", "Free website review", "Not sure yet"];
 
@@ -60,6 +61,7 @@ export default function LeadForm() {
           <span className="font-medium text-slate-800">Tell us a little about your project <span className="text-purple-700">*</span></span>
           <textarea name="message" required rows={4} className={`${field} resize-y`} placeholder="For example: we miss calls after 5 pm and our website is out of date." />
         </label>
+        <div className="sm:col-span-2"><TipsOptIn /></div>
         {/* Hidden from people; bots that fill it are ignored. */}
         <div aria-hidden="true" className="absolute left-[-9999px]">
           <label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
@@ -82,7 +84,7 @@ export default function LeadForm() {
         {status === "sending" ? "Sending…" : "Send Message"} <ArrowRight className="h-4 w-4" aria-hidden="true" />
       </button>
       <p className="mt-3 text-xs text-slate-500">
-        We only use your details to reply to you. See our{" "}
+        We only use your details to reply to you, and to send tips if you ask for them. See our{" "}
         <a href="/privacy" className="underline hover:text-purple-700">Privacy Policy</a>.
       </p>
     </form>

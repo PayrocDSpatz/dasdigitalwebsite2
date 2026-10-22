@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowRight, Download } from "lucide-react";
 import { CONTACT } from "./site";
+import TipsOptIn from "./TipsOptIn";
 
 const field =
   "w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-600/30";
@@ -62,6 +63,7 @@ export default function GuideForm() {
         <Field label="Name" name="name" autoComplete="name" />
         <Field label="Email" name="email" type="email" autoComplete="email" />
         <Field label="Phone" name="phone" type="tel" autoComplete="tel" />
+        <TipsOptIn />
         {/* Hidden from people; bots that fill it are ignored. */}
         <div aria-hidden="true" className="absolute left-[-9999px]">
           <label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
