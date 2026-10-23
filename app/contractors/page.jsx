@@ -48,7 +48,7 @@ export default function ContractorsPage() {
       `}</style>
       <div className="contractor-wrap">
         <nav className="contractor-nav" aria-label="Main navigation">
-          <a className="contractor-brand" href="/">DAS DIGITAL AI</a>
+          <a className="contractor-brand" href="/" aria-label="DAS Digital AI home"><img src="/brand/das-digitalai-logo-horizontal.svg" alt="DAS Digital AI — Smart Solutions, Modern Websites, AI Automation" style={{display:"block",width:"min(350px,48vw)",height:"auto",background:"#fff",borderRadius:8,padding:"5px 9px"}} /></a>
           <a className="contractor-btn contractor-secondary" href={booking} target="_blank" rel="noopener noreferrer">Book a Free Call ↗</a>
         </nav>
       </div>
