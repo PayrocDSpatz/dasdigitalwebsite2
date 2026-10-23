@@ -78,7 +78,7 @@ export default function HVACContractorsPage() {
             <p className="contractor-muted">Try Riley, our AI receptionist demo. Ask about services, request an estimate or pretend you're a homeowner calling after hours. See how a virtual receptionist could handle that first conversation.</p>
             <div className="contractor-actions"><a className="contractor-btn contractor-primary" href={riley} target="_blank" rel="noopener noreferrer">Try Riley Now ↗</a></div>
           </div>
-          <div className="contractor-demo"><div className="contractor-eyebrow">See it in action</div><strong>Try the AI receptionist yourself</strong><p className="contractor-muted">Call on Riley to see how a new customer inquiry could be handled while your team is out on a job.</p><a className="contractor-btn contractor-secondary" href={riley} target="_blank" rel="noopener noreferrer">Try Riley Live ↗</a></div></div>
+          <div className="contractor-demo"><div className="contractor-eyebrow">See it in action</div><strong>Try the AI receptionist yourself</strong><p className="contractor-muted">Call on Riley to see how a new customer inquiry could be handled while your team is out on a job.</p><a className="contractor-btn contractor-secondary" href={riley} target="_blank" rel="noopener noreferrer">Try Riley Live ↗</a></div>
         </div>
       </section>
       <section className="contractor-section">
