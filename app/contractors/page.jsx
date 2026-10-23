@@ -20,7 +20,7 @@ export default function ContractorsPage() {
         .contractor-wrap{max-width:1120px;margin:auto;padding:0 24px}
         .contractor-nav{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:25px 0}
         .contractor-brand{font-size:19px;font-weight:800;letter-spacing:.04em;color:#fff;text-decoration:none}
-        .contractor-hero{padding:74px 0 72px;background:linear-gradient(90deg,#eef5ff 0%,#edf5ff 43%,#edf5ff99 60%,#edf5ff00 83%),url("/roofer-hero.webp") right center/cover no-repeat, url("https://images.unsplash.com/photo-1633759593085-1eaeb724fc88?auto=format&fit=crop&w=1800&q=80") right center/cover no-repeat;position:relative;color:#16112a;min-height:590px}
+        .contractor-hero{padding:74px 0 72px;background:linear-gradient(90deg,#eef5ff 0%,#edf5ff 43%,#edf5ff99 60%,#edf5ff00 83%),url("/das-roofer-hero.webp") right center/cover no-repeat, url("https://images.unsplash.com/photo-1633759593085-1eaeb724fc88?auto=format&fit=crop&w=1800&q=80") right center/cover no-repeat;position:relative;color:#16112a;min-height:590px}
         .contractor-eyebrow{color:#6c28e6;font-size:13px;font-weight:700;letter-spacing:.17em;text-transform:uppercase}
         .contractor-h1{font-size:clamp(42px,6vw,72px);line-height:1.06;letter-spacing:-.045em;max-width:850px;margin:22px 0}
         .contractor-lead{font-size:clamp(17px,2vw,21px);line-height:1.6;max-width:630px;color:#29213c}
@@ -44,7 +44,7 @@ export default function ContractorsPage() {
         .contractor-demo{padding:30px;border:1px solid #8062b8;background:#2a1b49;border-radius:20px}
         .contractor-demo strong{display:block;font-size:24px;margin-bottom:12px}
         .contractor-footer{padding:34px 0;border-top:1px solid #ffffff24;color:#bdb1cd;font-size:14px}
-        @media(max-width:760px){.contractor-hero{background:linear-gradient(90deg,#eef5ffeb,#eef5ffdd),url("/roofer-hero.webp") center/cover no-repeat, url("https://images.unsplash.com/photo-1633759593085-1eaeb724fc88?auto=format&fit=crop&w=1000&q=70") center/cover no-repeat;min-height:0}.contractor-grid,.contractor-split{grid-template-columns:1fr}.contractor-hero{padding:64px 0}.contractor-section{padding:55px 0}.contractor-nav .contractor-btn{padding:11px 14px;font-size:12px}.contractor-actions .contractor-btn{width:100%}}
+        @media(max-width:760px){.contractor-hero{background:linear-gradient(90deg,#eef5ffeb,#eef5ffdd),url("/das-roofer-hero.webp") center/cover no-repeat, url("https://images.unsplash.com/photo-1633759593085-1eaeb724fc88?auto=format&fit=crop&w=1000&q=70") center/cover no-repeat;min-height:0}.contractor-grid,.contractor-split{grid-template-columns:1fr}.contractor-hero{padding:64px 0}.contractor-section{padding:55px 0}.contractor-nav .contractor-btn{padding:11px 14px;font-size:12px}.contractor-actions .contractor-btn{width:100%}}
       `}</style>
       <div className="contractor-wrap">
         <nav className="contractor-nav" aria-label="Main navigation">
