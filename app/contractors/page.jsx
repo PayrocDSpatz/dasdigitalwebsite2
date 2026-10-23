@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Contractor Websites, AI Receptionists & Automation | DAS Digital AI",
-  description: "Websites, AI receptionists and business automation for roofing, HVAC, plumbing and electrical contractors. Try a live demo and book a free 15-minute conversation.",
+  description: "Local South Florida website design, AI receptionists and business automation for roofing, HVAC, plumbing and electrical contractors. Based in West Palm Beach and serving Palm Beach, Broward and Miami-Dade counties.",
 };
 
 const booking = "https://calendar.app.google/u5a71bR4tkf4KMsx6";
@@ -54,20 +54,20 @@ export default function ContractorsPage() {
       </div>
       <section className="contractor-hero">
         <div className="contractor-wrap">
-          <div className="contractor-eyebrow">Built for home-service businesses</div>
+          <div className="contractor-eyebrow">Your local South Florida technology partner</div>
           <h1 className="contractor-h1">More Calls. More Booked Jobs. Less Busywork.</h1>
-          <p className="contractor-lead">You're busy running jobs. We help roofing, HVAC, plumbing and electrical companies build a stronger online presence, respond to new inquiries and simplify the work behind the scenes.</p>
+          <p className="contractor-lead">We're a local business based in West Palm Beach, helping roofing, HVAC, plumbing and electrical contractors across South Florida get more inquiries, respond faster and spend less time on busywork. We understand the businesses and communities you serve because we're here too.</p>
           <div className="contractor-actions">
             <a className="contractor-btn contractor-primary" href={riley} target="_blank" rel="noopener noreferrer">Talk to Riley — Live AI Demo ↗</a>
             <a className="contractor-btn contractor-secondary" href={booking} target="_blank" rel="noopener noreferrer">Book a Free 15-Minute Call</a>
           </div>
-          <div className="contractor-pills"><span className="contractor-pill">Roofing</span><span className="contractor-pill">HVAC</span><span className="contractor-pill">Plumbing</span><span className="contractor-pill">Electrical</span></div>
+          <p className="contractor-muted" style={{marginTop:24,fontSize:14}}>Locally based in West Palm Beach · Serving Palm Beach, Broward &amp; Miami-Dade counties</p><div className="contractor-pills"><span className="contractor-pill">Roofing</span><span className="contractor-pill">HVAC</span><span className="contractor-pill">Plumbing</span><span className="contractor-pill">Electrical</span></div>
         </div>
       </section>
       <section className="contractor-section">
         <div className="contractor-wrap">
           <h2 className="contractor-h2">Make it easier for customers to choose you.</h2>
-          <p className="contractor-muted">Practical tools that fit the way contractors actually work.</p>
+          <p className="contractor-muted">Practical tools, with a local team you can actually talk to. No faceless agency or one-size-fits-all approach.</p>
           <div className="contractor-grid">{offerings.map((item)=><article className="contractor-card" key={item.title}><div className="contractor-icon" aria-hidden="true">{item.icon}</div><h3>{item.title}</h3><p>{item.body}</p></article>)}</div>
         </div>
       </section>
@@ -86,7 +86,7 @@ export default function ContractorsPage() {
         <div className="contractor-wrap" style={{textAlign:"center",maxWidth:760}}>
           <div className="contractor-eyebrow">Let's talk</div>
           <h2 className="contractor-h2">What could work better in your business?</h2>
-          <p className="contractor-muted">Give us 15 minutes to learn about your business. We'll talk through where a better website, faster response or a simple automation might make a difference. No pressure, just a conversation.</p>
+          <p className="contractor-muted">We’re local, and we’d love to learn about your business. Give us 15 minutes to talk. We'll talk through where a better website, faster response or a simple automation might make a difference. No pressure, just a conversation.</p>
           <div className="contractor-actions" style={{justifyContent:"center"}}><a className="contractor-btn contractor-primary" href={booking} target="_blank" rel="noopener noreferrer">Book My Free 15-Minute Call ↗</a></div>
         </div>
       </section>
