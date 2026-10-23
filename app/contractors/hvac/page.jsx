@@ -5,7 +5,6 @@ export const metadata = {
 
 const booking = "https://calendar.app.google/u5a71bR4tkf4KMsx6";
 const riley = "https://dasdigitalai.com/ai-receptionist#try-riley";
-const roofing = "https://roofing-demo.dasdigitalai.com";
 
 const offerings = [
   { icon: "☎", title: "Catch the after-hours AC emergency", body: "Give callers a helpful first response even when your crew is on a job." },
@@ -79,7 +78,7 @@ export default function HVACContractorsPage() {
             <p className="contractor-muted">Try Riley, our AI receptionist demo. Ask about services, request an estimate or pretend you're a homeowner calling after hours. See how a virtual receptionist could handle that first conversation.</p>
             <div className="contractor-actions"><a className="contractor-btn contractor-primary" href={riley} target="_blank" rel="noopener noreferrer">Try Riley Now ↗</a></div>
           </div>
-          <div className="contractor-demo"><div className="contractor-eyebrow">Website example</div><strong>See a contractor website concept</strong><p className="contractor-muted">See how a well-designed contractor website can turn visitors into estimate requests. The sample is a roofing example; we can tailor the same approach for HVAC companies.</p><a className="contractor-btn contractor-secondary" href={roofing} target="_blank" rel="noopener noreferrer">View Website Example ↗</a></div>
+          <div className="contractor-demo"><div className="contractor-eyebrow">Website portfolio example</div><strong>Premier HVAC website concept</strong><p className="contractor-muted">A sample design showing how a professional hvac website could present services and encourage customers to get in touch.</p><a href="/work/premier-hvac-sample.jpg" target="_blank" rel="noopener noreferrer" aria-label="View Premier HVAC website screenshot"><img src="/work/premier-hvac-sample.jpg" alt="Premier HVAC website design screenshot" style={{display:"block",width:"100%",height:"auto",borderRadius:12,marginTop:16,border:"1px solid #ffffff30"}} /></a><a className="contractor-btn contractor-secondary" style={{marginTop:18}} href="/work/premier-hvac-sample.jpg" target="_blank" rel="noopener noreferrer">View Website Screenshot ↗</a></div><strong>Try the AI receptionist yourself</strong><p className="contractor-muted">Call on Riley to see how a new customer inquiry could be handled while your team is out on a job.</p><a className="contractor-btn contractor-secondary" href={riley} target="_blank" rel="noopener noreferrer">Try Riley Live ↗</a></div>
         </div>
       </section>
       <section className="contractor-section">
