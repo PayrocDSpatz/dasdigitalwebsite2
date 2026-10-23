@@ -61,7 +61,7 @@ export default function ContractorsPage() {
             <a className="contractor-btn contractor-primary" href={riley} target="_blank" rel="noopener noreferrer">☎ Try Our AI Receptionist ↗</a>
             <a className="contractor-btn contractor-secondary" href={booking} target="_blank" rel="noopener noreferrer">Book a Free 15-Minute Call</a>
           </div>
-          <p className="contractor-muted" style={{marginTop:24,fontSize:14,color:"#382751",fontWeight:600}}>Locally based in West Palm Beach · Serving Palm Beach, Broward &amp; Miami-Dade counties</p><div className="contractor-pills"><span className="contractor-pill">Roofing</span><span className="contractor-pill">HVAC</span><span className="contractor-pill">Plumbing</span><span className="contractor-pill">Electrical</span></div>
+          <p className="contractor-muted" style={{marginTop:24,fontSize:14,color:"#382751",fontWeight:600}}>Locally based in West Palm Beach · Serving Palm Beach, Broward &amp; Miami-Dade counties</p><div className="contractor-pills"><span className="contractor-pill">Roofing</span><a className="contractor-pill" href="/contractors/hvac">HVAC ↗</a><a className="contractor-pill" href="/contractors/plumbing">Plumbing ↗</a><a className="contractor-pill" href="/contractors/electrical">Electrical ↗</a></div>
         </div>
       </section>
       <section className="contractor-section">
