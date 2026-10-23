@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Contractor Websites, AI Receptionists & Automation | DAS Digital AI",
+  title: "Local Contractor Websites & AI Receptionists | DAS Digital AI",
   description: "Local South Florida website design, AI receptionists and business automation for roofing, HVAC, plumbing and electrical contractors. Based in West Palm Beach and serving Palm Beach, Broward and Miami-Dade counties.",
 };
 
@@ -20,17 +20,17 @@ export default function ContractorsPage() {
         .contractor-wrap{max-width:1120px;margin:auto;padding:0 24px}
         .contractor-nav{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:25px 0}
         .contractor-brand{font-size:19px;font-weight:800;letter-spacing:.04em;color:#fff;text-decoration:none}
-        .contractor-hero{padding:94px 0 88px;background:radial-gradient(ellipse at 75% 20%,#5430a6 0%,#21133e 42%,#0f0b1d 75%)}
-        .contractor-eyebrow{color:#c8adff;font-size:13px;font-weight:700;letter-spacing:.17em;text-transform:uppercase}
-        .contractor-h1{font-size:clamp(42px,7vw,76px);line-height:1.06;letter-spacing:-.045em;max-width:850px;margin:22px 0}
-        .contractor-lead{font-size:clamp(17px,2vw,21px);line-height:1.6;max-width:690px;color:#ddd4ed}
+        .contractor-hero{padding:74px 0 72px;background:linear-gradient(90deg,#eef5ff 0%,#edf5ff 43%,#edf5ff99 60%,#edf5ff00 83%),url("https://images.unsplash.com/photo-1633759593085-1eaeb724fc88?auto=format&fit=crop&w=1800&q=80") right center/cover no-repeat;position:relative;color:#16112a;min-height:590px}
+        .contractor-eyebrow{color:#6c28e6;font-size:13px;font-weight:700;letter-spacing:.17em;text-transform:uppercase}
+        .contractor-h1{font-size:clamp(42px,6vw,72px);line-height:1.06;letter-spacing:-.045em;max-width:850px;margin:22px 0}
+        .contractor-lead{font-size:clamp(17px,2vw,21px);line-height:1.6;max-width:630px;color:#29213c}
         .contractor-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:32px}
         .contractor-btn{display:inline-block;padding:16px 24px;border-radius:10px;font-weight:750;text-decoration:none;text-align:center;transition:transform .15s}
         .contractor-btn:hover{transform:translateY(-2px)}
-        .contractor-primary{background:#a77aff;color:#160b29}
-        .contractor-secondary{border:1px solid #a994ce;color:#fff;background:#ffffff0b}
+        .contractor-primary{background:#6416ef;color:#fff}
+        .contractor-secondary{border:1px solid #a994ce;color:#fff;background:#ffffff0b}.contractor-hero .contractor-secondary{background:#fff;color:#401393;border-color:#6f34dd}
         .contractor-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:42px}
-        .contractor-pill{border:1px solid #ffffff30;border-radius:999px;padding:9px 15px;color:#e3d9f1;font-size:13px}
+        .contractor-pill{border:1px solid #6b3fa055;border-radius:999px;padding:9px 15px;color:#3b2463;font-size:13px;background:#ffffffaa}
         .contractor-section{padding:75px 0}
         .contractor-h2{font-size:clamp(30px,4vw,46px);letter-spacing:-.035em;margin:0 0 16px}
         .contractor-muted{color:#c6bdd5;line-height:1.7}
@@ -44,7 +44,7 @@ export default function ContractorsPage() {
         .contractor-demo{padding:30px;border:1px solid #8062b8;background:#2a1b49;border-radius:20px}
         .contractor-demo strong{display:block;font-size:24px;margin-bottom:12px}
         .contractor-footer{padding:34px 0;border-top:1px solid #ffffff24;color:#bdb1cd;font-size:14px}
-        @media(max-width:760px){.contractor-grid,.contractor-split{grid-template-columns:1fr}.contractor-hero{padding:64px 0}.contractor-section{padding:55px 0}.contractor-nav .contractor-btn{padding:11px 14px;font-size:12px}.contractor-actions .contractor-btn{width:100%}}
+        @media(max-width:760px){.contractor-hero{background:linear-gradient(90deg,#eef5ffeb,#eef5ffdd),url("https://images.unsplash.com/photo-1633759593085-1eaeb724fc88?auto=format&fit=crop&w=1000&q=70") center/cover no-repeat;min-height:0}.contractor-grid,.contractor-split{grid-template-columns:1fr}.contractor-hero{padding:64px 0}.contractor-section{padding:55px 0}.contractor-nav .contractor-btn{padding:11px 14px;font-size:12px}.contractor-actions .contractor-btn{width:100%}}
       `}</style>
       <div className="contractor-wrap">
         <nav className="contractor-nav" aria-label="Main navigation">
@@ -55,13 +55,13 @@ export default function ContractorsPage() {
       <section className="contractor-hero">
         <div className="contractor-wrap">
           <div className="contractor-eyebrow">Your local South Florida technology partner</div>
-          <h1 className="contractor-h1">More Calls. More Booked Jobs. Less Busywork.</h1>
-          <p className="contractor-lead">We're a local business based in West Palm Beach, helping roofing, HVAC, plumbing and electrical contractors across South Florida get more inquiries, respond faster and spend less time on busywork. We understand the businesses and communities you serve because we're here too.</p>
+          <h1 className="contractor-h1">Hard to Answer the Phone When <span style={{color:"#6d24e9"}}>You’re 30 Feet Up.</span></h1>
+          <p className="contractor-lead">You’re busy doing the work. We’re a local South Florida business helping contractors capture the next job with better websites, AI receptionists and practical automation.</p>
           <div className="contractor-actions">
-            <a className="contractor-btn contractor-primary" href={riley} target="_blank" rel="noopener noreferrer">Talk to Riley — Live AI Demo ↗</a>
+            <a className="contractor-btn contractor-primary" href={riley} target="_blank" rel="noopener noreferrer">☎ Try Our AI Receptionist ↗</a>
             <a className="contractor-btn contractor-secondary" href={booking} target="_blank" rel="noopener noreferrer">Book a Free 15-Minute Call</a>
           </div>
-          <p className="contractor-muted" style={{marginTop:24,fontSize:14}}>Locally based in West Palm Beach · Serving Palm Beach, Broward &amp; Miami-Dade counties</p><div className="contractor-pills"><span className="contractor-pill">Roofing</span><span className="contractor-pill">HVAC</span><span className="contractor-pill">Plumbing</span><span className="contractor-pill">Electrical</span></div>
+          <p className="contractor-muted" style={{marginTop:24,fontSize:14,color:"#382751",fontWeight:600}}>Locally based in West Palm Beach · Serving Palm Beach, Broward &amp; Miami-Dade counties</p><div className="contractor-pills"><span className="contractor-pill">Roofing</span><span className="contractor-pill">HVAC</span><span className="contractor-pill">Plumbing</span><span className="contractor-pill">Electrical</span></div>
         </div>
       </section>
       <section className="contractor-section">
